@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 4-ott-2011 19.33.58 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="model.beans.Booking" table="booking">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="student" class="model.beans.Student" fetch="select">
+            <column name="id_student" not-null="true" />
+        </many-to-one>
+        <many-to-one name="room" class="model.beans.Room" fetch="select">
+            <column name="id_room" not-null="true" />
+        </many-to-one>
+        <many-to-one name="supervisor" class="model.beans.Supervisor" fetch="select">
+            <column name="id_supervisor" not-null="true" />
+        </many-to-one>
+        <property name="reasonBooking" type="string">
+            <column name="reason_booking" length="65535" not-null="true" />
+        </property>
+        <property name="date" type="string">
+            <column name="date" not-null="true" />
+        </property>
+        <property name="time" type="string">
+            <column name="time" not-null="true" />
+        </property>
+        <property name="reasonAnnulment" type="string">
+            <column name="reason_annulment" length="65535" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

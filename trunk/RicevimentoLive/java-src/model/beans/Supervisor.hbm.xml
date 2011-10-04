@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 4-ott-2011 19.33.58 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="model.beans.Supervisor" table="supervisor">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="surname" type="string">
+            <column name="surname" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" not-null="true" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="65535" not-null="true" />
+        </property>
+        <property name="acl" type="string">
+            <column name="acl" length="65535" not-null="true" />
+        </property>
+        <set name="roomsupervisors" inverse="true" lazy="true" table="roomsupervisor" fetch="select">
+            <key>
+                <column name="id_supervisor" not-null="true" />
+            </key>
+            <one-to-many class="model.beans.Roomsupervisor" />
+        </set>
+        <set name="bookings" inverse="true" lazy="true" table="booking" fetch="select">
+            <key>
+                <column name="id_supervisor" not-null="true" />
+            </key>
+            <one-to-many class="model.beans.Booking" />
+        </set>
+    </class>
+</hibernate-mapping>
