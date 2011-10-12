@@ -11,27 +11,4 @@
         <channel ref="my-polling-amf"/>
     </default-channels>
 
-    <destination id="tutoring-request">
-	    <properties>
-	        <server>
-	            <allow-subtopics>true</allow-subtopics>
-	            <subtopic-separator>.</subtopic-separator>
-	        </server>
-	    </properties>
-	    <channels>
-	        <channel ref="my-longpolling-amf"/>
-	    </channels>
-	</destination>
-	
-    <destination id="tutor-status">
-	    <properties>
-	        <server>
-	            <allow-subtopics>true</allow-subtopics>
-	            <subtopic-separator>.</subtopic-separator>
-	        </server>
-	    </properties>
-	    <channels>
-	        <channel ref="my-longpolling-amf"/>
-	    </channels>
-	</destination>
 </service>
