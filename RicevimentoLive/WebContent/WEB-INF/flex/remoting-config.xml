@@ -10,11 +10,10 @@
         <channel ref="my-amf"/>
     </default-channels>
     
-	<destination id="login-service">
+    <destination id="login-service">
 	    <properties>
 	        <source>services.LoginService</source>
 	        <scope>request</scope>
 	    </properties>
 	</destination>
-
 </service>
