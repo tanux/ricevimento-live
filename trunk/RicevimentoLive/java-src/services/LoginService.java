@@ -1,5 +1,8 @@
 package services;
 
+import model.beans.Student;
+import model.beans.Supervisor;
+
 public class LoginService {
 	
 	public LoginService(){
