@@ -13,6 +13,5 @@ public class LoginService {
 	}
 	public Student UserLogin(String username, String password){
 		return null;
-	}
-	
+	}	
 }

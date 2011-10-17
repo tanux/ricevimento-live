@@ -14,6 +14,8 @@
 	<fx:Script>
 		<![CDATA[			
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
+			[Bindable]
+			public var Student;			
 		]]>
 	</fx:Script>
 	<mx:Box width="100%" paddingTop="5" paddingBottom="5">
