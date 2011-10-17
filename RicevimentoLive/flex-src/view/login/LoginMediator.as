@@ -20,10 +20,10 @@ package view.login
 			login.btnLogin.addEventListener(MouseEvent.CLICK, doLogin);
 		}
 		
-		public function doLogin(){
-			
+		public function doLogin(){			
 			facade.sendNotification(ApplicationFacade.DO_LOGIN);
 		}
+		
 		override public function handleNotification(notification:INotification):void{ 
 			
 		}

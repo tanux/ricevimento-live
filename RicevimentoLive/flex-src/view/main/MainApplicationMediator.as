@@ -11,21 +11,27 @@ package view.main
 	public class MainApplicationMediator extends Mediator implements IMediator{
 		
 		public static const NAME:String = "MainApplicationMediator";
+		
 		public function MainApplicationMediator(viewComponent:Object){
-			super(NAME, viewComponent);  //associo un nome al mediator
-			mainApplication.addEventListener(FlexEvent.CREATION_COMPLETE, init);
-			
+			super(NAME, viewComponent);  
+			mainApplication.addEventListener(FlexEvent.CREATION_COMPLETE, init);			
 		}
 		
 		private function init(evt:Event) : void {
 		}
 		
 		override public function handleNotification(notification:INotification):void{ 
-			
+			switch (notification.getName()){
+				case ApplicationFacade.LOGIN_SUCCESS:
+					
+					break;
+			}
 		}
 		
 		override public function listNotificationInterests():Array{
-			return [];	
+			return [
+				ApplicationFacade.LOGIN_SUCCESS
+			];	
 		}
 		
 		public function get mainApplication():MainApplication{  //aggancio il component al mediator
