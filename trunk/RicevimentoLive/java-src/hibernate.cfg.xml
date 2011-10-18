@@ -11,6 +11,6 @@
         <property name="hibernate.default_catalog">ricevimentolive</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         
-        <mapping resource="model/beans/Booking.hbm.xml"/>
+        <mapping resource="model/beans/Supervisor.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

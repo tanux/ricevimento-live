@@ -1,5 +1,11 @@
 package services;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Example;
+
+import util.HibernateFactory;
+
 import model.beans.Student;
 import model.beans.Supervisor;
 
@@ -9,7 +15,19 @@ public class LoginService {
 		
 	}
 	public Supervisor SupervisorLogin(String username,String password){
-		return null;
+		Session s = HibernateFactory.openSession();
+		
+		Supervisor user = new Supervisor();
+		user.setUsername(username);
+		user.setPassword(password);
+		
+		Criteria c = s.createCriteria(Supervisor.class);
+		c.add(Example.create(user));
+		
+		Supervisor result = (Supervisor) c.uniqueResult();
+		
+		HibernateFactory.closeSession(s);
+		return result;
 	}
 	public Student UserLogin(String username, String password){
 		return null;
