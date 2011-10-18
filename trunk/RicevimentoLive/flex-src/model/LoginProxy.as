@@ -17,8 +17,8 @@ package model
 		private var responder:Responder;		
 		public static const NAME:String = "LoginProxy";	
 		
-		public function LoginProxy(){
-			super(NAME);
+		public function LoginProxy(proxyName:String){
+			super(proxyName);
 			service = new LoginService();
 			responder =  new Responder(onResult, onFault);
 		}

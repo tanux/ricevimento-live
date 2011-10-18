@@ -2,11 +2,11 @@
 <mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" autoLayout="true" title="Login" height="230" width="370">	
 	<mx:Form width="100%">
 		<mx:FormItem label="username" fontWeight="bold">
-			<mx:TextInput id="_username" width="240" text="admin"/>
+			<mx:TextInput id="tiUsername" width="240" text="admin"/>
 		</mx:FormItem>
 		<mx:HRule width="100%"/>
 		<mx:FormItem label="password" fontWeight="bold">
-			<mx:TextInput id="_password" width="240" displayAsPassword="true" text="admin" />
+			<mx:TextInput id="tiPassword" width="240" displayAsPassword="true" text="admin" />
 		</mx:FormItem>
 		<mx:HRule width="100%"/>
 		<mx:Box horizontalAlign="center" width="100%">

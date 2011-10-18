@@ -18,15 +18,22 @@
 			public var Student;			
 		]]>
 	</fx:Script>
+	<s:states>
+		<s:State name="login" />
+		<s:State name="register" />
+		<s:State name="stateMainApplication" />
+	</s:states>
+	
 	<mx:Box width="100%" paddingTop="5" paddingBottom="5">
 		<mx:VBox width="100%" horizontalAlign="center">
-			<mx:ApplicationControlBar id="TopBar" width="98%" height="50" borderVisible="true"
-									  dock="true" dropShadowVisible="false" paddingBottom="0" visible="false">		
+			<mx:ApplicationControlBar id="TopBar" width="98%" height="50" borderVisible="true" includeIn="stateMainApplication"
+									  dock="true" dropShadowVisible="true" paddingBottom="0" visible="true">		
 			</mx:ApplicationControlBar>
-			<mx:VBox width="100%" height="100%" horizontalAlign="center">
+			<mx:VBox width="100%" height="100%" horizontalAlign="center" includeIn="login">
 				<mx:Image  width="200" height="200" source="@Embed('assets/logoUnisa.jpg')" />
 				<component:loginForm id="login" />	
-			</mx:VBox>	
+			</mx:VBox>
+			<mx:Canvas id="mainBox" width="100%" height="100%" includeIn="stateMainApplication" />
 		</mx:VBox>	
 	</mx:Box>	
 </s:Application>
