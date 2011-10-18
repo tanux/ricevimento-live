@@ -3,6 +3,8 @@ package view.login
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
+	import model.vo.Student;
+	
 	import mx.controls.Alert;
 	import mx.events.FlexEvent;
 	
@@ -20,8 +22,11 @@ package view.login
 			login.btnLogin.addEventListener(MouseEvent.CLICK, doLogin);
 		}
 		
-		public function doLogin(){			
-			facade.sendNotification(ApplicationFacade.DO_LOGIN);
+		public function doLogin(evt:Event):void{	
+			var student:Student = new Student();
+			student.username = login.tiUsername.text;
+			student.password = login.tiPassword.text;
+			facade.sendNotification(ApplicationFacade.DO_LOGIN,student);
 		}
 		
 		override public function handleNotification(notification:INotification):void{ 

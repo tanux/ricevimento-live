@@ -2,6 +2,7 @@ package view.main
 {
 	import flash.events.Event;
 	
+	import mx.controls.Alert;
 	import mx.events.FlexEvent;
 	
 	import org.puremvc.as3.interfaces.IMediator;
@@ -23,14 +24,18 @@ package view.main
 		override public function handleNotification(notification:INotification):void{ 
 			switch (notification.getName()){
 				case ApplicationFacade.LOGIN_SUCCESS:
-					
+					mainApplication.currentState = "stateMainApplication";
+					break;
+				case ApplicationFacade.LOGIN_ERROR:
+					Alert.show("nooooooo");
 					break;
 			}
 		}
 		
 		override public function listNotificationInterests():Array{
 			return [
-				ApplicationFacade.LOGIN_SUCCESS
+				ApplicationFacade.LOGIN_SUCCESS,
+				ApplicationFacade.LOGIN_ERROR
 			];	
 		}
 		
