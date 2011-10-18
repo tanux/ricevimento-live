@@ -34,8 +34,7 @@ package view.login
 		
 		public function get login():loginForm{
 			return viewComponent as loginForm;
-		}
-		
+		}		
 		
 	}
 }
