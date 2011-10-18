@@ -13,6 +13,7 @@ package
 		public static const LOGIN:String = "Login";
 		public static const DO_LOGIN:String = "DoLogin";
 		public static const LOGIN_SUCCESS:String = "LoginSuccess";
+		public static const LOGIN_ERROR:String = "LoginError";
 		public static const LOGIN_FAULT:String = "LoginFault";
 		
 		public static function getInstance() : ApplicationFacade {
