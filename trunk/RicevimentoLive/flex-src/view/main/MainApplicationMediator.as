@@ -29,13 +29,18 @@ package view.main
 				case ApplicationFacade.LOGIN_ERROR:
 					Alert.show("nooooooo");
 					break;
+				case ApplicationFacade.DO_REGISTER:
+					mainApplication.currentState = "stateRegister";
+					//Alert.show("Registrati");
+					break;
 			}
 		}
 		
 		override public function listNotificationInterests():Array{
 			return [
 				ApplicationFacade.LOGIN_SUCCESS,
-				ApplicationFacade.LOGIN_ERROR
+				ApplicationFacade.LOGIN_ERROR,
+				ApplicationFacade.DO_REGISTER
 			];	
 		}
 		

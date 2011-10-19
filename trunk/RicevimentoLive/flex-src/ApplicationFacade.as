@@ -12,6 +12,7 @@ package
 		public static const STARTUP:String = "Startup";
 		public static const LOGIN:String = "Login";
 		public static const DO_LOGIN:String = "DoLogin";
+		public static const DO_REGISTER:String = "DoRegister";
 		public static const LOGIN_SUCCESS:String = "LoginSuccess";
 		public static const LOGIN_ERROR:String = "LoginError";
 		public static const LOGIN_FAULT:String = "LoginFault";

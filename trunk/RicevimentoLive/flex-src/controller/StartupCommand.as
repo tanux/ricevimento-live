@@ -12,10 +12,6 @@ package controller
 	public class StartupCommand extends SimpleCommand implements ICommand{
 		
 		override public function execute(notification:INotification):void{
-			
-			//var userProxy:UserProxy = new UserProxy();
-			//facade.registerProxy(userProxy);
-			
 			var mainApplication:MainApplication = notification.getBody() as MainApplication; //prendo il component mxml
 			facade.registerMediator(new MainApplicationMediator(mainApplication));
 			facade.registerMediator(new LoginMediator(mainApplication.login));

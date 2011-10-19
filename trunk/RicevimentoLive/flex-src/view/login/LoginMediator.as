@@ -20,6 +20,7 @@ package view.login
 		public function LoginMediator(viewComponent:Object=null){
 			super(NAME, viewComponent);			
 			login.btnLogin.addEventListener(MouseEvent.CLICK, doLogin);
+			login.btnRegistrati.addEventListener(MouseEvent.CLICK, doRegister);
 		}
 		
 		public function doLogin(evt:Event):void{	
@@ -27,6 +28,9 @@ package view.login
 			student.username = login.tiUsername.text;
 			student.password = login.tiPassword.text;
 			facade.sendNotification(ApplicationFacade.DO_LOGIN,student);
+		}
+		public function doRegister(evt:Event):void{
+			facade.sendNotification(ApplicationFacade.DO_REGISTER);
 		}
 		
 		override public function handleNotification(notification:INotification):void{ 
