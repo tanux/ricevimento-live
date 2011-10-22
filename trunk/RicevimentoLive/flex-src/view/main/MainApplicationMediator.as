@@ -9,6 +9,8 @@ package view.main
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
+	import view.register.RegisterUserMediator;
+	
 	public class MainApplicationMediator extends Mediator implements IMediator{
 		
 		public static const NAME:String = "MainApplicationMediator";
@@ -27,12 +29,16 @@ package view.main
 					mainApplication.currentState = "stateMainApplication";
 					break;
 				case ApplicationFacade.LOGIN_ERROR:
-					Alert.show("nooooooo");
+					Alert.show("Autenticazione non riuscita");
 					break;
 				case ApplicationFacade.DO_REGISTER:
 					mainApplication.currentState = "stateRegister";
-					//Alert.show("Registrati");
-					break;
+					facade.registerMediator(new RegisterUserMediator(mainApplication.registerUserForm));
+					break;	
+				case ApplicationFacade.REGISTER_SUCCES:
+					Alert.show("Registrazione riuscita");
+					mainApplication.currentState = "login"
+					break;				
 			}
 		}
 		
@@ -40,7 +46,8 @@ package view.main
 			return [
 				ApplicationFacade.LOGIN_SUCCESS,
 				ApplicationFacade.LOGIN_ERROR,
-				ApplicationFacade.DO_REGISTER
+				ApplicationFacade.DO_REGISTER,
+				ApplicationFacade.REGISTER_SUCCES				
 			];	
 		}
 		

@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300"
-		 xmlns:style="com.adobe.fiber.styles"
-		 title="Registrati" xmlns:styles="com.adobe.fiber.styles.*">
-	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
-	</fx:Declarations>
-	<mx:Form width="100%">
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml"
+		  layout="absolute" autoLayout="true" title="Registrati"
+		  width="400" height="300">	
+	<mx:Form width="100%">		
 		<mx:FormItem label="Nome" fontWeight="bold">
-			<s:TextInput id="tiName" width="240" text="Es: Mario" />
+			<mx:TextInput id="tiName" width="240" text="Es: Mario"/>
 		</mx:FormItem>
 		<mx:FormItem label="Cognome" fontWeight="bold">
-			<s:TextInput id="tiSurname" width="240" text="Es: Rossi"/>
+			<mx:TextInput id="tiSurname" width="240" text="Es: Rossi"/>
 		</mx:FormItem>
 		<mx:FormItem label="Corso di Laurea" fontWeight="bold">
-			<s:TextInput id="tiDegree" width="240" text="Es: Ingegneria Informatica" />
+			<mx:TextInput id="tiDegree" width="240" text="Es: Ingegneria Informatica" />
 		</mx:FormItem>
 		<mx:FormItem label="Matricola" fontWeight="bold">
-			<s:TextInput id="tiPersonalNumber" width="240" text="Es: 0610700999" />
+			<mx:TextInput id="tiPersonalNumber" width="240" text="Es: 0610700999" />
 		</mx:FormItem>
 		<mx:FormItem label="Email" fontWeight="bold">
-			<s:TextInput id="tiEmail" width="240" text="Es: miaemail@email.it" />
+			<mx:TextInput id="tiEmail" width="240" text="Es: miaemail@email.it" />
 		</mx:FormItem>
 		<mx:FormItem label="Username" fontWeight="bold">
-			<s:TextInput id="tiUsername" width="240" text="Es: pippo" />
+			<mx:TextInput id="tiUsername" width="240" text="Es: pippo" />
 		</mx:FormItem>
 		<mx:FormItem label="Password" fontWeight="bold">
-			<s:TextInput id="tiPassword" displayAsPassword="true" width="240" />
+			<mx:TextInput id="tiPassword" displayAsPassword="true" width="240" />
 		</mx:FormItem>
 		<mx:HRule width="100%"/>
 		<mx:Box horizontalAlign="center" width="100%">
 			<mx:Button label="Conferma Registrazione" id="btnConfermaRegistrazione"/>	
 		</mx:Box>
 	</mx:Form>	
-</s:Panel>
+</mx:Panel>
