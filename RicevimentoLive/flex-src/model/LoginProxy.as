@@ -32,7 +32,7 @@ package model
 			switch ((evt.token.message as RemotingMessage).operation) {
 				case "UserLogin":
 					if (evt.result != null){
-						sendNotification(ApplicationFacade.LOGIN_SUCCESS,evt.result);	
+						sendNotification(ApplicationFacade.LOGIN_SUCCESS,evt.result);
 					}			
 					else{
 						sendNotification(ApplicationFacade.LOGIN_ERROR,evt.result);

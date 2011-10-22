@@ -2,11 +2,9 @@ package view.login
 {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	
-	import model.vo.Student;
-	
-	import mx.controls.Alert;
 	import mx.events.FlexEvent;
+	
+	import model.vo.Student;	
 	
 	import org.puremvc.as3.interfaces.IMediator;
 	import org.puremvc.as3.interfaces.INotification;
@@ -21,8 +19,7 @@ package view.login
 			super(NAME, viewComponent);			
 			login.btnLogin.addEventListener(MouseEvent.CLICK, doLogin);
 			login.btnRegistrati.addEventListener(MouseEvent.CLICK, doRegister);
-		}
-		
+		}		
 		public function doLogin(evt:Event):void{	
 			var student:Student = new Student();
 			student.username = login.tiUsername.text;
@@ -31,17 +28,14 @@ package view.login
 		}
 		public function doRegister(evt:Event):void{
 			facade.sendNotification(ApplicationFacade.DO_REGISTER);
-		}
-		
+		}		
 		override public function handleNotification(notification:INotification):void{ 
 			
-		}
-		
+		}		
 		override public function listNotificationInterests():Array{
 			return [];	
-		}
-		
-		public function get login():loginForm{
+		}		
+		public function get login():loginForm{			
 			return viewComponent as loginForm;
 		}		
 		

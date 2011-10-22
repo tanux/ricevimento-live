@@ -4,7 +4,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.criterion.Example;
-
 import util.HibernateFactory;
 
 import model.beans.Student;
@@ -23,6 +22,7 @@ public class LoginService {
 		user.setPassword(password);
 		
 		Criteria c = s.createCriteria(Supervisor.class);
+		
 		c.add(Example.create(user));
 		
 		Supervisor result = (Supervisor) c.uniqueResult();
