@@ -1,6 +1,7 @@
 package model
 {
 	import model.services.LoginService;
+	import model.vo.Student;
 	
 	import mx.messaging.messages.RemotingMessage;
 	import mx.rpc.AsyncToken;
@@ -25,25 +26,23 @@ package model
 		
 		public function doLogin(username:String, password:String):void{
 			var at:AsyncToken = service.UserLogin(username, password);
-			at.addResponder(responder);
-		}
-		
+			at.addResponder(responder);			
+		}		
 		private function onResult(evt:ResultEvent):void{
 			switch ((evt.token.message as RemotingMessage).operation) {
 				case "UserLogin":
 					if (evt.result != null){
-						sendNotification(ApplicationFacade.LOGIN_SUCCESS,evt.result);
+						setData(evt.result);
+						sendNotification(ApplicationFacade.LOGIN_SUCCESS,evt.result);						
 					}			
 					else{
 						sendNotification(ApplicationFacade.LOGIN_ERROR,evt.result);
 					}
 					break;					
 			}	
-		}
-		
+		}		
 		private function onFault(evt:FaultEvent):void{
 			
 		}		
-		
 	}
 }
