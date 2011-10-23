@@ -2,6 +2,9 @@ package view.main
 {
 	import flash.events.Event;
 	
+	import model.LoginProxy;
+	import model.vo.Student;
+	
 	import mx.controls.Alert;
 	import mx.events.FlexEvent;
 	
@@ -13,7 +16,7 @@ package view.main
 	
 	public class MainApplicationMediator extends Mediator implements IMediator{
 		
-		public static const NAME:String = "MainApplicationMediator";
+		public static const NAME:String = "MainApplicationMediator";		
 		
 		public function MainApplicationMediator(viewComponent:Object){
 			super(NAME, viewComponent);  
@@ -27,6 +30,8 @@ package view.main
 			switch (notification.getName()){
 				case ApplicationFacade.LOGIN_SUCCESS:
 					mainApplication.currentState = "stateMainApplication";
+					var user:Student = notification.getBody() as Student;
+					mainApplication.student = user;
 					break;
 				case ApplicationFacade.LOGIN_ERROR:
 					Alert.show("Autenticazione non riuscita");
