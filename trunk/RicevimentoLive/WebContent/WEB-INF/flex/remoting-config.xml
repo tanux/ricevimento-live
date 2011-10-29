@@ -16,4 +16,16 @@
 	        <scope>request</scope>
 	    </properties>
 	</destination>
+	<destination id="register-user-service">
+	    <properties>
+	        <source>services.RegisterUserService</source>
+	        <scope>request</scope>
+	    </properties>
+	</destination>
+	<destination id="dashboard-user-service">
+	    <properties>
+	        <source>services.DashboardUserService</source>
+	        <scope>request</scope>
+	    </properties>
+	</destination>
 </service>

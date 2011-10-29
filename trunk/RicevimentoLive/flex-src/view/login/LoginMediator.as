@@ -17,7 +17,7 @@ package view.login
 		public static const NAME:String = "LoginMediator";
 		public function LoginMediator(viewComponent:Object=null){
 			super(NAME, viewComponent);			
-			login.btnLogin.addEventListener(MouseEvent.CLICK, doLogin);
+			login.btnLogin.addEventListener(MouseEvent.CLICK, doLogin);			
 			login.btnRegistrati.addEventListener(MouseEvent.CLICK, doRegister);
 		}		
 		public function doLogin(evt:Event):void{	

@@ -3,7 +3,8 @@ package
 	/**
 	 * Sede di tutte le notifiche Singleton
 	 * */
-	import controller.StartupCommand;	
+	import controller.StartupCommand;
+	
 	import org.puremvc.as3.interfaces.IFacade;
 	import org.puremvc.as3.patterns.facade.Facade;
 	
@@ -19,6 +20,7 @@ package
 		public static const LOGIN_SUCCESS:String = "LoginSuccess";
 		public static const LOGIN_ERROR:String = "LoginError";
 		public static const LOGIN_FAULT:String = "LoginFault";
+		public static const ROOMLIST_CREATE:String = "RoomListCreate";
 		
 		public static function getInstance() : ApplicationFacade {
 			if (instance == null)
