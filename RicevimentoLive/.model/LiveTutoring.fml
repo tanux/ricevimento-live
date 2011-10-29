@@ -66,6 +66,92 @@
     <property name="password" type="string"/>
     <property name="personalNumber" type="string"/>
   </entity>
+  <service name="RegisterUserService">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">model.services</item>
+      <item name="Destination">register-user-service</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">model.vo</item>
+      <item name="contextRoot">LiveTutoring</item>
+      <item name="rootUrl">http://localhost:8080/LiveTutoring/</item>
+      <item name="LINKED_FILE"></item>
+      <item name="ABSOLUTE_ENDPOINT">http://localhost:8080/LiveTutoring/messagebroker/amf</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">BlazeDS</item>
+    </annotation>
+    <function name="StudentRegister" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">string,string,string,string,string,string,string</item>
+      </annotation>
+      <parameter name="arg0" type="string"/>
+      <parameter name="arg1" type="string"/>
+      <parameter name="arg2" type="string"/>
+      <parameter name="arg3" type="string"/>
+      <parameter name="arg4" type="string"/>
+      <parameter name="arg5" type="string"/>
+      <parameter name="arg6" type="string"/>
+    </function>
+    <function name="SupervirosRegister" return-type="Supervisor">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">Supervisor</item>
+      </annotation>
+    </function>
+  </service>
+  <service name="DashboardUserService">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">model.services</item>
+      <item name="Destination">dashboard-user-service</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">model.vo</item>
+      <item name="contextRoot">LiveTutoring</item>
+      <item name="rootUrl">http://localhost:8080/LiveTutoring/</item>
+      <item name="LINKED_FILE"></item>
+      <item name="ABSOLUTE_ENDPOINT">http://localhost:8080/LiveTutoring/messagebroker/amf</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">BlazeDS</item>
+    </annotation>
+    <function name="getRooms" return-type="Room[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">Room</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="Room">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Room</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">model.beans.Room</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DashboardUserService</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">model.vo</item>
+    </annotation>
+    <property name="id" type="integer"/>
+    <property name="topic" type="string"/>
+    <property name="roomsupervisors" type="opaque[]"/>
+    <property name="roomsupervisor" type="Roomsupervisor"/>
+    <property name="name" type="string"/>
+    <property name="bookings" type="opaque[]"/>
+  </entity>
   <entity name="Supervisor">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Supervisor</item>
@@ -75,7 +161,7 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">LoginService</item>
+      <item name="service">DashboardUserService</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">model.vo</item>
@@ -90,5 +176,44 @@
     <property name="surname" type="string"/>
     <property name="type" type="string"/>
     <property name="password" type="string"/>
+  </entity>
+  <entity name="Roomsupervisor">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Roomsupervisor</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">model.beans.Roomsupervisor</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DashboardUserService</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">model.vo</item>
+    </annotation>
+    <property name="id" type="integer"/>
+    <property name="supervisor" type="Supervisor"/>
+    <property name="name" type="string"/>
+    <property name="timewindow" type="Timewindow"/>
+    <property name="room" type="Room"/>
+  </entity>
+  <entity name="Timewindow">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Timewindow</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">model.beans.Timewindow</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DashboardUserService</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">model.vo</item>
+    </annotation>
+    <property name="id" type="integer"/>
+    <property name="roomsupervisors" type="opaque[]"/>
+    <property name="window" type="string"/>
+    <property name="name" type="string"/>
   </entity>
 </model>

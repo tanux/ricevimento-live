@@ -82,7 +82,7 @@ internal class _Super_RegisterUserService extends com.adobe.fiber.services.wrapp
       *
       * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
       */
-    public function SupervisorRegister() : mx.rpc.AsyncToken
+    public function SupervirosRegister() : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("SupervirosRegister");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
