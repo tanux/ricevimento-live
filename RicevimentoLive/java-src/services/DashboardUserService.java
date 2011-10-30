@@ -11,7 +11,7 @@ public class DashboardUserService {
 	public DashboardUserService(){
 		
 	}	
-	public List<Room> getRooms(){
+	public List<Room> getRoomList(){
 		Session s = HibernateFactory.openSession();		
 		Query q = s.createQuery("from Room");
 		List<Room> result = q.list();		
