@@ -8,6 +8,7 @@ package model.vo
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.EventDispatcher;
+import model.vo.Supervisor;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
 
@@ -39,6 +40,7 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
+        model.vo.Supervisor.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _TimewindowEntityMetadata;
@@ -61,6 +63,7 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
     private var _internal_id : int;
     private var _internal_roomsupervisors : ArrayCollection;
     private var _internal_window : String;
+    private var _internal_supervisor : model.vo.Supervisor;
     private var _internal_name : String;
 
     private static var emptyArray:Array = new Array();
@@ -101,6 +104,12 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
     public function get window() : String
     {
         return _internal_window;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get supervisor() : model.vo.Supervisor
+    {
+        return _internal_supervisor;
     }
 
     [Bindable(event="propertyChange")]
@@ -159,6 +168,16 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
         {
             _internal_window = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "window", oldValue, _internal_window));
+        }
+    }
+
+    public function set supervisor(value:model.vo.Supervisor) : void
+    {
+        var oldValue:model.vo.Supervisor = _internal_supervisor;
+        if (oldValue !== value)
+        {
+            _internal_supervisor = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "supervisor", oldValue, _internal_supervisor));
         }
     }
 

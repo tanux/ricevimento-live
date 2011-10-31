@@ -38,9 +38,7 @@ package view.register
 		}
 		
 		override public function listNotificationInterests():Array{
-			return [				
-				
-			];	
+			return [];	
 		}
 		
 		public function get registerUser():registerUserForm{

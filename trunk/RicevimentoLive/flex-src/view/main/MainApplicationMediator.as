@@ -1,5 +1,7 @@
 package view.main
 {
+	import controller.dashboard_user.room_list.GetRoomListCommand;
+	
 	import flash.events.Event;
 	
 	import model.LoginProxy;
@@ -12,6 +14,7 @@ package view.main
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
+	import view.dashboard_user.RoomListMediator;
 	import view.register.RegisterUserMediator;
 	
 	public class MainApplicationMediator extends Mediator implements IMediator{
@@ -43,7 +46,11 @@ package view.main
 				case ApplicationFacade.REGISTER_SUCCES:
 					Alert.show("Registrazione riuscita");
 					mainApplication.currentState = "login"
-					break;				
+					break;
+				case ApplicationFacade.ROOMLIST_CREATE:					
+					facade.registerMediator(new RoomListMediator(mainApplication.roomslist));					
+					break;	
+				
 			}
 		}
 		
@@ -52,7 +59,8 @@ package view.main
 				ApplicationFacade.LOGIN_SUCCESS,
 				ApplicationFacade.LOGIN_ERROR,
 				ApplicationFacade.DO_REGISTER,
-				ApplicationFacade.REGISTER_SUCCES				
+				ApplicationFacade.REGISTER_SUCCES,
+				ApplicationFacade.ROOMLIST_CREATE			
 			];	
 		}
 		

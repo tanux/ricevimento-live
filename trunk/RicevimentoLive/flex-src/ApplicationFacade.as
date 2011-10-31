@@ -21,8 +21,9 @@ package
 		public static const LOGIN_ERROR:String = "LoginError";
 		public static const LOGIN_FAULT:String = "LoginFault";
 		public static const ROOMLIST_CREATE:String = "RoomListCreate";
-		public static const ROOMLIST_CREATE_SUCCES:String = "RoomListCreateSuccess";
-		public static const ROOMLIST_CREATE_ERROR:String = "RoomListCreateError";
+		public static const GET_ROOMLIST:String = "GetRoomList";
+		public static const GET_ROOMLIST_SUCCES:String = "GetRoomListSucces";
+		public static const GET_ROOMLIST_ERROR:String = "GetRoomListError";
 		
 		public static function getInstance() : ApplicationFacade {
 			if (instance == null)

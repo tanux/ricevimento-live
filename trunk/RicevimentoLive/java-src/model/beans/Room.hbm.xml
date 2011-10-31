@@ -5,12 +5,10 @@
 <hibernate-mapping>
     <class name="model.beans.Room" table="room">
         <id name="id" type="java.lang.Integer">
-            <column name="id" />
-            <!-- 
+            <column name="id" />            
             <generator class="foreign">
                 <param name="property">roomsupervisor</param>
-            </generator>
-             -->
+            </generator>            
         </id>
         <!--  <one-to-one name="roomsupervisor" class="model.beans.Roomsupervisor" constrained="true"></one-to-one> -->
         <property name="name" type="string">

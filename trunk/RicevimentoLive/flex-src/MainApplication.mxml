@@ -32,7 +32,7 @@
 			<component:loginForm id="login" includeIn="login"/>				
 			<component:registerUserForm id="registerUserForm" includeIn="stateRegister"/>
 			<mx:Canvas id="mainBox" width="100%" height="100%" includeIn="stateMainApplication">
-				<component:rooms id="roomslist" />
+				<component:roomList id="roomslist" />
 			</mx:Canvas>		    
 		</mx:VBox>	
 	</mx:Box>	
