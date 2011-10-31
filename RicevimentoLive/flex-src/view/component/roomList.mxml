@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="200"
 		 title="Elenco Stanze" cornerRadius="10"
 		 paddingBottom="3" paddingTop="3" paddingRight="3" paddingLeft="3"
 		 creationComplete="facade.sendNotification(ApplicationFacade.ROOMLIST_CREATE,this)">
@@ -9,23 +9,19 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->		
 	</fx:Declarations>
 	<fx:Script>
-		<![CDATA[
-			import model.vo.Room;
-			
-			import mx.collections.ArrayList;
+		<![CDATA[						
+			import mx.collections.ArrayCollection;			
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
-			[Bindable] 
-			public var roomslist:ArrayList;
-			
+			[Bindable] public var roomlist:ArrayCollection;
 		]]>
 	</fx:Script>
 	<mx:Accordion id="accordion" width="100%" resizeToContent="true">
-		<mx:Repeater id="room" dataProvider="{roomslist}">			
-			<mx:HBox label="{String(room.currentItem.nome)}" paddingTop="5">
+		<mx:Repeater id="room" dataProvider="{roomlist}">			
+			<mx:HBox label="#{String(room.currentItem.id)}:{String(room.currentItem.name)}" paddingTop="5">
 				<mx:Box id="boxTopic" width="275">
 					<mx:Text text="{String(room.currentItem.topic)}" width="275" />	
 				</mx:Box>
-				<mx:Box height="50" verticalAlign="bottom">
+				<mx:Box height="50" verticalAlign="middle">
 					<s:Button label="Seleziona" />	
 				</mx:Box>				
 			</mx:HBox>				

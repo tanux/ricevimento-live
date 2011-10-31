@@ -8,6 +8,7 @@ import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.RemoteObjectServiceWrapper;
 import com.adobe.serializers.utility.TypeUtility;
 import model.vo.Room;
+import model.vo.Supervisor;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.rpc.remoting.Operation;
@@ -28,6 +29,7 @@ internal class _Super_DashboardUserService extends com.adobe.fiber.services.wrap
 
         // initialize RemoteClass alias for all entities returned by functions of this service
         model.vo.Room._initRemoteClassAlias();
+        model.vo.Supervisor._initRemoteClassAlias();
 
         var operations:Object = new Object();
         var operation:mx.rpc.remoting.Operation;
@@ -35,6 +37,9 @@ internal class _Super_DashboardUserService extends com.adobe.fiber.services.wrap
         operation = new mx.rpc.remoting.Operation(null, "getRoomList");
          operation.resultElementType = model.vo.Room;
         operations["getRoomList"] = operation;
+        operation = new mx.rpc.remoting.Operation(null, "getSupervisorListByRoom");
+         operation.resultElementType = model.vo.Supervisor;
+        operations["getSupervisorListByRoom"] = operation;
 
         _serviceControl.operations = operations;
         _serviceControl.convertResultHandler = com.adobe.serializers.utility.TypeUtility.convertResultHandler;
@@ -67,6 +72,24 @@ internal class _Super_DashboardUserService extends com.adobe.fiber.services.wrap
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("getRoomList");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'getSupervisorListByRoom' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function getSupervisorListByRoom(arg0:int) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("getSupervisorListByRoom");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(arg0) ;
         return _internal_token;
     }
      

@@ -61,12 +61,13 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
     private var _internal_id : int;
     private var _internal_username : String;
     private var _internal_roomsupervisors : ArrayCollection;
-    private var _internal_acl : String;
     private var _internal_email : String;
+    private var _internal_acl : String;
     private var _internal_name : String;
     private var _internal_bookings : ArrayCollection;
     private var _internal_surname : String;
     private var _internal_type : String;
+    private var _internal_timewindows : ArrayCollection;
     private var _internal_password : String;
 
     private static var emptyArray:Array = new Array();
@@ -110,15 +111,15 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
     }
 
     [Bindable(event="propertyChange")]
-    public function get acl() : String
-    {
-        return _internal_acl;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get email() : String
     {
         return _internal_email;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get acl() : String
+    {
+        return _internal_acl;
     }
 
     [Bindable(event="propertyChange")]
@@ -143,6 +144,12 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
     public function get type() : String
     {
         return _internal_type;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get timewindows() : ArrayCollection
+    {
+        return _internal_timewindows;
     }
 
     [Bindable(event="propertyChange")]
@@ -204,16 +211,6 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
         }
     }
 
-    public function set acl(value:String) : void
-    {
-        var oldValue:String = _internal_acl;
-        if (oldValue !== value)
-        {
-            _internal_acl = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "acl", oldValue, _internal_acl));
-        }
-    }
-
     public function set email(value:String) : void
     {
         var oldValue:String = _internal_email;
@@ -221,6 +218,16 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
         {
             _internal_email = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "email", oldValue, _internal_email));
+        }
+    }
+
+    public function set acl(value:String) : void
+    {
+        var oldValue:String = _internal_acl;
+        if (oldValue !== value)
+        {
+            _internal_acl = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "acl", oldValue, _internal_acl));
         }
     }
 
@@ -276,6 +283,31 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
         {
             _internal_type = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
+        }
+    }
+
+    public function set timewindows(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_timewindows;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_timewindows = value;
+            }
+            else if (value is Array)
+            {
+                _internal_timewindows = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_timewindows = null;
+            }
+            else
+            {
+                throw new Error("value of timewindows must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "timewindows", oldValue, _internal_timewindows));
         }
     }
 

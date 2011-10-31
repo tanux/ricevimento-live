@@ -8,17 +8,14 @@
             <column name="id" />
             <generator class="identity" />
         </id>
+        <many-to-one name="supervisor" class="model.beans.Supervisor" fetch="select">
+			<column name="id_supervisor" not-null="true" />
+		</many-to-one>
         <property name="name" type="string">
             <column name="name" not-null="true" />
         </property>
         <property name="window" type="string">
             <column name="window" length="65535" not-null="true" />
-        </property>
-        <set name="roomsupervisors" inverse="true" lazy="true" table="roomsupervisor" fetch="select">
-            <key>
-                <column name="id_time_window" not-null="true" />
-            </key>
-            <one-to-many class="model.beans.Roomsupervisor" />
-        </set>
+        </property>		
     </class>
 </hibernate-mapping>

@@ -20,6 +20,7 @@ public class Supervisor implements java.io.Serializable {
 	private String acl;
 	private Set roomsupervisors = new HashSet(0);
 	private Set bookings = new HashSet(0);
+	private Set timewindows = new HashSet(0);
 
 	public Supervisor() {
 	}
@@ -124,9 +125,15 @@ public class Supervisor implements java.io.Serializable {
 	public Set getBookings() {
 		return this.bookings;
 	}
-
 	public void setBookings(Set bookings) {
 		this.bookings = bookings;
 	}
+	public Set getTimewindows() {
+		return this.timewindows;
+	}
+	public void setTimewindows(Set timewindows) {
+		this.timewindows = timewindows;
+	}
+	
 
 }

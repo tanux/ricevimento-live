@@ -21,16 +21,16 @@ internal class _SupervisorEntityMetadata extends com.adobe.fiber.valueobjects.Ab
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("id", "username", "roomsupervisors", "acl", "email", "name", "bookings", "surname", "type", "password");
+    model_internal static var allProperties:Array = new Array("id", "username", "roomsupervisors", "email", "acl", "name", "bookings", "surname", "type", "timewindows", "password");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("id", "username", "roomsupervisors", "acl", "email", "name", "bookings", "surname", "type", "password");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("id", "username", "roomsupervisors", "email", "acl", "name", "bookings", "surname", "type", "timewindows", "password");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("id", "username", "roomsupervisors", "acl", "email", "name", "bookings", "surname", "type", "password");
+    model_internal static var dataProperties:Array = new Array("id", "username", "roomsupervisors", "email", "acl", "name", "bookings", "surname", "type", "timewindows", "password");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("id", "username", "roomsupervisors", "acl", "email", "name", "bookings", "surname", "type", "password");
+    model_internal static var nonDerivedProperties:Array = new Array("id", "username", "roomsupervisors", "email", "acl", "name", "bookings", "surname", "type", "timewindows", "password");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("roomsupervisors", "bookings");
+    model_internal static var collectionProperties:Array = new Array("roomsupervisors", "bookings", "timewindows");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "Supervisor";
     model_internal static var dependentsOnMap:Object;
@@ -51,18 +51,20 @@ internal class _SupervisorEntityMetadata extends com.adobe.fiber.valueobjects.Ab
             model_internal::dependentsOnMap["id"] = new Array();
             model_internal::dependentsOnMap["username"] = new Array();
             model_internal::dependentsOnMap["roomsupervisors"] = new Array();
-            model_internal::dependentsOnMap["acl"] = new Array();
             model_internal::dependentsOnMap["email"] = new Array();
+            model_internal::dependentsOnMap["acl"] = new Array();
             model_internal::dependentsOnMap["name"] = new Array();
             model_internal::dependentsOnMap["bookings"] = new Array();
             model_internal::dependentsOnMap["surname"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
+            model_internal::dependentsOnMap["timewindows"] = new Array();
             model_internal::dependentsOnMap["password"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
             model_internal::collectionBaseMap["roomsupervisors"] = "Object";
             model_internal::collectionBaseMap["bookings"] = "Object";
+            model_internal::collectionBaseMap["timewindows"] = "Object";
         }
 
         // Property type Map
@@ -70,12 +72,13 @@ internal class _SupervisorEntityMetadata extends com.adobe.fiber.valueobjects.Ab
         model_internal::propertyTypeMap["id"] = "int";
         model_internal::propertyTypeMap["username"] = "String";
         model_internal::propertyTypeMap["roomsupervisors"] = "ArrayCollection";
-        model_internal::propertyTypeMap["acl"] = "String";
         model_internal::propertyTypeMap["email"] = "String";
+        model_internal::propertyTypeMap["acl"] = "String";
         model_internal::propertyTypeMap["name"] = "String";
         model_internal::propertyTypeMap["bookings"] = "ArrayCollection";
         model_internal::propertyTypeMap["surname"] = "String";
         model_internal::propertyTypeMap["type"] = "String";
+        model_internal::propertyTypeMap["timewindows"] = "ArrayCollection";
         model_internal::propertyTypeMap["password"] = "String";
 
         model_internal::_instance = value;
@@ -324,13 +327,13 @@ internal class _SupervisorEntityMetadata extends com.adobe.fiber.valueobjects.Ab
     }
 
     [Bindable(event="propertyChange")]
-    public function get isAclAvailable():Boolean
+    public function get isEmailAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isEmailAvailable():Boolean
+    public function get isAclAvailable():Boolean
     {
         return true;
     }
@@ -355,6 +358,12 @@ internal class _SupervisorEntityMetadata extends com.adobe.fiber.valueobjects.Ab
 
     [Bindable(event="propertyChange")]
     public function get isTypeAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isTimewindowsAvailable():Boolean
     {
         return true;
     }
@@ -394,13 +403,13 @@ internal class _SupervisorEntityMetadata extends com.adobe.fiber.valueobjects.Ab
     }
 
     [Bindable(event="propertyChange")]   
-    public function get aclStyle():com.adobe.fiber.styles.Style
+    public function get emailStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get emailStyle():com.adobe.fiber.styles.Style
+    public function get aclStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -425,6 +434,12 @@ internal class _SupervisorEntityMetadata extends com.adobe.fiber.valueobjects.Ab
 
     [Bindable(event="propertyChange")]   
     public function get typeStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get timewindowsStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
