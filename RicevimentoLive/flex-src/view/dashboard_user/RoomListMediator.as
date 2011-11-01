@@ -3,10 +3,12 @@ package view.dashboard_user
 	import controller.dashboard_user.room_list.GetRoomListCommand;
 	
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
 	import model.vo.Room;
+	import model.vo.Supervisor;
 	
-	import mx.collections.ArrayCollection;	
+	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
 	import mx.events.FlexEvent;
 	
@@ -19,16 +21,22 @@ package view.dashboard_user
 	public class RoomListMediator extends Mediator implements IMediator{
 		
 		public static const NAME:String = "RoomListMediator"; 
-		public function RoomListMediator(viewComponent){
-			super(NAME, viewComponent);			
-			facade.sendNotification(ApplicationFacade.GET_ROOMLIST);		
+		public function RoomListMediator(viewComponent:Object=null){
+			super(NAME, viewComponent);
+		}
+		
+		public function selectedRoom(evt:Event){
+			var supervisor:Supervisor =  new Supervisor();
+			supervisor.id = roomsList.room.currentItem.id;
+			Alert.show("Ecco l'id selezionato: "+supervisor.id);
 		}
 		
 		override public function handleNotification(notification:INotification):void{ 
 			switch (notification.getName()){
 				case ApplicationFacade.GET_ROOMLIST_SUCCES:
 					var rooms:ArrayCollection = notification.getBody() as ArrayCollection;					
-					roomsList.roomlist = rooms;
+					roomsList.roomlist = rooms;	
+					facade.sendNotification(ApplicationFacade.ROOMLIST_CREATED);
 					break;
 				case ApplicationFacade.GET_ROOMLIST_ERROR:
 					Alert.show("Errore in inizializzazione lista stanze");

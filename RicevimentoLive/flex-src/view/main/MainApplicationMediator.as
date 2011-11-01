@@ -3,9 +3,11 @@ package view.main
 	import controller.dashboard_user.room_list.GetRoomListCommand;
 	
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
 	import model.LoginProxy;
 	import model.vo.Student;
+	import model.vo.Supervisor;
 	
 	import mx.controls.Alert;
 	import mx.events.FlexEvent;
@@ -26,7 +28,11 @@ package view.main
 			mainApplication.addEventListener(FlexEvent.CREATION_COMPLETE, init);			
 		}
 		
-		private function init(evt:Event) : void {
+		private function init(evt:Event) : void {}
+		public function selectedRoom(evt:Event){
+			var supervisor:Supervisor =  new Supervisor();
+			supervisor.id = mainApplication.roomslist.room.currentItem.id;
+			Alert.show("Ecco l'id selezionato: "+supervisor.id);
 		}
 		
 		override public function handleNotification(notification:INotification):void{ 
@@ -47,10 +53,13 @@ package view.main
 					Alert.show("Registrazione riuscita");
 					mainApplication.currentState = "login"
 					break;
-				case ApplicationFacade.ROOMLIST_CREATE:					
+				case ApplicationFacade.GET_ROOMLIST:					
 					facade.registerMediator(new RoomListMediator(mainApplication.roomslist));					
 					break;	
-				
+				case ApplicationFacade.ROOMLIST_CREATED:
+					Alert.show("Stabbene banco");
+					mainApplication.roomslist.btnSelectRoom.addEventListener(MouseEvent.CLICK,selectedRoom) ;
+					break;
 			}
 		}
 		
@@ -60,13 +69,13 @@ package view.main
 				ApplicationFacade.LOGIN_ERROR,
 				ApplicationFacade.DO_REGISTER,
 				ApplicationFacade.REGISTER_SUCCES,
-				ApplicationFacade.ROOMLIST_CREATE			
+				ApplicationFacade.GET_ROOMLIST,
+				ApplicationFacade.ROOMLIST_CREATED
 			];	
 		}
 		
-		public function get mainApplication():MainApplication{  //aggancio il component al mediator
+		public function get mainApplication():MainApplication{ 
 			return viewComponent as MainApplication;
 		}
-		
 	}
 }

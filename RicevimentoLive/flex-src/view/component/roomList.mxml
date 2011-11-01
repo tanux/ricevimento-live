@@ -4,7 +4,7 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="200"
 		 title="Elenco Stanze" cornerRadius="10"
 		 paddingBottom="3" paddingTop="3" paddingRight="3" paddingLeft="3"
-		 creationComplete="facade.sendNotification(ApplicationFacade.ROOMLIST_CREATE,this)">
+		 creationComplete="facade.sendNotification(ApplicationFacade.GET_ROOMLIST,this)">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->		
 	</fx:Declarations>
@@ -21,8 +21,8 @@
 				<mx:Box id="boxTopic" width="275">
 					<mx:Text text="{String(room.currentItem.topic)}" width="275" />	
 				</mx:Box>
-				<mx:Box height="50" verticalAlign="middle">
-					<s:Button label="Seleziona" />	
+				<mx:Box id="boxBtnSelectRoom" height="50" verticalAlign="middle">
+					<mx:Button label="Seleziona" id="btnSelectRoom"/>	
 				</mx:Box>				
 			</mx:HBox>				
 		</mx:Repeater>	
