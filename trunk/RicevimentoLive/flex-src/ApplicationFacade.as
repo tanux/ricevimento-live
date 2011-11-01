@@ -24,6 +24,7 @@ package
 		public static const GET_ROOMLIST:String = "GetRoomList";
 		public static const GET_ROOMLIST_SUCCES:String = "GetRoomListSucces";
 		public static const GET_ROOMLIST_ERROR:String = "GetRoomListError";
+		public static const ROOMLIST_CREATED:String = "RoomListCreated";
 		
 		public static function getInstance() : ApplicationFacade {
 			if (instance == null)

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="200"
+		  title="Elenco Relatori" cornerRadius="10"
+		  paddingBottom="3" paddingTop="3" paddingRight="3" paddingLeft="3"
+		  creationComplete="facade.sendNotification(ApplicationFacade.SUPERVISORLIST_CREATE,this)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->		
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[						
+			import mx.collections.ArrayCollection;			
+			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
+			[Bindable] public var supervisorlist:ArrayCollection;
+		]]>
+	</fx:Script>
+	<mx:Accordion id="accordion" width="100%" resizeToContent="true">
+		<mx:Repeater id="supervisor" dataProvider="{supervisorlist}">			
+			<mx:HBox label="#{String(supervisor.currentItem.id)}:{String(supervisor.currentItem.name)} {String(supervisor.currentItem.surname)}" paddingTop="5">
+				<mx:Box id="boxTopic" width="275">
+					<mx:Text text="{String(supervisor.currentItem.username)}" width="275" />	
+				</mx:Box>
+				<mx:Box height="50" verticalAlign="middle">
+					<s:Button label="Seleziona" />	
+				</mx:Box>				
+			</mx:HBox>				
+		</mx:Repeater>	
+	</mx:Accordion>	
+</mx:Panel>
