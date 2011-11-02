@@ -130,7 +130,7 @@
         <item name="returnType">Room</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">id,topic,roomsupervisors,roomsupervisor,name,bookings</item>
+        <item name="propertySpecifier">topic,id,roomsupervisors,roomsupervisor,name,bookings</item>
       </annotation>
     </function>
     <function name="getSupervisorListByRoom" return-type="Supervisor[]">
@@ -138,13 +138,13 @@
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="original signature">
-        <item name="inputParams">integer</item>
+        <item name="inputParams">string</item>
         <item name="returnType">Supervisor</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">id,username,roomsupervisors,email,acl,name,bookings,surname,type,timewindows,password</item>
+        <item name="propertySpecifier">id,username,roomsupervisors,acl,email,name,bookings,surname,type,password,timewindows</item>
       </annotation>
-      <parameter name="arg0" type="integer"/>
+      <parameter name="arg0" type="string"/>
     </function>
   </service>
   <entity name="Room">
@@ -162,10 +162,10 @@
       <item name="Package">model.vo</item>
     </annotation>
     <annotation name="getRoomList">
-      <item name="propertySpecifier">id,topic,roomsupervisors,roomsupervisor,name,bookings</item>
+      <item name="propertySpecifier">topic,id,roomsupervisors,roomsupervisor,name,bookings</item>
     </annotation>
-    <property name="id" type="integer"/>
     <property name="topic" type="string"/>
+    <property name="id" type="integer"/>
     <property name="roomsupervisors" type="opaque[]"/>
     <property name="roomsupervisor" type="Roomsupervisor"/>
     <property name="name" type="string"/>
@@ -206,19 +206,19 @@
       <item name="Package">model.vo</item>
     </annotation>
     <annotation name="getSupervisorListByRoom">
-      <item name="propertySpecifier">id,username,roomsupervisors,email,acl,name,bookings,surname,type,timewindows,password</item>
+      <item name="propertySpecifier">id,username,roomsupervisors,acl,email,name,bookings,surname,type,password,timewindows</item>
     </annotation>
     <property name="id" type="integer"/>
     <property name="username" type="string"/>
     <property name="roomsupervisors" type="opaque[]"/>
-    <property name="email" type="string"/>
     <property name="acl" type="string"/>
+    <property name="email" type="string"/>
     <property name="name" type="string"/>
     <property name="bookings" type="opaque[]"/>
     <property name="surname" type="string"/>
     <property name="type" type="string"/>
-    <property name="timewindows" type="opaque[]"/>
     <property name="password" type="string"/>
+    <property name="timewindows" type="opaque[]"/>
   </entity>
   <entity name="Timewindow">
     <annotation name="EntityProperties">
