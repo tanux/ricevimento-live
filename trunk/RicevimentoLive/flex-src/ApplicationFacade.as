@@ -25,6 +25,10 @@ package
 		public static const GET_ROOMLIST_SUCCES:String = "GetRoomListSucces";
 		public static const GET_ROOMLIST_ERROR:String = "GetRoomListError";
 		public static const ROOMLIST_CREATED:String = "RoomListCreated";
+		public static const ROOM_SELECTED:String = "RoomSelected";		
+		public static const GET_SUPERVISOR_BY_ROOM = "GetSupervisorByRoom";
+		public static const GET_SUPERVISOR_BY_ROOM_SUCCESS = "GetSupervisorByRoomSuccess";
+		public static const GET_SUPERVISOR_BY_ROOM_ERROR = "GetSupervisorByRoomError";
 		
 		public static function getInstance() : ApplicationFacade {
 			if (instance == null)

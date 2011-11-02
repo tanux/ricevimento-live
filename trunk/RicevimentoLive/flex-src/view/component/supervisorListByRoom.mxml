@@ -4,7 +4,7 @@
 		  xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="200"
 		  title="Elenco Relatori" cornerRadius="10"
 		  paddingBottom="3" paddingTop="3" paddingRight="3" paddingLeft="3"
-		  creationComplete="facade.sendNotification(ApplicationFacade.SUPERVISORLIST_CREATE,this)">
+		  creationComplete="facade.sendNotification(ApplicationFacade.GET_SUPERVISOR_BY_ROOM,this)">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->		
 	</fx:Declarations>

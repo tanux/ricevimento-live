@@ -26,7 +26,7 @@ public class DashboardUserService {
 		return result;
 	}	
 	
-	private List<Integer> getIdSupervisorListByRoom(int id_room){		
+	private List<Integer> getIdSupervisorListByRoom(String id_room){		
 		Session s = HibernateFactory.openSession();		
 		String query = "select supervisor.id from Roomsupervisor where id_room = :id_room";
 		Query q = s.createQuery(query);
@@ -35,7 +35,7 @@ public class DashboardUserService {
 		HibernateFactory.closeSession(s);		
 		return result;
 	}
-	public List<Supervisor> getSupervisorListByRoom(int id_room){				
+	public List<Supervisor> getSupervisorListByRoom(String id_room){				
 		List<Integer> idSupervisors = getIdSupervisorListByRoom(id_room);
 		List<Supervisor> supervisors = new LinkedList<Supervisor>();
 		Iterator<Integer> it = idSupervisors.iterator();

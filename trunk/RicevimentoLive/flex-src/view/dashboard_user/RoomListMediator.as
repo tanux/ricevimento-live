@@ -22,15 +22,8 @@ package view.dashboard_user
 		
 		public static const NAME:String = "RoomListMediator"; 
 		public function RoomListMediator(viewComponent:Object=null){
-			super(NAME, viewComponent);
+			super(NAME, viewComponent);			
 		}
-		
-		public function selectedRoom(evt:Event){
-			var supervisor:Supervisor =  new Supervisor();
-			supervisor.id = roomsList.room.currentItem.id;
-			Alert.show("Ecco l'id selezionato: "+supervisor.id);
-		}
-		
 		override public function handleNotification(notification:INotification):void{ 
 			switch (notification.getName()){
 				case ApplicationFacade.GET_ROOMLIST_SUCCES:
@@ -40,14 +33,20 @@ package view.dashboard_user
 					break;
 				case ApplicationFacade.GET_ROOMLIST_ERROR:
 					Alert.show("Errore in inizializzazione lista stanze");
-					break;
+					break;				
+				case ApplicationFacade.ROOM_SELECTED:
+					var id_room:String = notification.getBody() as String;					
+					facade.sendNotification(ApplicationFacade.GET_SUPERVISOR_BY_ROOM, id_room);
+					break;	
 			}
 		}
 		
 		override public function listNotificationInterests():Array{
 			return [
 				ApplicationFacade.GET_ROOMLIST_SUCCES,
-				ApplicationFacade.GET_ROOMLIST_ERROR				
+				ApplicationFacade.GET_ROOMLIST_ERROR,
+				ApplicationFacade.ROOMLIST_CREATED,
+				ApplicationFacade.ROOM_SELECTED
 			];	
 		}
 		

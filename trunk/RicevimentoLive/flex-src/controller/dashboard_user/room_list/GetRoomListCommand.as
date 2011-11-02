@@ -15,11 +15,13 @@ package controller.dashboard_user.room_list
 			if (facade.hasProxy(RoomListProxy.NAME)){
 				var roomListProxy:RoomListProxy = facade.retrieveProxy(RoomListProxy.NAME) as RoomListProxy;
 				roomListProxy.getRoomList();
+				facade.registerCommand(ApplicationFacade.GET_SUPERVISOR_BY_ROOM, GetSupervisorListCommand);
 			}
 			else{
 				var roomListProxy:RoomListProxy = new RoomListProxy(RoomListProxy.NAME);
 				roomListProxy.getRoomList();
 				facade.registerProxy(roomListProxy);
+				facade.registerCommand(ApplicationFacade.GET_SUPERVISOR_BY_ROOM, GetSupervisorListCommand);
 			}
 		}	
 	}

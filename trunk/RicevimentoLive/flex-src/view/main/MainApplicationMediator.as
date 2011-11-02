@@ -16,7 +16,9 @@ package view.main
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
+	import view.component.roomList;
 	import view.dashboard_user.RoomListMediator;
+	import view.dashboard_user.SupervisorListMediator;
 	import view.register.RegisterUserMediator;
 	
 	public class MainApplicationMediator extends Mediator implements IMediator{
@@ -26,14 +28,9 @@ package view.main
 		public function MainApplicationMediator(viewComponent:Object){
 			super(NAME, viewComponent);  
 			mainApplication.addEventListener(FlexEvent.CREATION_COMPLETE, init);			
-		}
+		}		
 		
 		private function init(evt:Event) : void {}
-		public function selectedRoom(evt:Event){
-			var supervisor:Supervisor =  new Supervisor();
-			supervisor.id = mainApplication.roomslist.room.currentItem.id;
-			Alert.show("Ecco l'id selezionato: "+supervisor.id);
-		}
 		
 		override public function handleNotification(notification:INotification):void{ 
 			switch (notification.getName()){
@@ -55,10 +52,9 @@ package view.main
 					break;
 				case ApplicationFacade.GET_ROOMLIST:					
 					facade.registerMediator(new RoomListMediator(mainApplication.roomslist));					
-					break;	
-				case ApplicationFacade.ROOMLIST_CREATED:
-					Alert.show("Stabbene banco");
-					mainApplication.roomslist.btnSelectRoom.addEventListener(MouseEvent.CLICK,selectedRoom) ;
+					break;
+				case ApplicationFacade.GET_SUPERVISOR_BY_ROOM:
+					facade.registerMediator(new SupervisorListMediator(mainApplication.supervisorsList));
 					break;
 			}
 		}
@@ -69,8 +65,8 @@ package view.main
 				ApplicationFacade.LOGIN_ERROR,
 				ApplicationFacade.DO_REGISTER,
 				ApplicationFacade.REGISTER_SUCCES,
-				ApplicationFacade.GET_ROOMLIST,
-				ApplicationFacade.ROOMLIST_CREATED
+				ApplicationFacade.GET_ROOMLIST,	
+				ApplicationFacade.GET_SUPERVISOR_BY_ROOM
 			];	
 		}
 		
