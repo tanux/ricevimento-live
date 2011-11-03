@@ -11,6 +11,7 @@ import org.hibernate.criterion.Example;
 import util.HibernateFactory;
 import model.beans.Room;
 import model.beans.Supervisor;
+import model.beans.Timewindow;
 
 public class DashboardUserService {
 	
@@ -50,5 +51,14 @@ public class DashboardUserService {
 			supervisors.add(result);
 		}
 		return supervisors;
+	}
+	public List<Timewindow> getTimewindowSupervisor(String id_supervisor){
+		Session s = HibernateFactory.openSession();		
+		String query = "from Timewindow where id_supervisor = :id_supervisor";
+		Query q = s.createQuery(query);
+		q.setParameter("id_supervisor", id_supervisor);
+		List<Timewindow> timewindows = q.list();		
+		HibernateFactory.closeSession(s);	
+		return timewindows;
 	}
 }

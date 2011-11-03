@@ -130,7 +130,7 @@
         <item name="returnType">Room</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">topic,id,roomsupervisors,roomsupervisor,name,bookings</item>
+        <item name="propertySpecifier">id,topic,roomsupervisors,roomsupervisor,name,bookings</item>
       </annotation>
     </function>
     <function name="getSupervisorListByRoom" return-type="Supervisor[]">
@@ -143,6 +143,16 @@
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">id,username,roomsupervisors,acl,email,name,bookings,surname,type,password,timewindows</item>
+      </annotation>
+      <parameter name="arg0" type="string"/>
+    </function>
+    <function name="getTimewindowSupervisor" return-type="Timewindow[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">string</item>
+        <item name="returnType">Timewindow</item>
       </annotation>
       <parameter name="arg0" type="string"/>
     </function>
@@ -162,10 +172,10 @@
       <item name="Package">model.vo</item>
     </annotation>
     <annotation name="getRoomList">
-      <item name="propertySpecifier">topic,id,roomsupervisors,roomsupervisor,name,bookings</item>
+      <item name="propertySpecifier">id,topic,roomsupervisors,roomsupervisor,name,bookings</item>
     </annotation>
-    <property name="topic" type="string"/>
     <property name="id" type="integer"/>
+    <property name="topic" type="string"/>
     <property name="roomsupervisors" type="opaque[]"/>
     <property name="roomsupervisor" type="Roomsupervisor"/>
     <property name="name" type="string"/>

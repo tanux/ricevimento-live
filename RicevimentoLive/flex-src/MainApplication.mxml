@@ -27,17 +27,24 @@
 	<mx:Box width="100%" paddingTop="5" paddingBottom="5" paddingLeft="5">
 		<mx:ApplicationControlBar id="TopBar" width="99%" height="50" borderVisible="true" includeIn="stateMainApplication" >
 			<mx:Image width="50" height="50" source="@Embed('assets/logo.png')"/>
-			<mx:Text text="{student.nome} {student.cognome} [Matricola:{student.personalNumber}]" color="#FAF8F8"/>			
+			<mx:Text text="{student.nome} {student.cognome} [Matricola:{student.personalNumber}]" color="#FAF8F8"/>
+			<mx:Button label.stateMainApplication="Logout" id="btnLogout" />
 		</mx:ApplicationControlBar>		
 		<mx:VBox width="100%" horizontalAlign="center" paddingTop="70" paddingBottom="5">			
 			<mx:Image  width="200" height="200" source="@Embed('assets/logo.png')" includeIn="login, stateRegister"/>									
 			<component:loginForm id="login" includeIn="login"/>				
 			<component:registerUserForm id="registerUserForm" includeIn="stateRegister"/>
 			<mx:Canvas id="mainBox" width="100%" height="100%" includeIn="stateMainApplication">
-				<mx:HBox horizontalGap.stateMainApplication="145">
-					<component:roomList id="roomslist" />
-					<component:supervisorListByRoom id="supervisorsList" />			
-				</mx:HBox>			
+				<mx:VBox verticalGap.stateMainApplication="50">
+					<mx:HBox horizontalGap.stateMainApplication="100" paddingLeft.stateMainApplication="50">
+						<component:roomList id="roomslist" />
+						<component:supervisorListByRoom id="supervisorsList" />			
+					</mx:HBox>
+					<mx:HBox horizontalGap.stateMainApplication="100" paddingLeft.stateMainApplication="50">
+						<component:availabilitySupervisorTimeWindow id="supervisorTwList"/>
+						<component:userBooking id="bookingUser" />
+					</mx:HBox>
+				</mx:VBox>					
 			</mx:Canvas>		    
 		</mx:VBox>	
 	</mx:Box>	
