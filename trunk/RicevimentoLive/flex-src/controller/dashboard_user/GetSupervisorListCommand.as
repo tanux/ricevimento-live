@@ -1,5 +1,7 @@
-package controller.dashboard_user.room_list
+package controller.dashboard_user
 {
+	import controller.dashboard_user.GetAvailabilityListCommand;
+	
 	import model.SupervisorListProxy;
 	
 	import org.puremvc.as3.interfaces.ICommand;
@@ -11,7 +13,8 @@ package controller.dashboard_user.room_list
 			var id_room:String = notification.getBody() as String;
 			if (facade.hasProxy(SupervisorListProxy.NAME)){
 				var supervisorListProxy:SupervisorListProxy = facade.retrieveProxy(SupervisorListProxy.NAME) as SupervisorListProxy;
-				supervisorListProxy.getSupervisorList(id_room);			
+				supervisorListProxy.getSupervisorList(id_room);
+				facade.registerCommand(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, GetAvailabilityListCommand);
 			}
 			else{
 				var supervisorListProxy:SupervisorListProxy = new SupervisorListProxy(SupervisorListProxy.NAME);

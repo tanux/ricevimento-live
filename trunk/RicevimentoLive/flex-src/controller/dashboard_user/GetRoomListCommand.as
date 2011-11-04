@@ -1,5 +1,7 @@
-package controller.dashboard_user.room_list
+package controller.dashboard_user
 {	
+	import controller.dashboard_user.GetSupervisorListCommand;
+	
 	import model.RoomListProxy;
 	import model.vo.Room;
 	
