@@ -8,6 +8,7 @@ package view.dashboard_user
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.component.supervisorListByRoom;
+	import view.main.MainApplicationMediator;
 	
 	public class SupervisorListMediator extends Mediator implements IMediator{
 		
@@ -21,8 +22,8 @@ package view.dashboard_user
 					var supervisors:ArrayCollection = notification.getBody() as ArrayCollection;
 					supervisorsList.supervisorlist = supervisors;
 					break;
-				case ApplicationFacade.SUPERVISOR_SELECTED:
-					var id_supervisor:String = notification.getBody() as String;					
+				case ApplicationFacade.SUPERVISOR_SELECTED:					
+					var id_supervisor:String = notification.getBody() as String;
 					facade.sendNotification(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, id_supervisor);
 					break;	
 			}

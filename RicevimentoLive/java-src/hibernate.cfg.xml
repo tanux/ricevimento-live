@@ -17,5 +17,6 @@
         <mapping resource="model/beans/Room.hbm.xml"/>
         <mapping resource="model/beans/Roomsupervisor.hbm.xml"/>
         <mapping resource="model/beans/Timewindow.hbm.xml"/>
+        <mapping resource="model/beans/Booking.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

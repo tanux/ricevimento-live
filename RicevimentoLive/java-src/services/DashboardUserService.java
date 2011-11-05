@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Example;
 
 import util.HibernateFactory;
+import model.beans.Booking;
 import model.beans.Room;
 import model.beans.Supervisor;
 import model.beans.Timewindow;
@@ -71,5 +72,13 @@ public class DashboardUserService {
 		List timewindows = q.list();
 		HibernateFactory.closeSession(s);
 		return timewindows;
+	}
+	
+	public void doBooking(Booking booking){
+		Session s = HibernateFactory.openSession();
+		s.beginTransaction();
+		s.save(booking);
+		s.getTransaction().commit();
+		s.close();
 	}
 }

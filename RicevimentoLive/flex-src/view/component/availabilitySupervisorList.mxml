@@ -3,7 +3,7 @@
 		  xmlns:s="library://ns.adobe.com/flex/spark" 
 		  xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="200"
 		  title="Elenco Disponibilita Relatore" cornerRadius="10"
-		  paddingBottom="3" paddingTop="3" paddingRight="3" paddingLeft="3"
+		  paddingBottom="5" paddingTop="5" paddingRight="5" paddingLeft="5"
 		  creationComplete="facade.sendNotification(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR,this)">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->		
@@ -11,25 +11,43 @@
 	<fx:Script>
 		<![CDATA[						
 			import mx.collections.ArrayCollection;
+			import mx.containers.TitleWindow;
 			import mx.controls.Alert;
-			import mx.events.ItemClickEvent;			
+			import mx.events.CloseEvent;
+			import mx.events.ItemClickEvent;
+			import mx.managers.PopUpManager;
+			
+			import view.dashboard_user.ConfirmBookingWindowMediator;
+			
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
 			[Bindable] public var availabilitylist:ArrayCollection;
 			[Bindable] public var availabilitySelected:String;
 			private function selectedHandler(event:ItemClickEvent):void{
-				this.availabilitySelected = event.currentTarget.selectedValue;
+				btnPrenota.enabled = true;
+				this.availabilitySelected = event.currentTarget.selectedValue;				
 			}
-			private function clickHandler():void{				
-				//facade.sendNotification(ApplicationFacade.ROOM_SELECTED, id_room);
-				Alert.show("Bravo! Hai prenotato la disponibilità con id:"+availabilitySelected);
+			private var confirmBookingTitleWindow:TitleWindow;
+			private function popUp():void {
+				confirmBookingTitleWindow = PopUpManager.createPopUp(this.parent.parent, ConfirmBookingWindow, true) as TitleWindow;				
+				PopUpManager.centerPopUp(confirmBookingTitleWindow);			
+				confirmBookingTitleWindow.addEventListener(CloseEvent.CLOSE, confirmBookingTitleWindowClose);
+			}
+			private function confirmBookingTitleWindowClose(evt:CloseEvent):void {
+				PopUpManager.removePopUp(confirmBookingTitleWindow);
 			}
 		]]>
 	</fx:Script>
-	<s:Label width="275" text="Stai visualizzando l'elenco degli orari ancora disponibili per questa settimana"/>
-	
-	<mx:RadioButtonGroup id="availabilities" itemClick="selectedHandler(event);"/>
-	<mx:Repeater id="availabilitySupervisor" dataProvider="{availabilitylist}">
-		<mx:RadioButton id="availabilityEnabled" label="{String(availabilitySupervisor.currentItem.window)}" value="{String(availabilitySupervisor.currentItem.id)}" groupName="availabilities"/>
-	</mx:Repeater>
-	<mx:Button label="Prenota" id="btnPrenota" click="clickHandler();" visible="false"/>
+	<s:Label width="100%" text="Stai visualizzando l'elenco degli orari ancora disponibili per il relatore selezionato"/>
+	<mx:HRule width="100%"/>
+	<mx:HBox width="100%">		
+		<mx:VBox width="50%" height="100%">
+			<mx:RadioButtonGroup id="availabilities" itemClick="selectedHandler(event);"/>
+			<mx:Repeater id="availabilitySupervisor" dataProvider="{availabilitylist}">
+				<mx:RadioButton id="availabilityEnabled" label="{String(availabilitySupervisor.currentItem.window)}" value="{String(availabilitySupervisor.currentItem.id)}" groupName="availabilities"/>
+			</mx:Repeater>			
+		</mx:VBox>
+		<mx:Box width="50%" height="100%" verticalAlign="middle" horizontalAlign="center">
+			<mx:Button label="Prenota" id="btnPrenota" click="popUp();" enabled="false" visible="false"/>	
+		</mx:Box>
+	</mx:HBox>		
 </mx:Panel>
