@@ -134,6 +134,4 @@ public class Supervisor implements java.io.Serializable {
 	public void setTimewindows(Set timewindows) {
 		this.timewindows = timewindows;
 	}
-	
-
 }

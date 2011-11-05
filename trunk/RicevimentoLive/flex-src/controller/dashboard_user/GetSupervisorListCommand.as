@@ -4,6 +4,8 @@ package controller.dashboard_user
 	
 	import model.SupervisorListProxy;
 	
+	import mx.controls.Alert;
+	
 	import org.puremvc.as3.interfaces.ICommand;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
@@ -14,12 +16,13 @@ package controller.dashboard_user
 			if (facade.hasProxy(SupervisorListProxy.NAME)){
 				var supervisorListProxy:SupervisorListProxy = facade.retrieveProxy(SupervisorListProxy.NAME) as SupervisorListProxy;
 				supervisorListProxy.getSupervisorList(id_room);
-				facade.registerCommand(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, GetAvailabilityListCommand);
+				facade.registerCommand(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, GetAvailabilityListCommand);				
 			}
 			else{
 				var supervisorListProxy:SupervisorListProxy = new SupervisorListProxy(SupervisorListProxy.NAME);
 				supervisorListProxy.getSupervisorList(id_room);
-				facade.registerProxy(supervisorListProxy);				
+				facade.registerProxy(supervisorListProxy);	
+				facade.registerCommand(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, GetAvailabilityListCommand);				
 			}
 		}
 	}

@@ -19,6 +19,7 @@ package view.register
 		public function RegisterUserMediator(viewComponent){
 			super(NAME, viewComponent);	
 			registerUser.btnConfermaRegistrazione.addEventListener(MouseEvent.CLICK, confirmRegister);
+			registerUser.btnTornaLogin.addEventListener(MouseEvent.CLICK, tornaLogin);
 		}
 		
 		public function confirmRegister(evt:Event):void{
@@ -31,6 +32,9 @@ package view.register
 			user.username = registerUser.tiUsername.text;
 			user.password = registerUser.tiPassword.text;
 			facade.sendNotification(ApplicationFacade.CONFIRM_REGISTER, user);
+		}
+		public function tornaLogin(evt:Event):void{
+			facade.sendNotification(ApplicationFacade.TORNA_LOGIN);
 		}
 		
 		override public function handleNotification(notification:INotification):void{ 

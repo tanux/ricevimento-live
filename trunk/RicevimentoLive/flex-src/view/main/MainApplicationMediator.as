@@ -1,6 +1,6 @@
 package view.main
 {
-	import controller.dashboard_user.room_list.GetRoomListCommand;
+	import controller.dashboard_user.GetRoomListCommand;
 	
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -17,6 +17,7 @@ package view.main
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.component.roomList;
+	import view.dashboard_user.AvailabilitySupervisorListMediator;
 	import view.dashboard_user.RoomListMediator;
 	import view.dashboard_user.SupervisorListMediator;
 	import view.register.RegisterUserMediator;
@@ -50,11 +51,20 @@ package view.main
 					Alert.show("Registrazione riuscita");
 					mainApplication.currentState = "login"
 					break;
+				case ApplicationFacade.TORNA_LOGIN:
+					mainApplication.currentState = "login";
+					break;
 				case ApplicationFacade.GET_ROOMLIST:					
 					facade.registerMediator(new RoomListMediator(mainApplication.roomslist));					
 					break;
 				case ApplicationFacade.GET_SUPERVISOR_BY_ROOM:
 					facade.registerMediator(new SupervisorListMediator(mainApplication.supervisorsList));
+					break;
+				case ApplicationFacade.SUPERVISOR_SELECTED:
+					facade.registerMediator(new AvailabilitySupervisorListMediator(mainApplication.availabilityList));
+					break;
+				case ApplicationFacade.GET_AVAILABILITY_SUPERVISOR_SUCCESS:
+					mainApplication.availabilityList.btnPrenota.visible = "true";
 					break;
 			}
 		}
@@ -65,8 +75,11 @@ package view.main
 				ApplicationFacade.LOGIN_ERROR,
 				ApplicationFacade.DO_REGISTER,
 				ApplicationFacade.REGISTER_SUCCES,
+				ApplicationFacade.TORNA_LOGIN,
 				ApplicationFacade.GET_ROOMLIST,	
-				ApplicationFacade.GET_SUPERVISOR_BY_ROOM
+				ApplicationFacade.GET_SUPERVISOR_BY_ROOM,
+				ApplicationFacade.SUPERVISOR_SELECTED,
+				ApplicationFacade.GET_AVAILABILITY_SUPERVISOR_SUCCESS
 			];	
 		}
 		

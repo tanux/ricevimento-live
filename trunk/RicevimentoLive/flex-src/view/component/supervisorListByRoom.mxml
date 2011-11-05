@@ -15,16 +15,18 @@
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
 			[Bindable] public var supervisorlist:ArrayCollection;
 			public function clickHandler(id_supervisor:String):void{				
-				//facade.sendNotification(ApplicationFacade.ROOM_SELECTED, id_room);
+				facade.sendNotification(ApplicationFacade.SUPERVISOR_SELECTED, id_supervisor);
 			}
 		]]>
-	</fx:Script>
+	</fx:Script>	
 	<mx:Accordion id="accordion" width="100%" resizeToContent="true">
 		<mx:Repeater id="supervisor" dataProvider="{supervisorlist}">			
 			<mx:HBox label="#{String(supervisor.currentItem.id)}:{String(supervisor.currentItem.name)} {String(supervisor.currentItem.surname)}" paddingTop="5">
-				<mx:Box id="boxTopic" width="275">
-					<mx:Text text="{String(supervisor.currentItem.username)}" width="275" />	
-				</mx:Box>
+				<mx:VBox>
+					<mx:Repeater id="timewindow" dataProvider="{supervisor.currentItem.timewindows}">
+						<mx:Text text="- {timewindow.currentItem}" width="275" />
+					</mx:Repeater>
+				</mx:VBox>	
 				<mx:Box height="50" verticalAlign="middle">
 					<s:Button label="Seleziona" id="btnSelectSupervisor" click="clickHandler(event.currentTarget.getRepeaterItem().id);"/>	
 				</mx:Box>				

@@ -1,8 +1,11 @@
 package services;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -21,8 +24,7 @@ public class DashboardUserService {
 	public List<Room> getRoomList(){
 		Session s = HibernateFactory.openSession();		
 		Query q = s.createQuery("from Room");
-		List<Room> result = q.list();	
-		
+		List<Room> result = q.list();			
 		HibernateFactory.closeSession(s);		
 		return result;
 	}	
@@ -32,10 +34,11 @@ public class DashboardUserService {
 		String query = "select supervisor.id from Roomsupervisor where id_room = :id_room";
 		Query q = s.createQuery(query);
 		q.setParameter("id_room", id_room);
-		List<Integer> result = q.list();		
+		List<Integer> result = new LinkedList<Integer>(q.list());		
 		HibernateFactory.closeSession(s);		
 		return result;
 	}
+	
 	public List<Supervisor> getSupervisorListByRoom(String id_room){				
 		List<Integer> idSupervisors = getIdSupervisorListByRoom(id_room);
 		List<Supervisor> supervisors = new LinkedList<Supervisor>();
@@ -46,19 +49,27 @@ public class DashboardUserService {
 			id_supervisor = it.next();
 			String query = "from Supervisor where id = :id_supervisor";
 			Query q = s.createQuery(query);
-			q.setParameter("id_supervisor", id_supervisor);			
-			Supervisor result = (Supervisor)q.uniqueResult();
-			supervisors.add(result);
+			q.setParameter("id_supervisor", id_supervisor);
+			Supervisor supervisor = (Supervisor)q.uniqueResult();			
+			query = "select window from Timewindow where id_supervisor = :id_supervisor";
+			q = s.createQuery(query);
+			q.setParameter("id_supervisor", id_supervisor);
+			Set<Timewindow> timewindows = new HashSet(q.list());
+			supervisor.setTimewindows(timewindows);
+			supervisors.add(supervisor);
 		}
+		HibernateFactory.closeSession(s);
 		return supervisors;
 	}
-	public List<Timewindow> getTimewindowSupervisor(String id_supervisor){
-		Session s = HibernateFactory.openSession();		
-		String query = "from Timewindow where id_supervisor = :id_supervisor";
+	public List getAvailabilityTimewindows(String id_supervisor){
+		int ENABLED = 0; //0-> disponibile, 1->non disponibile
+		Session s = HibernateFactory.openSession();
+		String query = "from Timewindow where id_supervisor = :id_supervisor and enabled = :enabled";
 		Query q = s.createQuery(query);
 		q.setParameter("id_supervisor", id_supervisor);
-		List<Timewindow> timewindows = q.list();		
-		HibernateFactory.closeSession(s);	
+		q.setParameter("enabled", ENABLED);
+		List timewindows = q.list();
+		HibernateFactory.closeSession(s);
 		return timewindows;
 	}
 }
