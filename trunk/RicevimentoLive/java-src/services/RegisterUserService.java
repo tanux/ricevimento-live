@@ -14,8 +14,6 @@ public class RegisterUserService {
 		 
 	}
 	public void StudentRegister(String nome, String cognome, String degree, String email, String username, String password, String personalNumber){
-		Session s = HibernateFactory.openSession();
-		
 		Student student = new Student();
 		student.setNome(nome);
 		student.setCognome(cognome);
@@ -25,10 +23,10 @@ public class RegisterUserService {
 		student.setUsername(username);
 		student.setPassword(password);		
 		
+		Session s = HibernateFactory.openSession();
 		s.beginTransaction();
 		s.save(student);
-		s.getTransaction().commit();		
-		
+		s.getTransaction().commit();
 		s.close();		
 	}
 }

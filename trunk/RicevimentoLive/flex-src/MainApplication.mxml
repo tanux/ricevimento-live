@@ -14,9 +14,12 @@
 		<![CDATA[	
 			import model.vo.Student;
 			
-			import mx.controls.Alert;
+			import mx.controls.Alert;			
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;		
 			[Bindable] public var student:Student;
+			private function logout():void{				
+				this.currentState = "login";
+			}
 		]]>
 	</fx:Script>
 	<s:states>
@@ -26,9 +29,11 @@
 	</s:states>	
 	<mx:Box width="100%" paddingTop="5" paddingBottom="5" paddingLeft="5">
 		<mx:ApplicationControlBar id="TopBar" width="99%" height="50" borderVisible="true" includeIn="stateMainApplication" >
-			<mx:Image width="50" height="50" source="@Embed('assets/logo.png')"/>
-			<mx:Text text="{student.nome} {student.cognome} [Matricola:{student.personalNumber}]" color="#FAF8F8"/>
-			<mx:Button label.stateMainApplication="Logout" id="btnLogout" />
+			<mx:HBox width.stateMainApplication="100%" height.stateMainApplication="100%" verticalAlign.stateMainApplication="middle">
+				<mx:Image width="50" height="50" source="@Embed('assets/logo.png')"/>
+				<mx:Text width.stateMainApplication="90%" text="{student.nome} {student.cognome} [Matricola:{student.personalNumber}]" color="#FAF8F8"/>				
+				<mx:Button label.stateMainApplication="Logout" id="btnLogout" click="logout();"/>			
+			</mx:HBox>			
 		</mx:ApplicationControlBar>		
 		<mx:VBox width="100%" horizontalAlign="center" paddingTop="70" paddingBottom="5">			
 			<mx:Image  width="200" height="200" source="@Embed('assets/logo.png')" includeIn="login, stateRegister"/>									

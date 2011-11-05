@@ -12,6 +12,7 @@ package
 		
 		public static const STARTUP:String = "Startup";
 		public static const LOGIN:String = "Login";
+		public static const LOGOUT:String = "Logout";
 		public static const DO_LOGIN:String = "DoLogin";
 		public static const DO_REGISTER:String = "DoRegister";
 		public static const CONFIRM_REGISTER:String = "ConfirmRegister";
@@ -27,20 +28,21 @@ package
 		public static const GET_ROOMLIST_ERROR:String = "GetRoomListError";
 		public static const ROOMLIST_CREATED:String = "RoomListCreated";
 		public static const ROOM_SELECTED:String = "RoomSelected";		
-		public static const GET_SUPERVISOR_BY_ROOM = "GetSupervisorByRoom";
-		public static const GET_SUPERVISOR_BY_ROOM_SUCCESS = "GetSupervisorByRoomSuccess";
-		public static const GET_SUPERVISOR_BY_ROOM_ERROR = "GetSupervisorByRoomError";
-		public static const SUPERVISOR_SELECTED = "SupervisorSelected";
-		public static const GET_AVAILABILITY_SUPERVISOR = "GetAvailabilitySupervisor";
-		public static const GET_AVAILABILITY_SUPERVISOR_SUCCESS = "GetAvailabilitySupervisorSuccess";
-		public static const GET_AVAILABILITY_SUPERVISOR_ERROR = "GetAvailabilitySupervisorError";
+		public static const GET_SUPERVISOR_BY_ROOM:String = "GetSupervisorByRoom";
+		public static const GET_SUPERVISOR_BY_ROOM_SUCCESS:String = "GetSupervisorByRoomSuccess";
+		public static const GET_SUPERVISOR_BY_ROOM_ERROR:String = "GetSupervisorByRoomError";
+		public static const SUPERVISOR_SELECTED:String = "SupervisorSelected";
+		public static const GET_AVAILABILITY_SUPERVISOR:String = "GetAvailabilitySupervisor";
+		public static const GET_AVAILABILITY_SUPERVISOR_SUCCESS:String = "GetAvailabilitySupervisorSuccess";
+		public static const GET_AVAILABILITY_SUPERVISOR_ERROR:String = "GetAvailabilitySupervisorError";
+		public static const DO_BOOKING:String = "DoBooking";
+		public static const SHOWED_CONFIRM_BOOKING_WINDOW:String = "ShowConfirmBookingWindow";
 		
 		public static function getInstance() : ApplicationFacade {
 			if (instance == null)
 				instance = new ApplicationFacade();
 			return instance as ApplicationFacade;
-		}
-		
+		}		
 		override protected function initializeController():void {
 			super.initializeController();
 			registerCommand(ApplicationFacade.STARTUP, StartupCommand);
