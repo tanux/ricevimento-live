@@ -1,6 +1,6 @@
 package view.dashboard_user
 {
-	import controller.dashboard_user.room_list.GetRoomListCommand;
+	import controller.dashboard_user.GetRoomListCommand;
 	
 	import flash.events.Event;
 	import flash.events.MouseEvent;

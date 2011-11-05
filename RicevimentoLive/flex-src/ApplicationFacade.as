@@ -16,7 +16,8 @@ package
 		public static const DO_REGISTER:String = "DoRegister";
 		public static const CONFIRM_REGISTER:String = "ConfirmRegister";
 		public static const REGISTER_SUCCES:String = "RegisterSuccess";
-		public static const REGISTER_ERROR:String = "RegisterError";		
+		public static const REGISTER_ERROR:String = "RegisterError";
+		public static const TORNA_LOGIN:String = "TornaLogin";
 		public static const LOGIN_SUCCESS:String = "LoginSuccess";
 		public static const LOGIN_ERROR:String = "LoginError";
 		public static const LOGIN_FAULT:String = "LoginFault";
@@ -29,6 +30,10 @@ package
 		public static const GET_SUPERVISOR_BY_ROOM = "GetSupervisorByRoom";
 		public static const GET_SUPERVISOR_BY_ROOM_SUCCESS = "GetSupervisorByRoomSuccess";
 		public static const GET_SUPERVISOR_BY_ROOM_ERROR = "GetSupervisorByRoomError";
+		public static const SUPERVISOR_SELECTED = "SupervisorSelected";
+		public static const GET_AVAILABILITY_SUPERVISOR = "GetAvailabilitySupervisor";
+		public static const GET_AVAILABILITY_SUPERVISOR_SUCCESS = "GetAvailabilitySupervisorSuccess";
+		public static const GET_AVAILABILITY_SUPERVISOR_ERROR = "GetAvailabilitySupervisorError";
 		
 		public static function getInstance() : ApplicationFacade {
 			if (instance == null)

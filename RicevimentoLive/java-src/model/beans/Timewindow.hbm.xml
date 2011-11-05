@@ -13,9 +13,12 @@
 		</many-to-one>
         <property name="name" type="string">
             <column name="name" not-null="true" />
-        </property>
+        </property>        
         <property name="window" type="string">
             <column name="window" length="65535" not-null="true" />
+        </property>
+        <property name="enabled" type="java.lang.Integer">
+            <column name="enabled" not-null="true" />
         </property>		
     </class>
 </hibernate-mapping>

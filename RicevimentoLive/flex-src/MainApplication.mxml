@@ -41,7 +41,7 @@
 						<component:supervisorListByRoom id="supervisorsList" />			
 					</mx:HBox>
 					<mx:HBox horizontalGap.stateMainApplication="100" paddingLeft.stateMainApplication="50">
-						<component:availabilitySupervisorTimeWindow id="supervisorTwList"/>
+						<component:availabilitySupervisorList id="availabilityList"/>
 						<component:userBooking id="bookingUser" />
 					</mx:HBox>
 				</mx:VBox>					

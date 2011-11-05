@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml"
 		  layout="absolute" autoLayout="true" title="Registrati"
-		  width="400" height="300">	
+		  width="400" >	
 	<mx:Form width="100%">		
 		<mx:FormItem label="Nome" fontWeight="bold">
 			<mx:TextInput id="tiName" width="240" text="Es: Mario"/>
@@ -27,6 +27,10 @@
 		<mx:HRule width="100%"/>
 		<mx:Box horizontalAlign="center" width="100%">
 			<mx:Button label="Conferma Registrazione" id="btnConfermaRegistrazione"/>	
+		</mx:Box>
+		<mx:HRule width="100%"/>
+		<mx:Box horizontalAlign="center" width="100%" paddingTop="10">
+			<mx:Button label="Torna al Login" id="btnTornaLogin"/>	
 		</mx:Box>
 	</mx:Form>	
 </mx:Panel>

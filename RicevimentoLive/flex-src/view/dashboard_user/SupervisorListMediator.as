@@ -21,11 +21,16 @@ package view.dashboard_user
 					var supervisors:ArrayCollection = notification.getBody() as ArrayCollection;
 					supervisorsList.supervisorlist = supervisors;
 					break;
+				case ApplicationFacade.SUPERVISOR_SELECTED:
+					var id_supervisor:String = notification.getBody() as String;					
+					facade.sendNotification(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, id_supervisor);
+					break;	
 			}
 		}
 		override public function listNotificationInterests():Array{
 			return [
-				ApplicationFacade.GET_SUPERVISOR_BY_ROOM_SUCCESS
+				ApplicationFacade.GET_SUPERVISOR_BY_ROOM_SUCCESS,
+				ApplicationFacade.SUPERVISOR_SELECTED
 			];	
 		}
 		public function get supervisorsList():supervisorListByRoom{

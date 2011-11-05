@@ -1,6 +1,6 @@
 package controller.login
 {
-	import controller.dashboard_user.room_list.GetRoomListCommand;
+	import controller.dashboard_user.GetRoomListCommand;
 	
 	import model.LoginProxy;
 	import model.vo.Student;
