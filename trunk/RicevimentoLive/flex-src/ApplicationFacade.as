@@ -5,11 +5,12 @@ package
 	 * */
 	import controller.StartupCommand;
 	
+	import model.vo.Booking;
+	
 	import org.puremvc.as3.interfaces.IFacade;
 	import org.puremvc.as3.patterns.facade.Facade;
 	
 	public class ApplicationFacade extends Facade implements IFacade{
-		
 		public static const STARTUP:String = "Startup";
 		public static const LOGIN:String = "Login";
 		public static const LOGOUT:String = "Logout";
@@ -32,11 +33,19 @@ package
 		public static const GET_SUPERVISOR_BY_ROOM_SUCCESS:String = "GetSupervisorByRoomSuccess";
 		public static const GET_SUPERVISOR_BY_ROOM_ERROR:String = "GetSupervisorByRoomError";
 		public static const SUPERVISOR_SELECTED:String = "SupervisorSelected";
+		public static const AVAILABILITY_SELECTED:String = "AvailabilitySelected";
 		public static const GET_AVAILABILITY_SUPERVISOR:String = "GetAvailabilitySupervisor";
 		public static const GET_AVAILABILITY_SUPERVISOR_SUCCESS:String = "GetAvailabilitySupervisorSuccess";
-		public static const GET_AVAILABILITY_SUPERVISOR_ERROR:String = "GetAvailabilitySupervisorError";
-		public static const DO_BOOKING:String = "DoBooking";
-		public static const SHOWED_CONFIRM_BOOKING_WINDOW:String = "ShowConfirmBookingWindow";
+		public static const GET_AVAILABILITY_SUPERVISOR_ERROR:String = "GetAvailabilitySupervisorError";		
+		public static const PUT_ROOM_SELECTED_IN_BOOKING = "PutRoomDataInBooking";
+		public static const PUT_SUPERVISOR_SELECTED_IN_BOOKING = "PutSupervisorDataInBooking";
+		public static const PUT_AVAILABILITY_SELECTED_IN_BOOKING = "PutAvailabilityDataInBooking";
+		public static const SEND_DATA_BOOKING = "SendDataBooking";
+		public static const SHOWED_CONFIRM_BOOKING_WINDOW:String = "ShowedConfirmBookingWindow";
+		public static const CONFIRM_BOOKING:String = "ConfirmBooking";
+		public static const CONFIRM_BOOKING_SUCCESS = "ConfirmBookingSuccess";
+		public static const CONFIRM_BOOKING_ERROR = "ConfirmBookingError";
+		
 		
 		public static function getInstance() : ApplicationFacade {
 			if (instance == null)
