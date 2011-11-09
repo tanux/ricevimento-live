@@ -1,5 +1,7 @@
 package view.dashboard_user
 {
+	import model.vo.Supervisor;
+	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
 	
@@ -22,9 +24,11 @@ package view.dashboard_user
 					var supervisors:ArrayCollection = notification.getBody() as ArrayCollection;
 					supervisorsList.supervisorlist = supervisors;
 					break;
-				case ApplicationFacade.SUPERVISOR_SELECTED:					
-					var id_supervisor:String = notification.getBody() as String;
-					facade.sendNotification(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, id_supervisor);
+				case ApplicationFacade.SUPERVISOR_SELECTED:	
+					var supervisor:Supervisor = notification.getBody() as Supervisor;
+					facade.sendNotification(ApplicationFacade.PUT_SUPERVISOR_SELECTED_IN_BOOKING, supervisor);
+					var idSupervisor:String = supervisor.id.toString() as String;
+					facade.sendNotification(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, idSupervisor);
 					break;	
 			}
 		}

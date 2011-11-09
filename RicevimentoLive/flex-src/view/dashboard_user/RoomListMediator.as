@@ -17,6 +17,7 @@ package view.dashboard_user
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.component.roomList;
+	import view.main.MainApplicationMediator;
 	
 	public class RoomListMediator extends Mediator implements IMediator{
 		
@@ -35,12 +36,13 @@ package view.dashboard_user
 					Alert.show("Errore in inizializzazione lista stanze");
 					break;				
 				case ApplicationFacade.ROOM_SELECTED:
-					var id_room:String = notification.getBody() as String;					
-					facade.sendNotification(ApplicationFacade.GET_SUPERVISOR_BY_ROOM, id_room);
+					var room:Room = notification.getBody() as Room;
+					facade.sendNotification(ApplicationFacade.PUT_ROOM_SELECTED_IN_BOOKING, room);
+					var idRoom:String = room.id.toString() as String;
+					facade.sendNotification(ApplicationFacade.GET_SUPERVISOR_BY_ROOM, idRoom);
 					break;	
 			}
-		}
-		
+		}		
 		override public function listNotificationInterests():Array{
 			return [
 				ApplicationFacade.GET_ROOMLIST_SUCCES,

@@ -1,8 +1,14 @@
 package view.dashboard_user
 {
+	import controller.dashboard_user.ConfirmBookingCommand;
+	
 	import flash.events.Event;
 	import flash.events.FocusEvent;
 	import flash.events.MouseEvent;
+	
+	import model.vo.Booking;
+	import model.vo.Room;
+	import model.vo.Student;
 	
 	import mx.controls.Alert;
 	import mx.events.CloseEvent;
@@ -13,7 +19,10 @@ package view.dashboard_user
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.component.ConfirmBookingWindow;
-	
+	import view.component.availabilitySupervisorList;
+	import view.component.roomList;
+	import view.component.supervisorListByRoom;
+	import view.main.MainApplicationMediator;
 	
 	public class ConfirmBookingWindowMediator extends Mediator implements IMediator{
 		
@@ -22,9 +31,10 @@ package view.dashboard_user
 			super(NAME, viewComponent);	
 			confirmBookingWindow.taBookingReason.addEventListener(FocusEvent.FOCUS_IN, clearTextArea);
 			confirmBookingWindow.btnConfirmBooking.addEventListener(MouseEvent.CLICK, sendBooking);
+			
 		}
 		private function sendBooking(evt:Event):void{
-			Alert.show("Prenotazione inviata con successo");
+			facade.sendNotification(ApplicationFacade.CONFIRM_BOOKING, confirmBookingWindow.booking);
 		}
 		private function clearTextArea(evt:Event):void{
 			confirmBookingWindow.taBookingReason.text = "";
@@ -32,10 +42,15 @@ package view.dashboard_user
 		
 		override public function handleNotification(notification:INotification):void{ 
 			switch (notification.getName()){
+				case ApplicationFacade.SEND_DATA_BOOKING:
+					var booking:Booking = notification.getBody() as Booking;
+					confirmBookingWindow.booking = booking; 
+					break;
 			}
 		}
 		override public function listNotificationInterests():Array{
-			return [					
+			return [
+				ApplicationFacade.SEND_DATA_BOOKING
 			];	
 		}
 		public function get confirmBookingWindow(): ConfirmBookingWindow{

@@ -10,23 +10,25 @@
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[						
+			import model.vo.Room;
+			
 			import mx.collections.ArrayCollection;
 			import mx.controls.Alert;
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;			
 			[Bindable] public var roomlist:ArrayCollection;
-			public function clickHandler(id_room:String):void{
-				facade.sendNotification(ApplicationFacade.ROOM_SELECTED, id_room);
+			public function clickHandler(roomSelected:Room):void{				
+				facade.sendNotification(ApplicationFacade.ROOM_SELECTED, roomSelected);				
 			}			
 		]]>
 	</fx:Script>
 	<mx:Accordion id="accordion" width="100%" resizeToContent="true">
 		<mx:Repeater id="room" dataProvider="{roomlist}">
-			<mx:HBox id="roomname" label="#{String(room.currentItem.id)}:{String(room.currentItem.name)}" paddingTop="5" >								
+			<mx:HBox label="#{String(room.currentItem.id)}:{String(room.currentItem.name)}" paddingTop="5" >
 				<mx:Box id="boxTopic" width="275">
 					<mx:Text text="{String(room.currentItem.topic)}" width="275" />
 				</mx:Box>
 				<mx:Box id="boxBtnSelectRoom" height="50" verticalAlign="middle">
-					<mx:Button label="Seleziona" id="btnSelectRoom" click="clickHandler(event.currentTarget.getRepeaterItem().id);" />					
+					<mx:Button label="Seleziona" id="btnSelectRoom" click="clickHandler(event.currentTarget.getRepeaterItem())" />					
 				</mx:Box>				
 			</mx:HBox>				
 		</mx:Repeater>	

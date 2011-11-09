@@ -3,6 +3,8 @@ package view.dashboard_user
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
+	import model.vo.Timewindow;
+	
 	import mx.collections.ArrayCollection;
 	import mx.containers.TitleWindow;
 	import mx.controls.Alert;
@@ -38,12 +40,17 @@ package view.dashboard_user
 				case ApplicationFacade.GET_AVAILABILITY_SUPERVISOR_SUCCESS:					
 					var availabilities:ArrayCollection = notification.getBody() as ArrayCollection;
 					availabilityList.availabilitylist = availabilities;					
-					break;				
+					break;
+				case ApplicationFacade.AVAILABILITY_SELECTED:
+					var availability:Timewindow = notification.getBody() as Timewindow;
+					facade.sendNotification(ApplicationFacade.PUT_AVAILABILITY_SELECTED_IN_BOOKING, availability);
+					break;
 			}
 		}
 		override public function listNotificationInterests():Array{
 			return [
-				ApplicationFacade.GET_AVAILABILITY_SUPERVISOR_SUCCESS				
+				ApplicationFacade.GET_AVAILABILITY_SUPERVISOR_SUCCESS,
+				ApplicationFacade.AVAILABILITY_SELECTED
 			];	
 		}
 		public function get availabilityList():availabilitySupervisorList{

@@ -78,7 +78,9 @@ public class DashboardUserService {
 		Session s = HibernateFactory.openSession();
 		s.beginTransaction();
 		s.save(booking);
+		System.out.printf("Eccomi in doBooking: "+booking.getStudent().getNome());
 		s.getTransaction().commit();
 		s.close();
+		HibernateFactory.closeSession(s);
 	}
 }

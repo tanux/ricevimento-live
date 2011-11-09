@@ -10,12 +10,14 @@
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[						
+			import model.vo.Supervisor;
+			
 			import mx.collections.ArrayCollection;
 			import mx.controls.Alert;			
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
-			[Bindable] public var supervisorlist:ArrayCollection;
-			public function clickHandler(id_supervisor:String):void{				
-				facade.sendNotification(ApplicationFacade.SUPERVISOR_SELECTED, id_supervisor);
+			[Bindable] public var supervisorlist:ArrayCollection;			
+			public function clickHandler(supervisorSelected:Supervisor):void{
+				facade.sendNotification(ApplicationFacade.SUPERVISOR_SELECTED, supervisorSelected);				
 			}
 		]]>
 	</fx:Script>	
@@ -28,7 +30,7 @@
 					</mx:Repeater>
 				</mx:VBox>	
 				<mx:Box height="50" verticalAlign="middle">
-					<s:Button label="Seleziona" id="btnSelectSupervisor" click="clickHandler(event.currentTarget.getRepeaterItem().id);"/>	
+					<s:Button label="Seleziona" id="btnSelectSupervisor" click="clickHandler(event.currentTarget.getRepeaterItem());" />	
 				</mx:Box>				
 			</mx:HBox>				
 		</mx:Repeater>	
