@@ -23,14 +23,14 @@ internal class _BookingEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("id", "time", "student", "status", "supervisor", "reasonAnnulment", "reasonBooking", "date", "room");
+    model_internal static var allProperties:Array = new Array("id", "time", "student", "supervisor", "status", "reasonAnnulment", "reasonBooking", "date", "room");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("id", "time", "student", "status", "supervisor", "reasonAnnulment", "reasonBooking", "date", "room");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("id", "time", "student", "supervisor", "status", "reasonAnnulment", "reasonBooking", "date", "room");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("id", "time", "student", "status", "supervisor", "reasonAnnulment", "reasonBooking", "date", "room");
+    model_internal static var dataProperties:Array = new Array("id", "time", "student", "supervisor", "status", "reasonAnnulment", "reasonBooking", "date", "room");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("id", "time", "student", "status", "supervisor", "reasonAnnulment", "reasonBooking", "date", "room");
+    model_internal static var nonDerivedProperties:Array = new Array("id", "time", "student", "supervisor", "status", "reasonAnnulment", "reasonBooking", "date", "room");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -53,8 +53,8 @@ internal class _BookingEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             model_internal::dependentsOnMap["id"] = new Array();
             model_internal::dependentsOnMap["time"] = new Array();
             model_internal::dependentsOnMap["student"] = new Array();
-            model_internal::dependentsOnMap["status"] = new Array();
             model_internal::dependentsOnMap["supervisor"] = new Array();
+            model_internal::dependentsOnMap["status"] = new Array();
             model_internal::dependentsOnMap["reasonAnnulment"] = new Array();
             model_internal::dependentsOnMap["reasonBooking"] = new Array();
             model_internal::dependentsOnMap["date"] = new Array();
@@ -69,8 +69,8 @@ internal class _BookingEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["id"] = "int";
         model_internal::propertyTypeMap["time"] = "String";
         model_internal::propertyTypeMap["student"] = "model.vo.Student";
-        model_internal::propertyTypeMap["status"] = "String";
         model_internal::propertyTypeMap["supervisor"] = "model.vo.Supervisor";
+        model_internal::propertyTypeMap["status"] = "String";
         model_internal::propertyTypeMap["reasonAnnulment"] = "String";
         model_internal::propertyTypeMap["reasonBooking"] = "String";
         model_internal::propertyTypeMap["date"] = "String";
@@ -322,13 +322,13 @@ internal class _BookingEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isStatusAvailable():Boolean
+    public function get isSupervisorAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isSupervisorAvailable():Boolean
+    public function get isStatusAvailable():Boolean
     {
         return true;
     }
@@ -386,13 +386,13 @@ internal class _BookingEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get statusStyle():com.adobe.fiber.styles.Style
+    public function get supervisorStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get supervisorStyle():com.adobe.fiber.styles.Style
+    public function get statusStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
