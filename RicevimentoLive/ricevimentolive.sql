@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.3.2
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generato il: Nov 06, 2011 alle 12:37
--- Versione del server: 5.5.15
+-- Generato il: Nov 11, 2011 alle 12:21
+-- Versione del server: 5.5.16
 -- Versione PHP: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `id_room` int(10) NOT NULL,
   `reason_booking` text NOT NULL,
   `date` varchar(255) NOT NULL,
-  `time` varchar(255) NOT NULL,
-  `reason_annulment` text NOT NULL,
-  `status` varchar(255) NOT NULL,
+  `time` varchar(255) DEFAULT NULL,
+  `reason_annulment` text,
+  `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_student` (`id_student`),
   KEY `id_supervisor` (`id_supervisor`),
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `degree` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dump dei dati per la tabella `student`
@@ -119,7 +119,9 @@ CREATE TABLE IF NOT EXISTS `student` (
 INSERT INTO `student` (`id`, `personal_number`, `username`, `password`, `nome`, `cognome`, `degree`, `email`) VALUES
 (1, '0610700229', 'tanux', '20tanux20', 'Gaetano', 'Esposito', 'Ingegneria Informatica', 'espositogaetano87@gmail.com'),
 (2, '', 'pippo', 'pippo', '', '', '', ''),
-(3, '20202020', 'cettina', '20092002', 'Concetta', 'Natale', 'Scienze Biologiche', 'cettina.natale@libero.it');
+(3, '20202020', 'cettina', '20092002', 'Concetta', 'Natale', 'Scienze Biologiche', 'cettina.natale@libero.it'),
+(4, '20202020', 'mrfox', 'fox', 'Emilio', 'Atorino', 'Ingegneria Informatica', 'mrfox@libero.it'),
+(5, '0610700289', 'mrhope', 'ciccio', 'Mario', 'Speranza', 'Ingegneria Informatica', 'mariosperanza88@gmail.com');
 
 -- --------------------------------------------------------
 
