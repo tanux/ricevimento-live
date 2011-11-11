@@ -5,7 +5,7 @@
 				title="Conferma la tua prenotazione"
 				layout="vertical" 
 				width="380" 
-				height="240"
+				height="300"
 				titleStyleName="titleText"
 				backgroundColor="white"
 				backgroundAlpha="1.0"
@@ -48,6 +48,8 @@
 	<mx:Text id="txtRoomInfo" text="Stanza scelta: {booking.room.name}"
 			 width="100%" styleName="headingText"/>
 	<mx:Text id="txtSupervisorInfo" text="Relatore scelto: {booking.supervisor.name} {booking.supervisor.surname}"
+			 width="100%" styleName="headingText"/>
+	<mx:Text id="txtAvailabilityInfo" text="Orario: {booking.date}"
 			 width="100%" styleName="headingText"/>
 	
 	<mx:TextArea id="taBookingReason" text="Descrivi brevemente il motivo del ricevimento"

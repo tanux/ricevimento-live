@@ -14,6 +14,7 @@ import org.hibernate.criterion.Example;
 import util.HibernateFactory;
 import model.beans.Booking;
 import model.beans.Room;
+import model.beans.Student;
 import model.beans.Supervisor;
 import model.beans.Timewindow;
 
@@ -74,13 +75,15 @@ public class DashboardUserService {
 		return timewindows;
 	}
 	
-	public void doBooking(Booking booking){
+	public void doBooking(String idStudent, String idSupervisor, String idRoom, String reason, String date){
+		Student student = new Student();
+		//student.setId(idStudent);
+		Booking booking = new Booking();
+		
 		Session s = HibernateFactory.openSession();
 		s.beginTransaction();
 		s.save(booking);
-		System.out.printf("Eccomi in doBooking: "+booking.getStudent().getNome());
 		s.getTransaction().commit();
 		s.close();
-		HibernateFactory.closeSession(s);
 	}
 }
