@@ -26,7 +26,11 @@ package model
 			responder = new Responder(onResult, onFault);
 		}
 		public function doBooking(booking:Booking):void{
-			var at:AsyncToken = service.doBooking(booking);
+			var at:AsyncToken = service.doBooking(booking.student.id.toString(), 
+												  booking.supervisor.id.toString(), 
+												  booking.room.id.toString(), 
+												  booking.reasonBooking, 
+												  booking.date);
 			at.addResponder(responder);
 		}
 		public function onResult(evt:ResultEvent):void{

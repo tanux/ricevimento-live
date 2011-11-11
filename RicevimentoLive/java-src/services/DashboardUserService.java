@@ -77,13 +77,28 @@ public class DashboardUserService {
 	
 	public void doBooking(String idStudent, String idSupervisor, String idRoom, String reason, String date){
 		Student student = new Student();
-		//student.setId(idStudent);
-		Booking booking = new Booking();
+		student.setId(Integer.parseInt(idStudent));
+		
+		Supervisor supervisor = new Supervisor();
+		supervisor.setId(Integer.parseInt(idSupervisor));
+		
+		Room room = new Room();
+		room.setId(Integer.parseInt(idRoom));
+		
+		Booking booking = new Booking(student, room, supervisor, reason, date);		
 		
 		Session s = HibernateFactory.openSession();
 		s.beginTransaction();
 		s.save(booking);
 		s.getTransaction().commit();
 		s.close();
+	}
+	public List getBookingList(String idStudent){
+		Session s = HibernateFactory.openSession();
+		String query = "from Booking where id_student = :id_student";
+		Query q = s.createQuery(query);
+		q.setParameter("id_student", idStudent);
+		List bookings = q.list();
+		return bookings;
 	}
 }

@@ -64,8 +64,8 @@ public class _Super_Student extends flash.events.EventDispatcher implements com.
     private var _internal_email : String;
     private var _internal_bookings : ArrayCollection;
     private var _internal_nome : String;
-    private var _internal_password : String;
     private var _internal_cognome : String;
+    private var _internal_password : String;
     private var _internal_personalNumber : String;
 
     private static var emptyArray:Array = new Array();
@@ -127,15 +127,15 @@ public class _Super_Student extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get password() : String
-    {
-        return _internal_password;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get cognome() : String
     {
         return _internal_cognome;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get password() : String
+    {
+        return _internal_password;
     }
 
     [Bindable(event="propertyChange")]
@@ -227,16 +227,6 @@ public class _Super_Student extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set password(value:String) : void
-    {
-        var oldValue:String = _internal_password;
-        if (oldValue !== value)
-        {
-            _internal_password = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "password", oldValue, _internal_password));
-        }
-    }
-
     public function set cognome(value:String) : void
     {
         var oldValue:String = _internal_cognome;
@@ -244,6 +234,16 @@ public class _Super_Student extends flash.events.EventDispatcher implements com.
         {
             _internal_cognome = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "cognome", oldValue, _internal_cognome));
+        }
+    }
+
+    public function set password(value:String) : void
+    {
+        var oldValue:String = _internal_password;
+        if (oldValue !== value)
+        {
+            _internal_password = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "password", oldValue, _internal_password));
         }
     }
 

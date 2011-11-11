@@ -49,7 +49,7 @@
 				</mx:HBox>
 				<mx:HBox horizontalGap.stateMainApplication="100" paddingLeft.stateMainApplication="50">
 					<component:availabilitySupervisorList id="availabilityList"/>
-					<component:userBooking id="bookingUser" />
+					<component:userBookingList id="bookingListUser" />
 				</mx:HBox>
 			</mx:VBox>
 		</mx:VBox>	
