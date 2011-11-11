@@ -1,6 +1,7 @@
 package controller.login
 {
 	import controller.dashboard_user.GetRoomListCommand;
+	import controller.dashboard_user.GetUserBookingListCommand;
 	
 	import model.LoginProxy;
 	import model.vo.Student;
@@ -16,11 +17,13 @@ package controller.login
 				var loginProxy:LoginProxy = facade.retrieveProxy(LoginProxy.NAME) as LoginProxy;
 				loginProxy.doLogin(user.username,user.password);
 				facade.registerCommand(ApplicationFacade.GET_ROOMLIST, GetRoomListCommand);
+				facade.registerCommand(ApplicationFacade.GET_USER_BOOKINGLIST, GetUserBookingListCommand);
 			} else {
 				var loginProxy:LoginProxy = new LoginProxy(LoginProxy.NAME);
 				loginProxy.doLogin(user.username,user.password);
 				facade.registerProxy(loginProxy);
 				facade.registerCommand(ApplicationFacade.GET_ROOMLIST, GetRoomListCommand);
+				facade.registerCommand(ApplicationFacade.GET_USER_BOOKINGLIST, GetUserBookingListCommand);
 			}										
 		}		
 	}

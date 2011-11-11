@@ -25,6 +25,7 @@ package view.main
 	import view.dashboard_user.ConfirmBookingWindowMediator;
 	import view.dashboard_user.RoomListMediator;
 	import view.dashboard_user.SupervisorListMediator;
+	import view.dashboard_user.UserBookingListMediator;
 	import view.register.RegisterUserMediator;
 	
 	public class MainApplicationMediator extends Mediator implements IMediator{
@@ -45,6 +46,7 @@ package view.main
 					var user:Student = notification.getBody() as Student;
 					mainApplication.student = user;
 					mainApplication.booking.student = user;
+					facade.registerMediator(new UserBookingListMediator(mainApplication.bookingListUser));
 					break;
 				case ApplicationFacade.LOGIN_ERROR:
 					Alert.show("Autenticazione non riuscita");
@@ -89,6 +91,8 @@ package view.main
 				case ApplicationFacade.CONFIRM_BOOKING_SUCCESS:
 					Alert.show("Prenotazione inoltrata con successo");
 					break;
+				case ApplicationFacade.GET_USER_BOOKINGLIST:
+					break;
 			}
 		}
 		
@@ -106,7 +110,8 @@ package view.main
 				ApplicationFacade.PUT_ROOM_SELECTED_IN_BOOKING,
 				ApplicationFacade.PUT_SUPERVISOR_SELECTED_IN_BOOKING,
 				ApplicationFacade.PUT_AVAILABILITY_SELECTED_IN_BOOKING,
-				ApplicationFacade.CONFIRM_BOOKING_SUCCESS
+				ApplicationFacade.CONFIRM_BOOKING_SUCCESS,
+				ApplicationFacade.GET_USER_BOOKINGLIST
 			];	
 		}		
 		public function get mainApplication():MainApplication{ 

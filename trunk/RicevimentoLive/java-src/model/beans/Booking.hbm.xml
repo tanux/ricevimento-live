@@ -24,13 +24,13 @@
             <column name="date" not-null="true" />
         </property>
         <property name="time" type="string">
-            <column name="time" not-null="true" />
+            <column name="time" />
         </property>
         <property name="reasonAnnulment" type="string">
-            <column name="reason_annulment" length="65535" not-null="true" />
+            <column name="reason_annulment" length="65535" />
         </property>
         <property name="status" type="string">
-            <column name="status" not-null="true" />
+            <column name="status" />
         </property>
     </class>
 </hibernate-mapping>

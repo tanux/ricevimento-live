@@ -21,14 +21,14 @@ internal class _StudentEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("id", "username", "degree", "email", "bookings", "nome", "password", "cognome", "personalNumber");
+    model_internal static var allProperties:Array = new Array("id", "username", "degree", "email", "bookings", "nome", "cognome", "password", "personalNumber");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("id", "username", "degree", "email", "bookings", "nome", "password", "cognome", "personalNumber");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("id", "username", "degree", "email", "bookings", "nome", "cognome", "password", "personalNumber");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("id", "username", "degree", "email", "bookings", "nome", "password", "cognome", "personalNumber");
+    model_internal static var dataProperties:Array = new Array("id", "username", "degree", "email", "bookings", "nome", "cognome", "password", "personalNumber");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("id", "username", "degree", "email", "bookings", "nome", "password", "cognome", "personalNumber");
+    model_internal static var nonDerivedProperties:Array = new Array("id", "username", "degree", "email", "bookings", "nome", "cognome", "password", "personalNumber");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("bookings");
     model_internal static var collectionBaseMap:Object;
@@ -54,8 +54,8 @@ internal class _StudentEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             model_internal::dependentsOnMap["email"] = new Array();
             model_internal::dependentsOnMap["bookings"] = new Array();
             model_internal::dependentsOnMap["nome"] = new Array();
-            model_internal::dependentsOnMap["password"] = new Array();
             model_internal::dependentsOnMap["cognome"] = new Array();
+            model_internal::dependentsOnMap["password"] = new Array();
             model_internal::dependentsOnMap["personalNumber"] = new Array();
 
             // collection base map
@@ -71,8 +71,8 @@ internal class _StudentEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["email"] = "String";
         model_internal::propertyTypeMap["bookings"] = "ArrayCollection";
         model_internal::propertyTypeMap["nome"] = "String";
-        model_internal::propertyTypeMap["password"] = "String";
         model_internal::propertyTypeMap["cognome"] = "String";
+        model_internal::propertyTypeMap["password"] = "String";
         model_internal::propertyTypeMap["personalNumber"] = "String";
 
         model_internal::_instance = value;
@@ -339,13 +339,13 @@ internal class _StudentEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isPasswordAvailable():Boolean
+    public function get isCognomeAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isCognomeAvailable():Boolean
+    public function get isPasswordAvailable():Boolean
     {
         return true;
     }
@@ -403,13 +403,13 @@ internal class _StudentEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get passwordStyle():com.adobe.fiber.styles.Style
+    public function get cognomeStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get cognomeStyle():com.adobe.fiber.styles.Style
+    public function get passwordStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

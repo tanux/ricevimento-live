@@ -69,8 +69,8 @@ public class _Super_Booking extends flash.events.EventDispatcher implements com.
     private var _internal_id : int;
     private var _internal_time : String;
     private var _internal_student : model.vo.Student;
-    private var _internal_supervisor : model.vo.Supervisor;
     private var _internal_status : String;
+    private var _internal_supervisor : model.vo.Supervisor;
     private var _internal_reasonAnnulment : String;
     private var _internal_reasonBooking : String;
     private var _internal_date : String;
@@ -117,15 +117,15 @@ public class _Super_Booking extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get supervisor() : model.vo.Supervisor
-    {
-        return _internal_supervisor;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get status() : String
     {
         return _internal_status;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get supervisor() : model.vo.Supervisor
+    {
+        return _internal_supervisor;
     }
 
     [Bindable(event="propertyChange")]
@@ -190,16 +190,6 @@ public class _Super_Booking extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set supervisor(value:model.vo.Supervisor) : void
-    {
-        var oldValue:model.vo.Supervisor = _internal_supervisor;
-        if (oldValue !== value)
-        {
-            _internal_supervisor = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "supervisor", oldValue, _internal_supervisor));
-        }
-    }
-
     public function set status(value:String) : void
     {
         var oldValue:String = _internal_status;
@@ -207,6 +197,16 @@ public class _Super_Booking extends flash.events.EventDispatcher implements com.
         {
             _internal_status = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "status", oldValue, _internal_status));
+        }
+    }
+
+    public function set supervisor(value:model.vo.Supervisor) : void
+    {
+        var oldValue:model.vo.Supervisor = _internal_supervisor;
+        if (oldValue !== value)
+        {
+            _internal_supervisor = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "supervisor", oldValue, _internal_supervisor));
         }
     }
 
