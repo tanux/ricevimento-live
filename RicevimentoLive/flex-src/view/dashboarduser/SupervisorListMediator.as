@@ -10,7 +10,7 @@ package view.dashboarduser
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.component.SupervisorListByRoom;
-	import view.main.MainApplicationMediator;
+	import view.MainApplicationMediator;
 	
 	public class SupervisorListMediator extends Mediator implements IMediator{
 		

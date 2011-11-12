@@ -19,7 +19,7 @@ package
 		public static const CONFIRM_REGISTER:String = "ConfirmRegister";
 		public static const REGISTER_SUCCES:String = "RegisterSuccess";
 		public static const REGISTER_ERROR:String = "RegisterError";
-		public static const TORNA_LOGIN:String = "TornaLogin";
+		public static const BACK_TO_LOGIN:String = "TornaLogin";
 		public static const LOGIN_SUCCESS:String = "LoginSuccess";
 		public static const LOGIN_ERROR:String = "LoginError";
 		public static const LOGIN_FAULT:String = "LoginFault";

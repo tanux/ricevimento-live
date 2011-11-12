@@ -1,19 +1,23 @@
 package view.register
 {
 	import flash.events.Event;
-	import flash.events.MouseEvent;	
-	import model.vo.Student;	
+	import flash.events.MouseEvent;
+	
+	import model.vo.Student;
+	
 	import org.puremvc.as3.interfaces.IMediator;
 	import org.puremvc.as3.interfaces.INotification;
-	import org.puremvc.as3.patterns.mediator.Mediator;	
+	import org.puremvc.as3.patterns.mediator.Mediator;
+	
 	import view.component.RegisterUserForm;
 	
 	public class RegisterUserFormMediator extends Mediator implements IMediator{
 		
 		public static const NAME:String = "RegisterUserMediator";
+		
 		public function RegisterUserFormMediator(viewComponent:Object=null){
 			super(NAME, viewComponent);	
-			registerUser.btnConfermaRegistrazione.addEventListener(MouseEvent.CLICK, confirmRegister);
+			registerUser.btnConfirmRegister.addEventListener(MouseEvent.CLICK, confirmRegister);
 			registerUser.btnBackLogin.addEventListener(MouseEvent.CLICK, backLogin);
 		}
 		
@@ -29,7 +33,7 @@ package view.register
 			facade.sendNotification(ApplicationFacade.CONFIRM_REGISTER, user);
 		}
 		public function backLogin(evt:Event):void{
-			facade.sendNotification(ApplicationFacade.TORNA_LOGIN);
+			facade.sendNotification(ApplicationFacade.BACK_TO_LOGIN);
 		}
 		
 		override public function handleNotification(notification:INotification):void{ 

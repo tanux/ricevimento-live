@@ -26,7 +26,7 @@
 		</mx:FormItem>
 		<mx:HRule width="100%"/>
 		<mx:Box horizontalAlign="center" width="100%">
-			<mx:Button label="Conferma Registrazione" id="btnConfermaRegistrazione"/>	
+			<mx:Button label="Conferma Registrazione" id="btnConfirmRegister"/>	
 		</mx:Box>
 		<mx:HRule width="100%"/>
 		<mx:Box horizontalAlign="center" width="100%" paddingTop="10">
