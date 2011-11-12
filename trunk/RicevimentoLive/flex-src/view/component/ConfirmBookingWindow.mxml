@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx"
+				title="Conferma la tua prenotazione"
+				layout="vertical" 
+				width="380" 
+				height="300"
+				titleStyleName="titleText"
+				backgroundColor="white"
+				backgroundAlpha="1.0"
+				borderColor="white"
+				borderAlpha="1.0"
+				cornerRadius="0"
+				showCloseButton="true"
+				creationComplete="facade.sendNotification(ApplicationFacade.SHOWED_CONFIRM_BOOKING_WINDOW,this)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		.titleText {
+			fontSize: 12px;			
+		}
+		.headingText {
+			fontSize: 12px;
+			fontWeight: bold;
+		}
+	</fx:Style>
+	<fx:Script>
+		<![CDATA[			
+			import model.vo.Booking;
+			import model.vo.Room;
+			import model.vo.Student;
+			import model.vo.Supervisor;
+			
+			import mx.controls.Alert;
+			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
+			[Bindable] public var booking:Booking = new Booking();
+		]]>
+	</fx:Script>
+	<mx:Text text="Dati della prenotazione"
+			 width="100%" height="20"
+			 styleName="titleText" />
+	<mx:Text id="txtStudentInfo" text="{booking.student.cognome} {booking.student.nome} - matricola:{booking.student.personalNumber} - CdL:{booking.student.degree}"
+			 width="100%" styleName="headingText"/> 
+	<mx:Text id="txtRoomInfo" text="Stanza scelta: {booking.room.name}"
+			 width="100%" styleName="headingText"/>
+	<mx:Text id="txtSupervisorInfo" text="Relatore scelto: {booking.supervisor.name} {booking.supervisor.surname}"
+			 width="100%" styleName="headingText"/>
+	<mx:Text id="txtAvailabilityInfo" text="Orario: {booking.date}"
+			 width="100%" styleName="headingText"/>
+	
+	<mx:TextArea id="taBookingReason" text="Descrivi brevemente il motivo del ricevimento"
+				 width="100%"
+				 height="50%" />
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Button label="Conferma" id="btnConfirmBooking"/>
+	</mx:HBox>	
+</mx:TitleWindow>
