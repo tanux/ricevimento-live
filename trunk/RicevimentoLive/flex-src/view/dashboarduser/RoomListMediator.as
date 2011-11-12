@@ -17,20 +17,27 @@ package view.dashboarduser
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.component.RoomList;
-	import view.main.MainApplicationMediator;
+	
 	
 	public class RoomListMediator extends Mediator implements IMediator{
 		
 		public static const NAME:String = "RoomListMediator"; 
-		public function RoomListMediator(viewComponent:Object=null){
+		public function RoomListMediator(viewComponent:Object){
 			super(NAME, viewComponent);	
 			
+			
+		}		
+		
+		public function notifyRoomSelected(evt:Event):void{
+			 
+			 
 		}
+		
 		override public function handleNotification(notification:INotification):void{ 
 			switch (notification.getName()){
 				case ApplicationFacade.GET_ROOMLIST_SUCCES:
 					var rooms:ArrayCollection = notification.getBody() as ArrayCollection;					
-					roomsList.roomlist = rooms;	
+					roomList.roomList = rooms;	
 					facade.sendNotification(ApplicationFacade.ROOMLIST_CREATED);
 					break;
 				case ApplicationFacade.GET_ROOMLIST_ERROR:
@@ -52,9 +59,9 @@ package view.dashboarduser
 				ApplicationFacade.ROOM_SELECTED
 			];	
 		}
-		
-		public function get roomsList():RoomList{
+		public function get roomList():RoomList{
 			return viewComponent as RoomList;
 		}
+		
 	}
 }

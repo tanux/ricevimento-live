@@ -1,4 +1,4 @@
-package view.main
+package view
 {
 	import controller.dashboard_user.ConfirmBookingCommand;
 	import controller.dashboard_user.GetRoomListCommand;
@@ -23,7 +23,6 @@ package view.main
 	import view.component.RoomList;
 	import view.dashboarduser.AvailabilitySupervisorListMediator;
 	import view.dashboarduser.ConfirmBookingWindowMediator;
-	import view.dashboarduser.RoomListMediator;
 	import view.dashboarduser.SupervisorListMediator;
 	import view.dashboarduser.UserBookingListMediator;
 	import view.register.RegisterUserFormMediator;
@@ -57,12 +56,13 @@ package view.main
 					Alert.show("Registrazione riuscita");
 					mainApplication.currentState = "login"
 					break;
-				case ApplicationFacade.TORNA_LOGIN:
+				case ApplicationFacade.BACK_TO_LOGIN:
 					mainApplication.currentState = "login";
 					break;
+				/*
 				case ApplicationFacade.GET_ROOMLIST:					
 					facade.registerMediator(new RoomListMediator(mainApplication.roomslist));					
-					break;
+					break; */
 				case ApplicationFacade.GET_SUPERVISOR_BY_ROOM:
 					facade.registerMediator(new SupervisorListMediator(mainApplication.supervisorsList));
 					break;
@@ -100,8 +100,8 @@ package view.main
 				ApplicationFacade.LOGIN_ERROR,
 				ApplicationFacade.DO_REGISTER,
 				ApplicationFacade.REGISTER_SUCCES,
-				ApplicationFacade.TORNA_LOGIN,
-				ApplicationFacade.GET_ROOMLIST,	
+				ApplicationFacade.BACK_TO_LOGIN,
+				//ApplicationFacade.GET_ROOMLIST,	
 				ApplicationFacade.GET_SUPERVISOR_BY_ROOM,
 				ApplicationFacade.SUPERVISOR_SELECTED,
 				ApplicationFacade.SHOWED_CONFIRM_BOOKING_WINDOW,

@@ -8,16 +8,20 @@ package controller
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
+	import view.dashboarduser.RoomListMediator;
 	import view.login.LoginFormMediator;
-	import view.main.MainApplicationMediator;
+	import view.MainApplicationMediator;
 	import view.register.RegisterUserFormMediator;
 	
 	public class StartupCommand extends SimpleCommand implements ICommand{
 		
 		override public function execute(notification:INotification):void{
 			var mainApplication:MainApplication = notification.getBody() as MainApplication; //prendo il component mxml
+			
 			facade.registerMediator(new MainApplicationMediator(mainApplication));
-			facade.registerMediator(new LoginFormMediator(mainApplication.login));			
+			facade.registerMediator(new LoginFormMediator(mainApplication.login));
+			facade.registerMediator(new RoomListMediator(mainApplication.roomslist));
+			
 			facade.registerCommand(ApplicationFacade.DO_LOGIN, DoLoginCommand);
 			facade.registerCommand(ApplicationFacade.DO_REGISTER, DoRegisterCommand);			
 		}

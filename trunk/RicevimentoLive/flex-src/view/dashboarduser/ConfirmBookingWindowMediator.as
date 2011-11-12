@@ -22,7 +22,7 @@ package view.dashboarduser
 	import view.component.AvailabilitySupervisorList;
 	import view.component.RoomList;
 	import view.component.SupervisorListByRoom;
-	import view.main.MainApplicationMediator;
+	import view.MainApplicationMediator;
 	
 	public class ConfirmBookingWindowMediator extends Mediator implements IMediator{
 		
