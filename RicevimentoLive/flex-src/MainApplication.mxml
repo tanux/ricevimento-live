@@ -18,7 +18,7 @@
 			import mx.controls.Alert;			
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;		
 			[Bindable] public var student:Student;
-			[Bindable] public var booking:Booking = new Booking();			
+			[Bindable] public var booking:Booking;			
 			/*NO GOOD*/
 			private function logout():void{				
 				this.currentState = "login";

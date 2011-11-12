@@ -23,7 +23,8 @@ package view.dashboard_user
 		
 		public static const NAME:String = "RoomListMediator"; 
 		public function RoomListMediator(viewComponent:Object=null){
-			super(NAME, viewComponent);			
+			super(NAME, viewComponent);	
+			
 		}
 		override public function handleNotification(notification:INotification):void{ 
 			switch (notification.getName()){

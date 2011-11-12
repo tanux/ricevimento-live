@@ -16,8 +16,12 @@
 			import mx.controls.Alert;
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;			
 			[Bindable] public var roomlist:ArrayCollection;
-			public function clickHandler(roomSelected:Room):void{				
-				facade.sendNotification(ApplicationFacade.ROOM_SELECTED, roomSelected);				
+			[Bindable] public var selectedRoom:Room;
+			public static const ROOMSELECTED:String = "RoomSelected";
+			public function clickHandler(roomSelected:Room):void{
+				selectedRoom = roomSelected;
+				//facade.sendNotification(ApplicationFacade.ROOM_SELECTED, roomSelected);
+				dispatchEvent(new Event(ROOMSELECTED)); //qui faccio il dispatch event personalizzato				
 			}			
 		]]>
 	</fx:Script>
