@@ -9,8 +9,8 @@ package controller.dashboard_user
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
-	import view.component.userBookingList;
-	import view.dashboard_user.UserBookingListMediator;
+	import view.component.UserBookingList;
+	import view.dashboarduser.UserBookingListMediator;
 	
 	public class GetUserBookingListCommand extends SimpleCommand implements ICommand{
 		override public function execute(notification:INotification):void{

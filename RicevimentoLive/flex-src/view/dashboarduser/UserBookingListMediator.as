@@ -1,4 +1,4 @@
-package view.dashboard_user
+package view.dashboarduser
 {
 	import model.vo.Booking;
 	import model.vo.Student;
@@ -10,7 +10,7 @@ package view.dashboard_user
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
-	import view.component.userBookingList;
+	import view.component.UserBookingList;
 	
 	public class UserBookingListMediator extends Mediator implements IMediator{
 		
@@ -39,8 +39,8 @@ package view.dashboard_user
 			];	
 		}
 		
-		public function get bookingList():userBookingList{
-			return viewComponent as userBookingList;
+		public function get bookingList():UserBookingList{
+			return viewComponent as UserBookingList;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package view.dashboard_user
+package view.dashboarduser
 {
 	import controller.dashboard_user.ConfirmBookingCommand;
 	
@@ -19,9 +19,9 @@ package view.dashboard_user
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.component.ConfirmBookingWindow;
-	import view.component.availabilitySupervisorList;
-	import view.component.roomList;
-	import view.component.supervisorListByRoom;
+	import view.component.AvailabilitySupervisorList;
+	import view.component.RoomList;
+	import view.component.SupervisorListByRoom;
 	import view.main.MainApplicationMediator;
 	
 	public class ConfirmBookingWindowMediator extends Mediator implements IMediator{

@@ -6,7 +6,7 @@ package controller.login
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
-	import view.register.RegisterUserMediator;
+	import view.register.RegisterUserFormMediator;
 	
 	public class DoRegisterCommand extends SimpleCommand implements ICommand{
 		override public function execute(notification:INotification):void{						

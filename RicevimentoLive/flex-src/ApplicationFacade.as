@@ -59,5 +59,8 @@ package
 			super.initializeController();
 			registerCommand(ApplicationFacade.STARTUP, StartupCommand);
 		}
+		public function startup (mainApp:MainApplication):void{
+			sendNotification( STARTUP, mainApp);
+		}
 	}
 }

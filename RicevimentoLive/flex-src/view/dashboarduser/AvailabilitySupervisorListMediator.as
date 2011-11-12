@@ -1,4 +1,4 @@
-package view.dashboard_user
+package view.dashboarduser
 {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -16,7 +16,7 @@ package view.dashboard_user
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.component.ConfirmBookingWindow;
-	import view.component.availabilitySupervisorList;
+	import view.component.AvailabilitySupervisorList;
 	
 	public class AvailabilitySupervisorListMediator extends Mediator implements IMediator {
 		
@@ -53,8 +53,8 @@ package view.dashboard_user
 				ApplicationFacade.AVAILABILITY_SELECTED
 			];	
 		}
-		public function get availabilityList():availabilitySupervisorList{
-			return viewComponent as availabilitySupervisorList;
+		public function get availabilityList():AvailabilitySupervisorList{
+			return viewComponent as AvailabilitySupervisorList;
 		}
 	}
 }
