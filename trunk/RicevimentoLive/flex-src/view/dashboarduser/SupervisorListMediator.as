@@ -1,4 +1,4 @@
-package view.dashboard_user
+package view.dashboarduser
 {
 	import model.vo.Supervisor;
 	
@@ -9,7 +9,7 @@ package view.dashboard_user
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
-	import view.component.supervisorListByRoom;
+	import view.component.SupervisorListByRoom;
 	import view.main.MainApplicationMediator;
 	
 	public class SupervisorListMediator extends Mediator implements IMediator{
@@ -38,8 +38,8 @@ package view.dashboard_user
 				ApplicationFacade.SUPERVISOR_SELECTED
 			];	
 		}
-		public function get supervisorsList():supervisorListByRoom{
-			return viewComponent as supervisorListByRoom;
+		public function get supervisorsList():SupervisorListByRoom{
+			return viewComponent as SupervisorListByRoom;
 		}
 	}
 }

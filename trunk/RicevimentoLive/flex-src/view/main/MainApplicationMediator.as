@@ -20,13 +20,13 @@ package view.main
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.component.ConfirmBookingWindow;
-	import view.component.roomList;
-	import view.dashboard_user.AvailabilitySupervisorListMediator;
-	import view.dashboard_user.ConfirmBookingWindowMediator;
-	import view.dashboard_user.RoomListMediator;
-	import view.dashboard_user.SupervisorListMediator;
-	import view.dashboard_user.UserBookingListMediator;
-	import view.register.RegisterUserMediator;
+	import view.component.RoomList;
+	import view.dashboarduser.AvailabilitySupervisorListMediator;
+	import view.dashboarduser.ConfirmBookingWindowMediator;
+	import view.dashboarduser.RoomListMediator;
+	import view.dashboarduser.SupervisorListMediator;
+	import view.dashboarduser.UserBookingListMediator;
+	import view.register.RegisterUserFormMediator;
 	
 	public class MainApplicationMediator extends Mediator implements IMediator{
 		
@@ -45,15 +45,13 @@ package view.main
 					mainApplication.currentState = "stateMainApplication";
 					var user:Student = notification.getBody() as Student;
 					mainApplication.student = user;
-					mainApplication.booking.student = user;
-					facade.registerMediator(new UserBookingListMediator(mainApplication.bookingListUser));
 					break;
 				case ApplicationFacade.LOGIN_ERROR:
 					Alert.show("Autenticazione non riuscita");
 					break;
 				case ApplicationFacade.DO_REGISTER:
 					mainApplication.currentState = "stateRegister";
-					facade.registerMediator(new RegisterUserMediator(mainApplication.registerUserForm));
+					facade.registerMediator(new RegisterUserFormMediator(mainApplication.registerUserForm));
 					break;	
 				case ApplicationFacade.REGISTER_SUCCES:
 					Alert.show("Registrazione riuscita");

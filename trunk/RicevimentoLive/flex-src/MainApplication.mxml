@@ -5,7 +5,7 @@
 			   xmlns:component="view.component.*"
 			   width="100%" height="100%" backgroundColor="#373378"
 			   pageTitle="Live Tutoring"
-			   creationComplete="facade.sendNotification(ApplicationFacade.STARTUP,this)">
+			   creationComplete="facade.startup(this)">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
@@ -13,10 +13,11 @@
 	<fx:Script>
 		<![CDATA[	
 			import model.vo.Booking;
-			import model.vo.Student;
+			import model.vo.Student;			
+			import mx.controls.Alert;
 			
-			import mx.controls.Alert;			
-			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;		
+			private var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;		
+			
 			[Bindable] public var student:Student;
 			[Bindable] public var booking:Booking;			
 			/*NO GOOD*/
@@ -40,16 +41,16 @@
 		</mx:ApplicationControlBar>		
 		<mx:VBox width="100%" horizontalAlign="center" paddingTop="70" paddingBottom="5">			
 			<mx:Image  width="200" height="200" source="@Embed('assets/logo.png')" includeIn="login, stateRegister"/>									
-			<component:loginForm id="login" includeIn="login"/>				
-			<component:registerUserForm id="registerUserForm" includeIn="stateRegister"/>
+			<component:LoginForm id="login" includeIn="login"/>				
+			<component:RegisterUserForm id="registerUserForm" includeIn="stateRegister"/>
 			<mx:VBox verticalGap.stateMainApplication="50" horizontalAlign="center" includeIn="stateMainApplication">
 				<mx:HBox horizontalGap.stateMainApplication="100" paddingLeft.stateMainApplication="50">
-					<component:roomList id="roomslist" />
-					<component:supervisorListByRoom id="supervisorsList" />			
+					<component:RoomList id="roomslist" />
+					<component:SupervisorListByRoom id="supervisorsList" />			
 				</mx:HBox>
 				<mx:HBox horizontalGap.stateMainApplication="100" paddingLeft.stateMainApplication="50">
-					<component:availabilitySupervisorList id="availabilityList"/>
-					<component:userBookingList id="bookingListUser" />
+					<component:AvailabilitySupervisorList id="availabilityList"/>
+					<component:UserBookingList id="bookingListUser" />
 				</mx:HBox>
 			</mx:VBox>
 		</mx:VBox>	

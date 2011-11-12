@@ -1,4 +1,4 @@
-package view.dashboard_user
+package view.dashboarduser
 {
 	import controller.dashboard_user.GetRoomListCommand;
 	
@@ -16,7 +16,7 @@ package view.dashboard_user
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
-	import view.component.roomList;
+	import view.component.RoomList;
 	import view.main.MainApplicationMediator;
 	
 	public class RoomListMediator extends Mediator implements IMediator{
@@ -53,8 +53,8 @@ package view.dashboard_user
 			];	
 		}
 		
-		public function get roomsList():roomList{
-			return viewComponent as roomList;
+		public function get roomsList():RoomList{
+			return viewComponent as RoomList;
 		}
 	}
 }
