@@ -13,18 +13,17 @@ package controller.dashboard_user
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
 	public class GetRoomListCommand extends SimpleCommand implements ICommand{
-		override public function execute(notification:INotification):void{						
+		override public function execute(notification:INotification):void{
 			if (facade.hasProxy(RoomListProxy.NAME)){
 				var roomListProxy:RoomListProxy = facade.retrieveProxy(RoomListProxy.NAME) as RoomListProxy;
-				roomListProxy.getRoomList();
-				facade.registerCommand(ApplicationFacade.GET_SUPERVISOR_BY_ROOM, GetSupervisorListCommand);
+				roomListProxy.getRoomList();			
 			}
 			else{
 				var roomListProxy:RoomListProxy = new RoomListProxy(RoomListProxy.NAME);
 				roomListProxy.getRoomList();
 				facade.registerProxy(roomListProxy);
-				facade.registerCommand(ApplicationFacade.GET_SUPERVISOR_BY_ROOM, GetSupervisorListCommand);
 			}
+			facade.registerCommand(ApplicationFacade.GET_SUPERVISOR_BY_ROOM, GetSupervisorListCommand);
 		}	
 	}
 }

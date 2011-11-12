@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+          xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:yahoo="http://www.yahoo.com/astra/2006/mxml"
+        creationComplete="init()" paddingLeft="5" paddingRight="5" paddingTop="5" paddingBottom="5" >
+    <fx:Metadata>
+        [Event(name="change")]
+    </fx:Metadata>
+    <fx:Script><![CDATA[
+        import com.adobe.serializers.json.JSONDecoder;
+        import com.adobe.serializers.json.JSONEncoder;
+        
+        import mx.controls.Alert;
+        
+        [Bindable] private var _day:String;
+        [Bindable] private var _active:Boolean;
+        [Bindable] private var _time_span_1:TimeSegment = setDateToTimeSegment(new Date(0,0,0,0,0,0),new Date(0,0,0,0,0,0));;
+        [Bindable] private var _time_span_2:TimeSegment = setDateToTimeSegment(new Date(0,0,0,0,0,0),new Date(0,0,0,0,0,0));;
+        [Bindable] private var _flag_active_24:Boolean;
+        [Bindable] private var _customDataprovider:String;
+        public var max_width:int = 112;
+
+        private function dataChanged():void{
+            dispatchEvent(new Event("change",true));
+        }
+
+        private function init():void {
+            /*setActiveInactive(active);*/
+            setActive2424(new Event(Event.CHANGE));
+            clearComponent();
+            activate_flag.addEventListener(Event.CHANGE, setActiveInactive);
+            de_activate_flag.addEventListener(Event.CHANGE,setActiveInactive);
+            active_24_24.addEventListener(Event.CHANGE, setActive2424);
+            
+        }
+        
+        
+        public function set day(d:String) : void {
+            _day = d;
+        }
+        
+        public function set active(a:Boolean) : void {
+            _active = a;
+        }
+        
+        public function set time_span_1(t:TimeSegment) : void {
+            _time_span_1 = t;   
+        }
+        
+        public function set time_span_2(t:TimeSegment) : void {
+            _time_span_2 = t;
+        }
+        
+        public function set flag_active_24(f:Boolean) : void {
+            _flag_active_24 = f;
+        }
+        
+        public function get day() : String {
+            return _day;
+        }
+        
+        public function get active() : Boolean {
+            return _active;
+        }
+        
+        public function get time_span_1() : TimeSegment {
+            return _time_span_1;   
+        }
+        
+        public function get time_span_2() : TimeSegment {
+            return _time_span_2;
+        }
+        
+        public function get flag_active_24() : Boolean {
+            return _flag_active_24;
+        }
+        
+        public function get customDataprovider() : String {
+            return _customDataprovider;
+        }
+        
+        public function set customDataprovider(s:String) : void {
+            _customDataprovider = s;
+        }
+        
+        private function setActiveInactive(evt:Event):void {
+            var active:Boolean;
+            if(evt.target.id == "activate_flag") 
+                active=true;
+            else active=false;
+            
+            this.active = active;
+            if(active) {
+                first_time_span.enabled = true;
+                second_time_span.enabled = true;
+                active_24_24.enabled = true;
+            }
+            else {
+                c_time_span_1_start.value = new Date(0,0,0,0,0,0);
+                c_time_span_1_end.value = new Date(0,0,0,0,0,0);
+                c_time_span_2_start.value = new Date(0,0,0,0,0,0);
+                c_time_span_2_end.value = new Date(0,0,0,0,0,0);
+                first_time_span.enabled = false;
+                second_time_span.enabled = false;
+                active_24_24.enabled = false;
+                active_24_24.selected = false;
+            }
+            updateTimeBar();
+        }
+
+        private function updateTimeBar():void {
+
+            //var max_width:int = width;
+            var green_sq1_start:int = 0;
+            var green_sq1_end:int = 0;
+            var green_sq2_start:int = 0;
+            var green_sq2_end:int = 0;
+
+            if(activate_flag.selected) {
+                green_sq1_start = c_time_span_1_start.value.getHours()*60 + c_time_span_1_start.value.getMinutes();
+                green_sq1_end   = c_time_span_1_end.value.getHours()*60 + c_time_span_1_end.value.getMinutes()+1;
+                green_sq2_start = c_time_span_2_start.value.getHours()*60 + c_time_span_2_start.value.getMinutes();
+                green_sq2_end   = c_time_span_2_end.value.getHours()*60 + c_time_span_2_end.value.getMinutes()+1;
+            }
+            
+            green_sq1_start = Math.floor(green_sq1_start * max_width / 1440);
+            green_sq1_end = Math.floor(green_sq1_end * max_width / 1440);
+            green_sq2_start = Math.floor(green_sq2_start * max_width / 1440);
+            green_sq2_end = Math.floor(green_sq2_end * max_width / 1440);
+
+            if(green_sq2_start < green_sq1_end) {
+                green_sq2_start = green_sq1_end;
+            }
+
+            if(green_sq2_end < green_sq1_end) {
+                green_sq2_end = green_sq1_end;
+            }
+
+            red_bar_left.width = green_sq1_start;
+            green_bar_1.width = (green_sq1_end - green_sq1_start);
+            red_bar_center.width = (green_sq2_start - green_sq1_end);
+            green_bar_2.width = (green_sq2_end - green_sq2_start);
+            red_bar_right.width = (max_width - green_sq2_end);
+        }
+
+        private function setActive2424(evt:Event) : void  {
+            if(active_24_24.selected) {
+                c_time_span_1_start.value = new Date(1970,1,1,0,0,0);
+                c_time_span_1_end.value = new Date(1970,1,1,23,59,59);
+                c_time_span_2_start.value = new Date(1970,1,1,0,0,0);
+                c_time_span_2_end.value = new Date(1970,1,1,23,59,59);
+            }
+            updateTimeBar();
+        }
+        
+        public function getJson() : Object {
+            var o:Object = new Object();
+            o.time_span_1_start = this.c_time_span_1_start.value;
+            o.time_span_1_end = this.c_time_span_1_end.value;
+            o.time_span_2_start = this.c_time_span_2_start.value;
+            o.time_span_2_end = this.c_time_span_2_end.value;
+            o.active = this.activate_flag.selected;
+            o.active_24_24 = this.active_24_24.selected;
+            //o.customDataprovider = this.customDataprovider;
+            //var encoder : JSONEncoder = new JSONEncoder()
+            return o;
+        }
+        
+        public function setDataFromJSON(dp:String, day:String) : void {
+            if (dp != null) {
+                var decoder:JSONDecoder = new JSONDecoder();
+                var o:Object = decoder.decode(dp);
+                setComponentObject(o[day]);
+            }
+        }
+        
+        private function setDateToTimeSegment(start:Date, end:Date) : TimeSegment {
+            var t:TimeSegment = new TimeSegment(start.getHours(),start.getMinutes(),end.getHours(),end.getMinutes());
+            return t;
+        }
+        
+        private function setComponentObject(obj:Object) : void {
+            flag_active_24 = obj.active_24_24;
+            time_span_1 = setDateToTimeSegment(new Date(obj.time_span_1_start),new Date(obj.time_span_1_end));
+            time_span_2 = setDateToTimeSegment(new Date(obj.time_span_2_start),new Date(obj.time_span_2_end));
+            active = obj.active;
+            
+            if(active) {
+                activate_flag.selected = true;
+                activate_flag.dispatchEvent(new Event(Event.CHANGE));
+            } else {
+                activate_flag.selected = false;
+                de_activate_flag.dispatchEvent(new Event(Event.CHANGE));
+            }
+            if(flag_active_24) {
+                active_24_24.dispatchEvent(new Event(Event.CHANGE));
+            }
+            activate_flag.selected = active;
+            de_activate_flag.selected = !active;
+        }
+        
+        public function clearComponent() : void {
+            de_activate_flag.selected = true;
+            de_activate_flag.dispatchEvent(new Event(Event.CHANGE));
+            
+            /*first_time_span.enabled = false;
+            second_time_span.enabled = false;*/
+            active_24_24.enabled = false;
+            active_24_24.selected = false;
+        }
+        ]]>
+    </fx:Script>
+    <s:Label textAlign="center" width="100%" fontWeight="bold" fontSize="12">
+        <s:text>{_day}</s:text>
+    </s:Label>
+    <s:RadioButton id="de_activate_flag" label="Non Attivo" selected="true"/>
+    <s:RadioButton id="activate_flag" label="Attivo" selected="false"/>
+    <s:CheckBox id="active_24_24" label="24/24" selected="{_flag_active_24}"/>
+    <s:HGroup id="first_time_span">
+        <yahoo:TimeInput id="c_time_span_1_start" change="updateTimeBar()" showAMPM="false" useTwelveHourFormat="false" value="{_time_span_1.getStartDate()}"/>
+        <yahoo:TimeInput id="c_time_span_1_end" change="updateTimeBar()" showAMPM="false" useTwelveHourFormat="false" value="{_time_span_1.getEndDate()}"/>
+    </s:HGroup>
+    <mx:HRule width="100%"/>
+    <s:HGroup id="second_time_span">
+        <yahoo:TimeInput id="c_time_span_2_start" showAMPM="false" change="updateTimeBar()" useTwelveHourFormat="false" value="{_time_span_2.getStartDate()}"/>
+        <yahoo:TimeInput id="c_time_span_2_end" showAMPM="false" change="updateTimeBar()" useTwelveHourFormat="false" value="{_time_span_2.getEndDate()}"/>
+    </s:HGroup>
+    <s:HGroup gap="0" width="100%">
+        <s:Graphic>
+            <s:Rect id="red_bar_left" width="5" height="15">
+                <s:fill>
+                    <s:SolidColor color="0xFF0000"/>
+                </s:fill>
+            </s:Rect>
+        </s:Graphic>
+        <s:Graphic id="green_bar_1">
+            <s:Rect width="5" height="15">
+                <s:fill>
+                    <s:SolidColor color="0x00FF00"/>
+                </s:fill>
+            </s:Rect>
+        </s:Graphic>
+        <s:Graphic id="red_bar_center">
+            <s:Rect width="5" height="15">
+                <s:fill>
+                    <s:SolidColor color="0xFF0000"/>
+                </s:fill>
+            </s:Rect>
+        </s:Graphic>
+        <s:Graphic id="green_bar_2">
+            <s:Rect width="5" height="15">
+                <s:fill>
+                    <s:SolidColor color="0x00FF00"/>
+                </s:fill>
+            </s:Rect>
+        </s:Graphic>
+        <s:Graphic id="red_bar_right">
+            <s:Rect width="5" height="15">
+                <s:fill>
+                    <s:SolidColor color="0xFF0000"/>
+                </s:fill>
+            </s:Rect>
+        </s:Graphic>
+    </s:HGroup>
+</s:VGroup>
