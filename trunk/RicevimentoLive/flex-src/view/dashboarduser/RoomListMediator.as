@@ -23,8 +23,7 @@ package view.dashboarduser
 		
 		public static const NAME:String = "RoomListMediator"; 
 		public function RoomListMediator(viewComponent:Object){
-			super(NAME, viewComponent);	
-			
+			super(NAME, viewComponent);			
 			
 		}		
 		
@@ -37,7 +36,7 @@ package view.dashboarduser
 			switch (notification.getName()){
 				case ApplicationFacade.GET_ROOMLIST_SUCCES:
 					var rooms:ArrayCollection = notification.getBody() as ArrayCollection;					
-					roomList.roomList = rooms;	
+					//roomList.roomList = rooms;	
 					facade.sendNotification(ApplicationFacade.ROOMLIST_CREATED);
 					break;
 				case ApplicationFacade.GET_ROOMLIST_ERROR:
