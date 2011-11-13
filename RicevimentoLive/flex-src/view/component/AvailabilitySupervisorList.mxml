@@ -32,6 +32,7 @@
 			}
 			private function confirmBookingTitleWindowClose(evt:CloseEvent):void {
 				PopUpManager.removePopUp(confirmBookingTitleWindow);
+				dispatchEvent(new Event("Mnn"));
 			}
 		]]>
 	</fx:Script>
