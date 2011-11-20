@@ -7,6 +7,7 @@ package view
 	import flash.events.MouseEvent;
 	
 	import model.LoginProxy;
+	import model.vo.Booking;
 	import model.vo.Room;
 	import model.vo.Student;
 	import model.vo.Supervisor;
@@ -23,6 +24,7 @@ package view
 	import view.component.RoomList;
 	import view.dashboarduser.AvailabilitySupervisorListMediator;
 	import view.dashboarduser.ConfirmBookingWindowMediator;
+	import view.dashboarduser.RoomListMediator;
 	import view.dashboarduser.SupervisorListMediator;
 	import view.dashboarduser.UserBookingListMediator;
 	import view.register.RegisterUserFormMediator;
@@ -44,7 +46,11 @@ package view
 					mainApplication.currentState = "stateMainApplication";
 					var user:Student = notification.getBody() as Student;
 					mainApplication.student = user;
-					break;
+					facade.registerMediator(new RoomListMediator(mainApplication.roomsList));
+					facade.registerMediator(new SupervisorListMediator(mainApplication.supervisorsList));
+					facade.registerMediator(new AvailabilitySupervisorListMediator(mainApplication.availabilityList));
+					facade.registerMediator(new UserBookingListMediator(mainApplication.bookingListUser));
+				break;
 				case ApplicationFacade.LOGIN_ERROR:
 					Alert.show("Autenticazione non riuscita");
 					break;
@@ -59,38 +65,6 @@ package view
 				case ApplicationFacade.BACK_TO_LOGIN:
 					mainApplication.currentState = "login";
 					break;
-				/*
-				case ApplicationFacade.GET_ROOMLIST:					
-					facade.registerMediator(new RoomListMediator(mainApplication.roomslist));					
-					break; */
-				case ApplicationFacade.GET_SUPERVISOR_BY_ROOM:
-					facade.registerMediator(new SupervisorListMediator(mainApplication.supervisorsList));
-					break;
-				case ApplicationFacade.SUPERVISOR_SELECTED:
-					facade.registerMediator(new AvailabilitySupervisorListMediator(mainApplication.availabilityList));					
-					break;
-				case ApplicationFacade.SHOWED_CONFIRM_BOOKING_WINDOW:					
-					var confirmBookingWindow:ConfirmBookingWindow = notification.getBody() as ConfirmBookingWindow;
-					facade.registerMediator(new ConfirmBookingWindowMediator(confirmBookingWindow));
-					break;
-				case ApplicationFacade.PUT_ROOM_SELECTED_IN_BOOKING:
-					var room:Room = notification.getBody() as Room;
-					mainApplication.booking.room = room;					
-					break;
-				case ApplicationFacade.PUT_SUPERVISOR_SELECTED_IN_BOOKING:
-					var supervisor:Supervisor = notification.getBody() as Supervisor;
-					mainApplication.booking.supervisor = supervisor;
-					break;
-				case ApplicationFacade.PUT_AVAILABILITY_SELECTED_IN_BOOKING:
-					var availability:Timewindow = notification.getBody() as Timewindow;
-					mainApplication.booking.date = availability.window;
-					facade.sendNotification(ApplicationFacade.SEND_DATA_BOOKING, mainApplication.booking);
-					break;
-				case ApplicationFacade.CONFIRM_BOOKING_SUCCESS:
-					Alert.show("Prenotazione inoltrata con successo");
-					break;
-				case ApplicationFacade.GET_USER_BOOKINGLIST:
-					break;
 			}
 		}
 		
@@ -101,15 +75,6 @@ package view
 				ApplicationFacade.DO_REGISTER,
 				ApplicationFacade.REGISTER_SUCCES,
 				ApplicationFacade.BACK_TO_LOGIN,
-				//ApplicationFacade.GET_ROOMLIST,	
-				ApplicationFacade.GET_SUPERVISOR_BY_ROOM,
-				ApplicationFacade.SUPERVISOR_SELECTED,
-				ApplicationFacade.SHOWED_CONFIRM_BOOKING_WINDOW,
-				ApplicationFacade.PUT_ROOM_SELECTED_IN_BOOKING,
-				ApplicationFacade.PUT_SUPERVISOR_SELECTED_IN_BOOKING,
-				ApplicationFacade.PUT_AVAILABILITY_SELECTED_IN_BOOKING,
-				ApplicationFacade.CONFIRM_BOOKING_SUCCESS,
-				ApplicationFacade.GET_USER_BOOKINGLIST
 			];	
 		}		
 		public function get mainApplication():MainApplication{ 

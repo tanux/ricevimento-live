@@ -23,7 +23,7 @@ package controller.dashboard_user
 				roomListProxy.getRoomList();
 				facade.registerProxy(roomListProxy);
 			}
-			facade.registerCommand(ApplicationFacade.GET_SUPERVISOR_BY_ROOM, GetSupervisorListCommand);
+			facade.registerCommand(ApplicationFacade.GET_SUPERVISORLIST_BY_ROOM, GetSupervisorListCommand);
 		}	
 	}
 }

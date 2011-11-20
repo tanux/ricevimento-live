@@ -11,6 +11,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Example;
 
+import flex.messaging.io.ArrayCollection;
+
 import util.HibernateFactory;
 import model.beans.Booking;
 import model.beans.Room;
@@ -93,12 +95,33 @@ public class DashboardUserService {
 		s.getTransaction().commit();
 		s.close();
 	}
-	public List getBookingList(String idStudent){
+	private List _getBookingList(String idStudent){	
 		Session s = HibernateFactory.openSession();
 		String query = "from Booking where id_student = :id_student";
 		Query q = s.createQuery(query);
 		q.setParameter("id_student", idStudent);
 		List bookings = q.list();
+		
+		HibernateFactory.closeSession(s);
+		
+		return bookings;
+	}
+	public LinkedList<Booking> getBookingList(String idStudent){
+		List _bookings = _getBookingList(idStudent);
+		LinkedList<Booking> bookings = new LinkedList<Booking>();
+		Iterator<Booking> it = _bookings.iterator();
+		Session s = HibernateFactory.openSession();
+		while (it.hasNext()){
+			Supervisor supervisor = new Supervisor();
+			Booking currentBooking = it.next();
+			String query = "from Supervisor where id = :id_supervisor";
+			Query q = s.createQuery(query);
+			q.setParameter("id_supervisor", currentBooking.getSupervisor().getId());
+			supervisor = (Supervisor)q.uniqueResult();
+			currentBooking.setSupervisor(supervisor);
+			bookings.add(currentBooking);
+		}
+		HibernateFactory.closeSession(s);
 		return bookings;
 	}
 }

@@ -40,6 +40,11 @@ public class Booking implements java.io.Serializable {
 		this.reasonBooking = reasonBooking;
 		this.date = date;	
 	}
+	public Booking(Supervisor supervisor, String reasonBooking, String date){
+		this.supervisor = supervisor;
+		this.reasonBooking = reasonBooking;
+		this.date = date;
+	}
 
 	public Integer getId() {
 		return this.id;

@@ -1,15 +1,11 @@
 package util;
-
-
 import java.lang.management.ManagementFactory;
-
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.MBeanRegistrationException;
 import javax.management.MBeanServer;
 import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
-
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.jmx.StatisticsService;
@@ -21,7 +17,6 @@ import org.slf4j.LoggerFactory;
 * @author Blackdog
 * @version 0.1 Agu 3, 2010.
 */
-
 
 public class HibernateFactory {
 	
@@ -67,8 +62,7 @@ public class HibernateFactory {
 	/** getSessionFactory()
 	 * 
 	 * @return			SessionFactory
-	 */
-	
+	 */	
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -77,8 +71,7 @@ public class HibernateFactory {
 	 * 
 	 * @param transaction Transaction In caso di errore effettua il rollback sulla transaction da chiudere
 	 *
-	 */
-	
+	 */	
 	public static void rollback(Transaction transaction) {
 		try {
 			if (transaction != null) {
@@ -88,7 +81,6 @@ public class HibernateFactory {
 			logger.error("Couldn't rollback Transaction", e);
 		}
 	}
-
 	
 	public static Session openSession() throws HibernateException {
         Session s = sessionFactory.openSession();

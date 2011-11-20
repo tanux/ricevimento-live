@@ -28,8 +28,7 @@ package model
 		public function onResult(evt:ResultEvent):void{
 			switch( (evt.token.message as RemotingMessage).operation){
 				case "getBookingList":
-					if (evt.result != null){						
-						setData(evt.result);
+					if (evt.result != null){
 						sendNotification(ApplicationFacade.GET_USER_BOOKINGLIST_SUCCES, evt.result);
 					}
 					else{

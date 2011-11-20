@@ -14,14 +14,13 @@ package controller.dashboard_user
 			if (facade.hasProxy(AvailabilityListProxy.NAME)){
 				var availabilityListProxy:AvailabilityListProxy = facade.retrieveProxy(AvailabilityListProxy.NAME) as AvailabilityListProxy;
 				availabilityListProxy.getAvailabilityList(id_supervisor);
-				facade.registerCommand(ApplicationFacade.CONFIRM_BOOKING, ConfirmBookingCommand);
 			}
 			else{
 				var availabilityListProxy:AvailabilityListProxy = new AvailabilityListProxy(AvailabilityListProxy.NAME);
 				availabilityListProxy.getAvailabilityList(id_supervisor);
-				facade.registerProxy(availabilityListProxy);		
-				facade.registerCommand(ApplicationFacade.CONFIRM_BOOKING, ConfirmBookingCommand);
+				facade.registerProxy(availabilityListProxy);
 			}
+			facade.registerCommand(ApplicationFacade.CONFIRM_BOOKING, ConfirmBookingCommand);
 		}
 	}
 }

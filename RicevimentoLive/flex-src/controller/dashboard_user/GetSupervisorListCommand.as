@@ -15,15 +15,14 @@ package controller.dashboard_user
 			var id_room:String = notification.getBody() as String;
 			if (facade.hasProxy(SupervisorListProxy.NAME)){
 				var supervisorListProxy:SupervisorListProxy = facade.retrieveProxy(SupervisorListProxy.NAME) as SupervisorListProxy;
-				supervisorListProxy.getSupervisorList(id_room);
-				facade.registerCommand(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, GetAvailabilityListCommand);				
+				supervisorListProxy.getSupervisorList(id_room);								
 			}
 			else{
 				var supervisorListProxy:SupervisorListProxy = new SupervisorListProxy(SupervisorListProxy.NAME);
 				supervisorListProxy.getSupervisorList(id_room);
-				facade.registerProxy(supervisorListProxy);	
-				facade.registerCommand(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, GetAvailabilityListCommand);				
+				facade.registerProxy(supervisorListProxy);
 			}
+			facade.registerCommand(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR, GetAvailabilityListCommand);
 		}
 	}
 }

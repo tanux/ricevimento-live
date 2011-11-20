@@ -13,7 +13,7 @@
 				borderAlpha="1.0"
 				cornerRadius="0"
 				showCloseButton="true"
-				creationComplete="facade.sendNotification(ApplicationFacade.SHOWED_CONFIRM_BOOKING_WINDOW,this)">
+				creationComplete="showedConfirmWindow()">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
@@ -37,7 +37,11 @@
 			
 			import mx.controls.Alert;
 			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
-			[Bindable] public var booking:Booking = new Booking();
+			public static const SHOWED_CONFIRM_BOOKING_WINDOW:String = "ShowedConfirmBookingWindow";
+			[Bindable] public var booking:Booking;
+			private function showedConfirmWindow():void{
+				dispatchEvent(new Event (SHOWED_CONFIRM_BOOKING_WINDOW) );
+			}
 		]]>
 	</fx:Script>
 	<mx:Text text="Dati della prenotazione"

@@ -5,7 +5,7 @@
 			   xmlns:component="view.component.*"
 			   width="100%" height="100%" backgroundColor="#373378"
 			   pageTitle="Live Tutoring"
-			   creationComplete="facade.startup(this)">
+			   creationComplete="facade.sendNotification(ApplicationFacade.STARTUP, this);">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
@@ -13,13 +13,14 @@
 	<fx:Script>
 		<![CDATA[	
 			import model.vo.Booking;
-			import model.vo.Student;			
+			import model.vo.Student;
+			
 			import mx.controls.Alert;
 			
 			private var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;		
 			
 			[Bindable] public var student:Student;
-			[Bindable] public var booking:Booking;			
+			[Bindable] public var booking:Booking = new Booking();			
 			/*NO GOOD*/
 			private function logout():void{				
 				this.currentState = "login";
@@ -45,7 +46,7 @@
 			<component:RegisterUserForm id="registerUserForm" includeIn="stateRegister"/>
 			<mx:VBox verticalGap.stateMainApplication="50" horizontalAlign="center" includeIn="stateMainApplication">
 				<mx:HBox horizontalGap.stateMainApplication="100" paddingLeft.stateMainApplication="50">
-					<component:RoomList id="roomslist" />
+					<component:RoomList id="roomsList" />
 					<component:SupervisorListByRoom id="supervisorsList" />			
 				</mx:HBox>
 				<mx:HBox horizontalGap.stateMainApplication="100" paddingLeft.stateMainApplication="50">
