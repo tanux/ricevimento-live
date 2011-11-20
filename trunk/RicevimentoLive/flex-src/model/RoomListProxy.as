@@ -12,6 +12,8 @@ package model
 	import org.puremvc.as3.interfaces.IProxy;
 	import org.puremvc.as3.patterns.proxy.Proxy;
 	
+	import view.component.RoomList;
+	
 	public class RoomListProxy extends Proxy implements IProxy{
 		
 		private var service:DashboardUserService;
@@ -29,18 +31,17 @@ package model
 		public function onResult(evt:ResultEvent){
 			switch( (evt.token.message as RemotingMessage).operation){
 				case "getRoomList":
-					if (evt.result != null){						
-						setData(evt.result);
+					if (evt.result != null){
 						sendNotification(ApplicationFacade.GET_ROOMLIST_SUCCES, evt.result);
 					}
 					else{
 						sendNotification(ApplicationFacade.GET_ROOMLIST_ERROR,evt.result);
 					}
-					break;
+				break;
 			}
 		}
 		public function onFault(evt:FaultEvent){
-			
+			Alert.show("FaultEvent:Errore inizializzazione elenco stanze");
 		}
 	}
 }

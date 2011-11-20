@@ -19,8 +19,7 @@ package controller
 			var mainApplication:MainApplication = notification.getBody() as MainApplication; //prendo il component mxml
 			
 			facade.registerMediator(new MainApplicationMediator(mainApplication));
-			facade.registerMediator(new LoginFormMediator(mainApplication.login));
-			facade.registerMediator(new RoomListMediator(mainApplication.roomslist));
+			facade.registerMediator(new LoginFormMediator(mainApplication.login));			
 			
 			facade.registerCommand(ApplicationFacade.DO_LOGIN, DoLoginCommand);
 			facade.registerCommand(ApplicationFacade.DO_REGISTER, DoRegisterCommand);			

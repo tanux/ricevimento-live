@@ -20,24 +20,26 @@ package model
 		private var service:DashboardUserService;
 		private var responder:Responder;		
 		public static const NAME:String = "ConfirmBookingProxy";
+		public var booking:Booking;
 		public function ConfirmBookingProxy(proxyName:String){
 			super(proxyName);
 			service = new DashboardUserService();
 			responder = new Responder(onResult, onFault);
 		}
-		public function doBooking(booking:Booking):void{
-			var at:AsyncToken = service.doBooking(booking.student.id.toString(), 
-												  booking.supervisor.id.toString(), 
-												  booking.room.id.toString(), 
-												  booking.reasonBooking, 
-												  booking.date);
+		public function doBooking(booking:Booking):void{	
+			this.booking = booking;
+			var at:AsyncToken = service.doBooking(this.booking.student.id.toString(), 
+												  this.booking.supervisor.id.toString(), 
+												  this.booking.room.id.toString(), 
+												  this.booking.reasonBooking, 
+												  this.booking.date);			
 			at.addResponder(responder);
 		}
 		public function onResult(evt:ResultEvent):void{
 			switch( (evt.token.message as RemotingMessage).operation){
 				case "doBooking":
-					if (evt.result != null){
-						sendNotification(ApplicationFacade.CONFIRM_BOOKING_SUCCESS, evt.result);
+					if (evt.result == null){
+						sendNotification(ApplicationFacade.CONFIRM_BOOKING_SUCCESS, this.booking);
 					}
 					else{
 						sendNotification(ApplicationFacade.CONFIRM_BOOKING_ERROR, evt.result);
@@ -46,7 +48,7 @@ package model
 			}
 		}
 		public function onFault(evt:FaultEvent):void{
-			Alert.show("FAULT in ConfirmBookingProxy :(");
+			Alert.show("FAULT Imprevisto :(");
 		}
 	}
 }

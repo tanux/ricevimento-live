@@ -21,6 +21,7 @@ package controller.dashboard_user
 				confirmBookingProxy.doBooking(booking);
 				facade.registerProxy(confirmBookingProxy);
 			}
+			facade.registerCommand(ApplicationFacade.ADD_BOOKING_IN_LIST, AddBookingCommand);
 		}
 	}
 }

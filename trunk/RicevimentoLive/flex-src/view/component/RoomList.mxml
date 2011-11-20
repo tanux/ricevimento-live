@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel  xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		   xmlns:s="library://ns.adobe.com/flex/spark" 
+		   xmlns:mx="library://ns.adobe.com/flex/mx"
+		   title="Elenco Stanze"
+		   width="400" height="200"		   
+		   cornerRadius="10"
+		   paddingBottom="3" paddingTop="3" paddingRight="3" paddingLeft="3">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import model.vo.Room;			
+			import mx.collections.ArrayCollection;
+			
+			public static const ROOM_SELECTED:String = "RoomSelected";
+			[Bindable] public var roomList:ArrayCollection;
+			[Bindable] public var roomSelected:Room;
+			
+			public function selectRoom(selectedRoom:Room):void{
+				roomSelected = selectedRoom;
+				dispatchEvent( new Event (ROOM_SELECTED) );						
+			}
+		]]>
+	</fx:Script>
+	<mx:Accordion id="accordion" width="100%" resizeToContent="true">
+		<mx:Repeater id="room" dataProvider="{roomList}">
+			<mx:HBox label="#{String(room.currentItem.id)}:{String(room.currentItem.name)}" paddingTop="5" >
+				<mx:Box id="boxTopic" width="275">
+					<mx:Text text="{String(room.currentItem.topic)}" width="275" />
+				</mx:Box>
+				<mx:Box id="boxBtnSelectRoom" height="50" verticalAlign="middle">
+					<mx:Button label="Seleziona" id="btnSelectRoom" click="selectRoom(event.currentTarget.getRepeaterItem())" />                                    
+				</mx:Box>                               
+			</mx:HBox>                              
+		</mx:Repeater>  
+	</mx:Accordion> 
+</mx:Panel>

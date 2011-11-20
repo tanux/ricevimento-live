@@ -14,9 +14,8 @@ package controller.dashboard_user
 	
 	public class GetUserBookingListCommand extends SimpleCommand implements ICommand{
 		override public function execute(notification:INotification):void{
-			var student:Student;
-			var id_student:String = student.id as String;
-			Alert.show("Sono Command e ho id_student:"+id_student);
+			var student:Student = notification.getBody() as Student;
+			var id_student:String = student.id.toString();
 			if (facade.hasProxy(UserBookingListProxy.NAME)){	
 				var userBookingListProxy:UserBookingListProxy = facade.retrieveProxy(UserBookingListProxy.NAME) as UserBookingListProxy;
 				userBookingListProxy.getBookingList(id_student);

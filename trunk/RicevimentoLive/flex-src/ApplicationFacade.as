@@ -23,23 +23,19 @@ package
 		public static const LOGIN_SUCCESS:String = "LoginSuccess";
 		public static const LOGIN_ERROR:String = "LoginError";
 		public static const LOGIN_FAULT:String = "LoginFault";
-		public static const ROOMLIST_CREATE:String = "RoomListCreate";
-		public static const GET_ROOMLIST:String = "GetRoomList";
 		public static const GET_ROOMLIST_SUCCES:String = "GetRoomListSucces";
 		public static const GET_ROOMLIST_ERROR:String = "GetRoomListError";
 		public static const ROOMLIST_CREATED:String = "RoomListCreated";
 		public static const ROOM_SELECTED:String = "RoomSelected";		
-		public static const GET_SUPERVISOR_BY_ROOM:String = "GetSupervisorByRoom";
-		public static const GET_SUPERVISOR_BY_ROOM_SUCCESS:String = "GetSupervisorByRoomSuccess";
-		public static const GET_SUPERVISOR_BY_ROOM_ERROR:String = "GetSupervisorByRoomError";
+		public static const GET_SUPERVISORLIST_BY_ROOM:String = "GetSupervisorByRoom";
+		public static const GET_SUPERVISORLIST_BY_ROOM_SUCCESS:String = "GetSupervisorByRoomSuccess";
+		public static const GET_SUPERVISORLIST_BY_ROOM_ERROR:String = "GetSupervisorByRoomError";
 		public static const SUPERVISOR_SELECTED:String = "SupervisorSelected";
 		public static const AVAILABILITY_SELECTED:String = "AvailabilitySelected";
 		public static const GET_AVAILABILITY_SUPERVISOR:String = "GetAvailabilitySupervisor";
 		public static const GET_AVAILABILITY_SUPERVISOR_SUCCESS:String = "GetAvailabilitySupervisorSuccess";
 		public static const GET_AVAILABILITY_SUPERVISOR_ERROR:String = "GetAvailabilitySupervisorError";		
-		public static const PUT_ROOM_SELECTED_IN_BOOKING:String = "PutRoomDataInBooking";
-		public static const PUT_SUPERVISOR_SELECTED_IN_BOOKING:String = "PutSupervisorDataInBooking";
-		public static const PUT_AVAILABILITY_SELECTED_IN_BOOKING:String = "PutAvailabilityDataInBooking";
+		public static const DO_BOOKING:String = "DoBooking";
 		public static const SEND_DATA_BOOKING:String = "SendDataBooking";
 		public static const SHOWED_CONFIRM_BOOKING_WINDOW:String = "ShowedConfirmBookingWindow";
 		public static const CONFIRM_BOOKING:String = "ConfirmBooking";
@@ -48,7 +44,7 @@ package
 		public static const GET_USER_BOOKINGLIST:String = "GetUserBookingList";
 		public static const GET_USER_BOOKINGLIST_SUCCES:String = "GetUserBookingListSuccess";
 		public static const GET_USER_BOOKINGLIST_ERROR:String = "GetUserBookingListError";
-		
+		public static const ADD_BOOKING_IN_LIST = "AddBookingInList";
 		
 		public static function getInstance() : ApplicationFacade {
 			if (instance == null)
@@ -58,9 +54,8 @@ package
 		override protected function initializeController():void {
 			super.initializeController();
 			registerCommand(ApplicationFacade.STARTUP, StartupCommand);
+			
 		}
-		public function startup (mainApp:MainApplication):void{
-			sendNotification( STARTUP, mainApp);
-		}
+		
 	}
 }

@@ -31,11 +31,11 @@ package model
 			switch( (evt.token.message as RemotingMessage).operation){
 				case "getSupervisorListByRoom":
 					if (evt.result != null){
-						setData(evt.result);
-						sendNotification(ApplicationFacade.GET_SUPERVISOR_BY_ROOM_SUCCESS, evt.result);
+						//setData(evt.result);
+						sendNotification(ApplicationFacade.GET_SUPERVISORLIST_BY_ROOM_SUCCESS, evt.result);
 					}
 					else{
-						sendNotification(ApplicationFacade.GET_SUPERVISOR_BY_ROOM_ERROR,evt.result);
+						sendNotification(ApplicationFacade.GET_SUPERVISORLIST_BY_ROOM_ERROR,evt.result);
 					}
 					break;
 			}

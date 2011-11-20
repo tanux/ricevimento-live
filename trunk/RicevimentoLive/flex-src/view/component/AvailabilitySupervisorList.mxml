@@ -3,36 +3,23 @@
 		  xmlns:s="library://ns.adobe.com/flex/spark" 
 		  xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="200"
 		  title="Elenco Disponibilita Relatore" cornerRadius="10"
-		  paddingBottom="5" paddingTop="5" paddingRight="5" paddingLeft="5"
-		  creationComplete="facade.sendNotification(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR,this)">
+		  paddingBottom="5" paddingTop="5" paddingRight="5" paddingLeft="5">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->         
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[                                               
 			import model.vo.Timewindow;
-			
 			import mx.collections.ArrayCollection;
-			import mx.containers.TitleWindow;
 			import mx.controls.Alert;
-			import mx.events.CloseEvent;
-			import mx.events.ItemClickEvent;
-			import mx.managers.PopUpManager;
 			
-			import view.dashboarduser.ConfirmBookingWindowMediator;
-			
-			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
+			public static const AVAILABILITY_SELECTED:String = "AvailabilitySelected";
 			[Bindable] public var availabilitylist:ArrayCollection;
-			private var confirmBookingTitleWindow:TitleWindow;
-			private function popUp(aviabilitySelected:Timewindow):void {
-				confirmBookingTitleWindow = PopUpManager.createPopUp(this.parent.parent, ConfirmBookingWindow, true) as TitleWindow;                            
-				PopUpManager.centerPopUp(confirmBookingTitleWindow);                    
-				confirmBookingTitleWindow.addEventListener(CloseEvent.CLOSE, confirmBookingTitleWindowClose);
-				facade.sendNotification(ApplicationFacade.AVAILABILITY_SELECTED, aviabilitySelected);
-			}
-			private function confirmBookingTitleWindowClose(evt:CloseEvent):void {
-				PopUpManager.removePopUp(confirmBookingTitleWindow);
-				dispatchEvent(new Event("Mnn"));
+			[Bindable] public var availabilitySelected:Timewindow;
+			
+			private function selectAvailability(selectedAviability:Timewindow):void {
+				availabilitySelected = selectedAviability;
+				dispatchEvent( new Event( AVAILABILITY_SELECTED ) );
 			}
 		]]>
 	</fx:Script>
@@ -46,7 +33,7 @@
 						<mx:Text id="availabilityEnabled" text="#{String(availabilitySupervisor.currentItem.id)}:{String(availabilitySupervisor.currentItem.window)}" />        
 					</mx:Box>
 					<mx:Box width="20%">
-						<mx:Button label="Prenota" id="btnPrenota" click="popUp(event.currentTarget.getRepeaterItem());" />     
+						<mx:Button label="Prenota" id="btnPrenota" click="selectAvailability(event.currentTarget.getRepeaterItem());" />     
 					</mx:Box>
 				</mx:HBox>
 				<mx:HRule width="100%" />
