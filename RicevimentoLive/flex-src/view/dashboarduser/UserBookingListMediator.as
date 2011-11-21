@@ -1,5 +1,7 @@
 package view.dashboarduser
 {
+	import flash.events.Event;
+	
 	import model.vo.Booking;
 	import model.vo.Student;
 	
@@ -17,15 +19,19 @@ package view.dashboarduser
 		public static const NAME:String = "UserBookingListMediator";
 		public var student:Student;
 		
-		public function UserBookingListMediator(viewComponent:Object=null){
+		public function UserBookingListMediator(viewComponent:Object){
 			super(NAME, viewComponent);
+			userBookingList.addEventListener(UserBookingList.BOOKING_SELECTED, notifyBookingSelected);
 		}
 		
+		public function notifyBookingSelected(evt:Event):void{
+			sendNotification(ApplicationFacade.BOOKING_SELECTED, userBookingList.bookingSelected);
+		}
 		override public function handleNotification(notification:INotification):void{
 			switch (notification.getName()){
 				case ApplicationFacade.GET_USER_BOOKINGLIST_SUCCES:
 					var bookings:ArrayCollection = notification.getBody() as ArrayCollection;
-					bookingList.bookinglist = bookings;
+					userBookingList.bookinglist = bookings;
 					break;
 				case ApplicationFacade.GET_USER_BOOKINGLIST_ERROR:
 					Alert.show("Errore in inizializzazione lista prenotazioni");
@@ -39,7 +45,7 @@ package view.dashboarduser
 			];	
 		}
 		
-		public function get bookingList():UserBookingList{
+		public function get userBookingList():UserBookingList{
 			return viewComponent as UserBookingList;
 		}
 	}

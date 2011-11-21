@@ -124,4 +124,5 @@ public class DashboardUserService {
 		HibernateFactory.closeSession(s);
 		return bookings;
 	}
+	
 }

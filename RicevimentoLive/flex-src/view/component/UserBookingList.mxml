@@ -9,12 +9,16 @@
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[                                               
+			import model.vo.Booking;
+			
 			import mx.collections.ArrayCollection;
 			import mx.controls.Alert;                       
-			var facade:ApplicationFacade = ApplicationFacade.getInstance() as ApplicationFacade;
-			[Bindable] public var bookinglist:ArrayCollection; 
-			public function clickHandler(id_supervisor:String):void{                                
-				//facade.sendNotification(ApplicationFacade.ROOM_SELECTED, id_room);
+			public static const BOOKING_SELECTED:String = "BookingSelected";
+			[Bindable] public var bookinglist:ArrayCollection;
+			[Bindable] public var bookingSelected:Booking;			
+			public function selectedBooking(booking:Booking):void{                                
+				bookingSelected = booking;
+				dispatchEvent( new Event(BOOKING_SELECTED) );
 			}
 		]]>
 	</fx:Script>
@@ -25,7 +29,7 @@
 					<mx:Text text="Motivo ricevimento: {String(bookingList.currentItem.reasonBooking)}" width="275" />    
 				</mx:Box>
 				<mx:Box height="50" verticalAlign="middle">
-					<s:Button label="Cancella" id="btnDeleteBooking" click="clickHandler(event.currentTarget.getRepeaterItem().id);"/>     
+					<s:Button label="Cancella" id="btnDeleteBooking" click="selectedBooking(event.currentTarget.getRepeaterItem());"/>     
 				</mx:Box>                               
 			</mx:HBox>                              
 		</mx:Repeater>  
