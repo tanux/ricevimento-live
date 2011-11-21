@@ -44,7 +44,8 @@ package
 		public static const GET_USER_BOOKINGLIST:String = "GetUserBookingList";
 		public static const GET_USER_BOOKINGLIST_SUCCES:String = "GetUserBookingListSuccess";
 		public static const GET_USER_BOOKINGLIST_ERROR:String = "GetUserBookingListError";
-		public static const ADD_BOOKING_IN_LIST = "AddBookingInList";
+		public static const ADD_BOOKING_IN_LIST:String = "AddBookingInList";
+		public static const BOOKING_SELECTED:String = "BookingSelected";
 		
 		public static function getInstance() : ApplicationFacade {
 			if (instance == null)
