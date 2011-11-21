@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.4.3.2
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generato il: Nov 11, 2011 alle 12:21
--- Versione del server: 5.5.16
+-- Generato il: Nov 21, 2011 alle 22:29
+-- Versione del server: 5.5.15
 -- Versione PHP: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -40,7 +40,20 @@ CREATE TABLE IF NOT EXISTS `booking` (
   KEY `id_student` (`id_student`),
   KEY `id_supervisor` (`id_supervisor`),
   KEY `id_room` (`id_room`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+
+--
+-- Dump dei dati per la tabella `booking`
+--
+
+INSERT INTO `booking` (`id`, `id_student`, `id_supervisor`, `id_room`, `reason_booking`, `date`, `time`, `reason_annulment`, `status`) VALUES
+(11, 1, 1, 1, 'non ho capito le liste concatenate', 'Lunedi ore 14', NULL, NULL, NULL),
+(12, 1, 2, 1, 'non ho capito gli alberi', 'Martedi ore 13', NULL, NULL, NULL),
+(21, 1, 1, 1, 'E non so che scrivere', 'Venerdi ore 13', NULL, NULL, NULL),
+(22, 1, 1, 1, 'Boooo', 'Lunedi ore 14', NULL, NULL, NULL),
+(23, 1, 2, 1, 'Descrivi brevemente il motivo del ricevimento', 'Martedi ore 13', NULL, NULL, NULL),
+(24, 1, 1, 1, 'yooooooooo', 'Lunedi ore 14', NULL, NULL, NULL),
+(25, 1, 2, 1, 'Vorrei ripetizioni per le tabelle hash', 'Martedi ore 13', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
