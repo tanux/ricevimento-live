@@ -60,11 +60,12 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
     /**
      * properties
      */
-    private var _internal_id : int;
     private var _internal_enabled : int;
+    private var _internal_id : int;
     private var _internal_roomsupervisors : ArrayCollection;
     private var _internal_window : String;
     private var _internal_supervisor : model.vo.Supervisor;
+    private var _internal_window2 : String;
     private var _internal_name : String;
 
     private static var emptyArray:Array = new Array();
@@ -90,15 +91,15 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
      */
 
     [Bindable(event="propertyChange")]
-    public function get id() : int
-    {
-        return _internal_id;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get enabled() : int
     {
         return _internal_enabled;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get id() : int
+    {
+        return _internal_id;
     }
 
     [Bindable(event="propertyChange")]
@@ -120,6 +121,12 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
     }
 
     [Bindable(event="propertyChange")]
+    public function get window2() : String
+    {
+        return _internal_window2;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get name() : String
     {
         return _internal_name;
@@ -133,16 +140,6 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
      * data/source property setters
      */
 
-    public function set id(value:int) : void
-    {
-        var oldValue:int = _internal_id;
-        if (oldValue !== value)
-        {
-            _internal_id = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "id", oldValue, _internal_id));
-        }
-    }
-
     public function set enabled(value:int) : void
     {
         var oldValue:int = _internal_enabled;
@@ -150,6 +147,16 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
         {
             _internal_enabled = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
+        }
+    }
+
+    public function set id(value:int) : void
+    {
+        var oldValue:int = _internal_id;
+        if (oldValue !== value)
+        {
+            _internal_id = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "id", oldValue, _internal_id));
         }
     }
 
@@ -195,6 +202,16 @@ public class _Super_Timewindow extends flash.events.EventDispatcher implements c
         {
             _internal_supervisor = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "supervisor", oldValue, _internal_supervisor));
+        }
+    }
+
+    public function set window2(value:String) : void
+    {
+        var oldValue:String = _internal_window2;
+        if (oldValue !== value)
+        {
+            _internal_window2 = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "window2", oldValue, _internal_window2));
         }
     }
 

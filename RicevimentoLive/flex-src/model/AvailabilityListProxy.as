@@ -31,7 +31,7 @@ package model
 			switch( (evt.token.message as RemotingMessage).operation){
 				case "getAvailabilityTimewindows":
 					if (evt.result != null){
-						setData(evt.result);
+						setData(evt.result);//
 						sendNotification(ApplicationFacade.GET_AVAILABILITY_SUPERVISOR_SUCCESS, evt.result);						
 					}
 					else{

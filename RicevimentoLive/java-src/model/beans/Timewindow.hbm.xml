@@ -20,5 +20,8 @@
         <property name="enabled" type="java.lang.Integer">
             <column name="enabled" not-null="true" />
         </property>		
+        <property name="window2" type="string">
+            <column name="window2" length="65535" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

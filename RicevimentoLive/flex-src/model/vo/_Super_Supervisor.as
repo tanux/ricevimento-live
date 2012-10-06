@@ -67,8 +67,8 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
     private var _internal_bookings : ArrayCollection;
     private var _internal_surname : String;
     private var _internal_type : String;
-    private var _internal_password : String;
     private var _internal_timewindows : ArrayCollection;
+    private var _internal_password : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -147,15 +147,15 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
     }
 
     [Bindable(event="propertyChange")]
-    public function get password() : String
-    {
-        return _internal_password;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get timewindows() : ArrayCollection
     {
         return _internal_timewindows;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get password() : String
+    {
+        return _internal_password;
     }
 
     public function clearAssociations() : void
@@ -286,16 +286,6 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
         }
     }
 
-    public function set password(value:String) : void
-    {
-        var oldValue:String = _internal_password;
-        if (oldValue !== value)
-        {
-            _internal_password = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "password", oldValue, _internal_password));
-        }
-    }
-
     public function set timewindows(value:*) : void
     {
         var oldValue:ArrayCollection = _internal_timewindows;
@@ -318,6 +308,16 @@ public class _Super_Supervisor extends flash.events.EventDispatcher implements c
                 throw new Error("value of timewindows must be a collection");
             }
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "timewindows", oldValue, _internal_timewindows));
+        }
+    }
+
+    public function set password(value:String) : void
+    {
+        var oldValue:String = _internal_password;
+        if (oldValue !== value)
+        {
+            _internal_password = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "password", oldValue, _internal_password));
         }
     }
 

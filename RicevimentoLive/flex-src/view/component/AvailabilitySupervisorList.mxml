@@ -18,7 +18,7 @@
 			[Bindable] public var availabilitySelected:Timewindow;
 			
 			private function selectAvailability(selectedAviability:Timewindow):void {
-				availabilitySelected = selectedAviability;
+				availabilitySelected = selectedAviability;				
 				dispatchEvent( new Event( AVAILABILITY_SELECTED ) );
 			}
 		]]>
@@ -30,7 +30,7 @@
 			<mx:VBox width="100%">
 				<mx:HBox width="100%" paddingBottom="5" verticalAlign="middle">
 					<mx:Box width="80%">
-						<mx:Text id="availabilityEnabled" text="#{String(availabilitySupervisor.currentItem.id)}:{String(availabilitySupervisor.currentItem.window)}" />        
+						<mx:Text id="availabilityEnabled" text="Data: {String(availabilitySupervisor.currentItem.window2)}" />        
 					</mx:Box>
 					<mx:Box width="20%">
 						<mx:Button label="Prenota" id="btnPrenota" click="selectAvailability(event.currentTarget.getRepeaterItem());" />     
