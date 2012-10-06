@@ -13,6 +13,7 @@ public class Timewindow implements java.io.Serializable {
 	private Integer id;
 	private String name;
 	private String window;
+	private String window2;
 	private Integer enabled;
 	private Supervisor supervisor;
 	private Set roomsupervisors = new HashSet(0);
@@ -20,14 +21,16 @@ public class Timewindow implements java.io.Serializable {
 	public Timewindow() {
 	}
 
-	public Timewindow(String name, String window) {
+	public Timewindow(String name, String window, String window2) {
 		this.name = name;
 		this.window = window;
+		this.window2 = window2;
 	}
 
-	public Timewindow(String name, String window, Set roomsupervisors) {
+	public Timewindow(String name, String window, Set roomsupervisors, String window2) {
 		this.name = name;
 		this.window = window;
+		this.window2 = window2;
 		this.roomsupervisors = roomsupervisors;
 	}
 
@@ -57,7 +60,7 @@ public class Timewindow implements java.io.Serializable {
 	public void setEnabled(Integer enabled){
 		this.enabled = enabled;
 	}
-	public Integer getEnabled(){
+	public Integer isEnabled(){
 		return this.enabled;
 	}
 	public Set getRoomsupervisors() {
@@ -72,5 +75,11 @@ public class Timewindow implements java.io.Serializable {
 	}
 	public void setSupervisor(Supervisor supervisor){
 		this.supervisor = supervisor;
+	}
+	public String getWindow2() {
+		return this.window2;
+	}
+	public void setWindow2(String window2) {
+		this.window2 = window2;
 	}
 }

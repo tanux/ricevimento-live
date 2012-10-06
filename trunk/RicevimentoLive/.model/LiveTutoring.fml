@@ -82,54 +82,6 @@
       </annotation>
     </function>
   </service>
-  <entity name="Student">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Student</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="RemoteClass">model.beans.Student</item>
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">LoginService,DashboardUserService</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">model.vo</item>
-    </annotation>
-    <property name="id" type="integer"/>
-    <property name="username" type="string"/>
-    <property name="degree" type="string"/>
-    <property name="email" type="string"/>
-    <property name="bookings" type="opaque[]"/>
-    <property name="nome" type="string"/>
-    <property name="cognome" type="string"/>
-    <property name="password" type="string"/>
-    <property name="personalNumber" type="string"/>
-  </entity>
-  <entity name="Booking">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Booking</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="RemoteClass">model.beans.Booking</item>
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">Dummy,DashboardUserService,DashboardUserServiceDummy</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">model.vo</item>
-    </annotation>
-    <property name="id" type="integer"/>
-    <property name="time" type="string"/>
-    <property name="student" type="Student"/>
-    <property name="status" type="string"/>
-    <property name="supervisor" type="Supervisor"/>
-    <property name="reasonAnnulment" type="string"/>
-    <property name="reasonBooking" type="string"/>
-    <property name="date" type="string"/>
-    <property name="room" type="Room"/>
-  </entity>
   <service name="DashboardUserService">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">RemoteObject</item>
@@ -146,6 +98,26 @@
     <annotation name="ServiceTypeGroup">
       <item name="ServiceBackendType">BlazeDS</item>
     </annotation>
+    <function name="getBookingList" return-type="Booking[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">string</item>
+        <item name="returnType">Booking</item>
+      </annotation>
+      <parameter name="arg0" type="string"/>
+    </function>
+    <function name="getAvailabilityTimewindows" return-type="opaque[]">
+      <annotation name="original signature">
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <parameter name="arg0" type="string"/>
+    </function>
     <function name="getRoomList" return-type="Room[]">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
@@ -153,32 +125,6 @@
       <annotation name="original signature">
         <item name="returnType">Room</item>
       </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">id,topic,roomsupervisors,roomsupervisor,name,bookings</item>
-      </annotation>
-    </function>
-    <function name="getSupervisorListByRoom" return-type="Supervisor[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParams">string</item>
-        <item name="returnType">Supervisor</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">id,username,roomsupervisors,email,acl,name,bookings,surname,type,password,timewindows</item>
-      </annotation>
-      <parameter name="arg0" type="string"/>
-    </function>
-    <function name="getAvailabilityTimewindows" return-type="opaque[]">
-      <annotation name="analyze group">
-        <item name="analyzed">false</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
-      </annotation>
-      <parameter name="arg0" type="string"/>
     </function>
     <function name="doBooking" return-type="void">
       <annotation name="analyze group">
@@ -193,17 +139,41 @@
       <parameter name="arg3" type="string"/>
       <parameter name="arg4" type="string"/>
     </function>
-    <function name="getBookingList" return-type="opaque[]">
+    <function name="getSupervisorListByRoom" return-type="Supervisor[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
       <annotation name="original signature">
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
-      </annotation>
-      <annotation name="analyze group">
-        <item name="analyzed">false</item>
+        <item name="returnType">Supervisor</item>
       </annotation>
       <parameter name="arg0" type="string"/>
     </function>
   </service>
+  <entity name="Student">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Student</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">model.beans.Student</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">Dummy,DashboardUserService</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">model.vo</item>
+    </annotation>
+    <property name="id" type="integer"/>
+    <property name="username" type="string"/>
+    <property name="degree" type="string"/>
+    <property name="email" type="string"/>
+    <property name="bookings" type="opaque[]"/>
+    <property name="nome" type="string"/>
+    <property name="password" type="string"/>
+    <property name="cognome" type="string"/>
+    <property name="personalNumber" type="string"/>
+  </entity>
   <entity name="Room">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Room</item>
@@ -213,16 +183,16 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DashboardUserService,Dummy,DashboardUserServiceDummy</item>
+      <item name="service">DashboardUserService</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">model.vo</item>
     </annotation>
     <annotation name="getRoomList">
-      <item name="propertySpecifier">id,topic,roomsupervisors,roomsupervisor,name,bookings</item>
+      <item name="propertySpecifier">topic,id,roomsupervisors,roomsupervisor,name,bookings</item>
     </annotation>
-    <property name="id" type="integer"/>
     <property name="topic" type="string"/>
+    <property name="id" type="integer"/>
     <property name="roomsupervisors" type="opaque[]"/>
     <property name="roomsupervisor" type="Roomsupervisor"/>
     <property name="name" type="string"/>
@@ -257,13 +227,13 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">Dummy,LoginService,RegisterUserService,DashboardUserService,LoginServiceDummy,DashboardUserServiceDummy</item>
+      <item name="service">LoginServiceDummy,DashboardUserService</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">model.vo</item>
     </annotation>
     <annotation name="getSupervisorListByRoom">
-      <item name="propertySpecifier">id,username,roomsupervisors,email,acl,name,bookings,surname,type,password,timewindows</item>
+      <item name="propertySpecifier">id,username,roomsupervisors,acl,email,name,bookings,surname,type,timewindows,password</item>
     </annotation>
     <property name="id" type="integer"/>
     <property name="username" type="string"/>
@@ -274,8 +244,32 @@
     <property name="bookings" type="opaque[]"/>
     <property name="surname" type="string"/>
     <property name="type" type="string"/>
-    <property name="password" type="string"/>
     <property name="timewindows" type="opaque[]"/>
+    <property name="password" type="string"/>
+  </entity>
+  <entity name="Booking">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Booking</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">model.beans.Booking</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DashboardUserService</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">model.vo</item>
+    </annotation>
+    <property name="id" type="integer"/>
+    <property name="time" type="string"/>
+    <property name="student" type="Student"/>
+    <property name="status" type="string"/>
+    <property name="supervisor" type="Supervisor"/>
+    <property name="reasonAnnulment" type="string"/>
+    <property name="reasonBooking" type="string"/>
+    <property name="date" type="string"/>
+    <property name="room" type="Room"/>
   </entity>
   <entity name="Timewindow">
     <annotation name="EntityProperties">
@@ -286,16 +280,17 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DashboardUserService,Dummy,DashboardUserServiceDummy</item>
+      <item name="service">DashboardUserService</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">model.vo</item>
     </annotation>
-    <property name="id" type="integer"/>
     <property name="enabled" type="integer"/>
+    <property name="id" type="integer"/>
     <property name="roomsupervisors" type="opaque[]"/>
     <property name="window" type="string"/>
     <property name="supervisor" type="Supervisor"/>
+    <property name="window2" type="string"/>
     <property name="name" type="string"/>
   </entity>
 </model>

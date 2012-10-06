@@ -44,7 +44,7 @@ package view.dashboarduser
 			booking.student = mainApplication.student as Student;
 			booking.room = mainApplication.roomsList.roomSelected as Room;
 			booking.supervisor = mainApplication.supervisorsList.supervisorSelected as Supervisor;
-			booking.date = mainApplication.availabilityList.availabilitySelected.window;
+			booking.date = mainApplication.availabilityList.availabilitySelected.window2;
 			if (facade.hasMediator(ConfirmBookingWindowMediator.NAME)){
 				var window:ConfirmBookingWindow =  facade.retrieveMediator( ConfirmBookingWindowMediator.NAME ).getViewComponent() as ConfirmBookingWindow;
 				window.booking = booking;

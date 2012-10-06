@@ -22,14 +22,14 @@ internal class _TimewindowEntityMetadata extends com.adobe.fiber.valueobjects.Ab
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("id", "enabled", "roomsupervisors", "window", "supervisor", "name");
+    model_internal static var allProperties:Array = new Array("enabled", "id", "roomsupervisors", "window", "supervisor", "window2", "name");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("id", "enabled", "roomsupervisors", "window", "supervisor", "name");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("enabled", "id", "roomsupervisors", "window", "supervisor", "window2", "name");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("id", "enabled", "roomsupervisors", "window", "supervisor", "name");
+    model_internal static var dataProperties:Array = new Array("enabled", "id", "roomsupervisors", "window", "supervisor", "window2", "name");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("id", "enabled", "roomsupervisors", "window", "supervisor", "name");
+    model_internal static var nonDerivedProperties:Array = new Array("enabled", "id", "roomsupervisors", "window", "supervisor", "window2", "name");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("roomsupervisors");
     model_internal static var collectionBaseMap:Object;
@@ -49,11 +49,12 @@ internal class _TimewindowEntityMetadata extends com.adobe.fiber.valueobjects.Ab
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["id"] = new Array();
             model_internal::dependentsOnMap["enabled"] = new Array();
+            model_internal::dependentsOnMap["id"] = new Array();
             model_internal::dependentsOnMap["roomsupervisors"] = new Array();
             model_internal::dependentsOnMap["window"] = new Array();
             model_internal::dependentsOnMap["supervisor"] = new Array();
+            model_internal::dependentsOnMap["window2"] = new Array();
             model_internal::dependentsOnMap["name"] = new Array();
 
             // collection base map
@@ -63,11 +64,12 @@ internal class _TimewindowEntityMetadata extends com.adobe.fiber.valueobjects.Ab
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["id"] = "int";
         model_internal::propertyTypeMap["enabled"] = "int";
+        model_internal::propertyTypeMap["id"] = "int";
         model_internal::propertyTypeMap["roomsupervisors"] = "ArrayCollection";
         model_internal::propertyTypeMap["window"] = "String";
         model_internal::propertyTypeMap["supervisor"] = "model.vo.Supervisor";
+        model_internal::propertyTypeMap["window2"] = "String";
         model_internal::propertyTypeMap["name"] = "String";
 
         model_internal::_instance = value;
@@ -298,13 +300,13 @@ internal class _TimewindowEntityMetadata extends com.adobe.fiber.valueobjects.Ab
     }
 
     [Bindable(event="propertyChange")]
-    public function get isIdAvailable():Boolean
+    public function get isEnabledAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isEnabledAvailable():Boolean
+    public function get isIdAvailable():Boolean
     {
         return true;
     }
@@ -328,6 +330,12 @@ internal class _TimewindowEntityMetadata extends com.adobe.fiber.valueobjects.Ab
     }
 
     [Bindable(event="propertyChange")]
+    public function get isWindow2Available():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isNameAvailable():Boolean
     {
         return true;
@@ -344,13 +352,13 @@ internal class _TimewindowEntityMetadata extends com.adobe.fiber.valueobjects.Ab
     }
 
     [Bindable(event="propertyChange")]   
-    public function get idStyle():com.adobe.fiber.styles.Style
+    public function get enabledStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get enabledStyle():com.adobe.fiber.styles.Style
+    public function get idStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -369,6 +377,12 @@ internal class _TimewindowEntityMetadata extends com.adobe.fiber.valueobjects.Ab
 
     [Bindable(event="propertyChange")]   
     public function get supervisorStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get window2Style():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
