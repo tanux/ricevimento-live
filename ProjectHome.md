@@ -1,0 +1,1 @@
+Rich Internet Application per prenotazione svolgimento di ricevimento a distanza in un costesto universitario.
